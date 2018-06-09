@@ -31,5 +31,6 @@ public class UserServiceImpl implements UserService {
         template.convertAndSend("exchange","topic.#",new Date()+". Hello the topic!!!");
     }
 
+    //zhu
 
 }
