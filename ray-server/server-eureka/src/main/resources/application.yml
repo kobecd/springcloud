@@ -1,0 +1,92 @@
+server: 
+  port: 8761
+spring: 
+  profiles: 
+    active: local
+  application:
+    name: ray-eureka
+
+########################################################
+#          Environment for development
+########################################################
+---
+spring: 
+  profiles: dev
+security: 
+  user: 
+    name: admin
+    password: admin
+eureka:
+  instance:
+    hostname: 192.168.28.26
+  server: 
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url: 
+      defaultZone: http://zhjt:zhjt@192.168.61.26:8761/eureka/
+
+########################################################
+#          Environment for localhost
+########################################################
+---
+spring: 
+  profiles: local
+security: 
+  user: 
+    name: admin
+    password: admin
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  server: 
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url: 
+      defaultZone: http://admin:admin@127.0.0.1:8761/eureka/
+
+########################################################
+#          Environment for testing
+########################################################
+---
+spring: 
+  profiles: test
+security: 
+  user: 
+    name: zhjt
+    password: zhjt
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  server: 
+    enable-self-preservation: false
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url: 
+      defaultZone: http://zhjt:zhjt@127.0.0.1:8761/eureka/
+
+########################################################
+#          Environment for production 192.168.61.25
+########################################################
+---
+spring: 
+  profiles: prod25
+security: 
+  user: 
+    name: zhjt
+    password: zhjt
+eureka:
+  instance:
+    instance-id: 192.168.61.25:8761
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url: 
+      defaultZone: http://zhjt:zhjt@192.168.61.26:8761/eureka/
