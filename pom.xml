@@ -16,12 +16,17 @@
     <artifactId>ray</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-
+    <!--modules-->
     <modules>
         <module>api-common</module>
         <module>ray-server</module>
         <module>rabbitmq</module>
+        <module>rabbitmq-fanout</module>
     </modules>
+
+
+
+
 
     <packaging>pom</packaging>
 
