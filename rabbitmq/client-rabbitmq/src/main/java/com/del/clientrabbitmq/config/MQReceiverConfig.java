@@ -46,6 +46,9 @@ public class MQReceiverConfig {
 //2.下面重点介绍一下消费者和生产者之间对象的传输。
 //对象的传输，要现在生产者（A）中进行序列化，即把对象转化为字节数组进行传输，在消费者中，再把转化的字节数组反序列化为对象。序列化和反序列化的方法很多，这里采用的是java的Serializable 接口
 //1>.在生产者（项目A）和消费者（项目B）的项目中创建实体类。
-//！注意！：*新建实体类Boy.java 该实体类在项目A、B中的位置，必须一致，即包名必须一致*，在本项目中，Boy.java 在项目A、B中都是： import com.fengdonghao.shiro.bean.Boy;
+//！注意！：
+// 新建实体类Boy.java 该实体类在项目A、B中的位置，必须一致，
+// 即包名必须一致*，在本项目中，Boy.java 在项目A、B中都是： import com.fengdonghao.shiro.bean.Boy;
 //实体类也要一致。
+//参考文章
 //https://www.cnblogs.com/hlhdidi/p/6535677.html
