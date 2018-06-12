@@ -20,7 +20,8 @@
     <modules>
         <module>api-common</module>
         <module>ray-server</module>
-        <module>rabbitmq</module>
+        <module>rabbitmq-direct</module>
+        <module>rabbitmq-topic</module>
         <module>rabbitmq-fanout</module>
     </modules>
 
