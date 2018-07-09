@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ClientRabbitmqApplication {
+public class ClientDirectRabbitmqApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ClientRabbitmqApplication.class, args);
+        SpringApplication.run(ClientDirectRabbitmqApplication.class, args);
     }
 }

@@ -1,16 +1,13 @@
-package com.del.serverrabbitmq;
-
+package com.del.clientrabbitmq;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-//@ActiveProfiles("local")
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ServerRabbitmqApplicationTests {
+public class ClientDirectRabbitmqApplicationTests {
 
     @Test
     public void contextLoads() {
