@@ -40,4 +40,7 @@ public class ServerTopicRabbitmqApplication {
         userService.send(str);
         return str;
     }
+
+
+
 }

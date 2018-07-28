@@ -13,10 +13,10 @@ import java.util.Date;
 
 @SpringBootApplication
 @RestController
-public class ServerRabbitmqApplication {
+public class ServerDirectRabbitmqApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerRabbitmqApplication.class, args);
+        SpringApplication.run(ServerDirectRabbitmqApplication.class, args);
     }
 
     @Autowired
@@ -37,8 +37,7 @@ public class ServerRabbitmqApplication {
 
     @GetMapping("test")
     public Object test(String str) {
-//        String str="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
         userService.send(str);
-        return str;
+        return new Date()+str;
     }
 }

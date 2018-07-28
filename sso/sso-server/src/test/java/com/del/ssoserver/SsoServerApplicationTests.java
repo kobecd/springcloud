@@ -1,4 +1,4 @@
-package com.del.clientrabbitmq;
+package com.del.ssoserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ClientRabbitmqApplicationTests {
+public class SsoServerApplicationTests {
 
     @Test
     public void contextLoads() {
