@@ -1,9 +1,7 @@
 package com.del.clientrabbitmq.config;
 
 import model.User;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -16,10 +14,10 @@ public class MQReceiverConfig {
 //        System.out.println("Receive:"+user);
 //    }
 
-    @Bean
-    public Queue queue() {
-        return new Queue("queue");
-    }
+//    @Bean
+//    public Queue queue() {
+//        return new Queue("queue");
+//    }
     //    @RabbitListener(queues="queue_string")    //监听器监听指定的Queue
     @RabbitListener(queues = "queue_obj")    //监听器监听指定的Queue
     public void processC(User user) {
