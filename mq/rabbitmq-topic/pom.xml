@@ -5,22 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.arc</groupId>
-    <artifactId>sso</artifactId>
+    <artifactId>rabbitmq-topic</artifactId>
+    <name>rabbitmq-topic</name>
     <version>0.0.1-SNAPSHOT</version>
-
-    <name>sso</name>
     <packaging>pom</packaging>
-
 
     <parent>
         <groupId>com.arc</groupId>
-        <artifactId>ray</artifactId>
+        <artifactId>mq</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
 
     <modules>
-        <module>sso-server</module>
+        <module>server-rabbitmq-topic</module>
+        <module>client-rabbitmq-topic</module>
     </modules>
-
 </project>

@@ -10,7 +10,7 @@
     <name>api-common</name>
 
     <parent>
-        <groupId>com.del</groupId>
+        <groupId>com.arc</groupId>
         <artifactId>ray</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
