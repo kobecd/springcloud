@@ -174,6 +174,7 @@
         <module>api-common</module>
         <module>mq</module>
         <module>sso</module>
+        <module>cache</module>
     </modules>
 
 
