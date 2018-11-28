@@ -1,4 +1,4 @@
-package com.arc.cache.model;
+package com.arc.cache.model.domain;
 
 import lombok.Getter;
 import lombok.Setter;

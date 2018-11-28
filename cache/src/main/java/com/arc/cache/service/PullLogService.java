@@ -1,4 +1,4 @@
-package com.arc.cache.mapper;
+package com.arc.cache.service;
 
 import com.arc.cache.model.domain.PullLog;
 import com.arc.cache.model.query.PullLogQuery;
@@ -7,20 +7,20 @@ import java.util.List;
 
 /**
  * @author: yechao
- * @date: 2018/11/7 15:43
+ * @date: 2018/11/10 19:00
  * @description:
  */
-public interface PullLogMapper {
+public interface PullLogService {
 
     Long save(PullLog pullLog);
 
     PullLog get(Integer id);
 
+    Integer update(PullLog pullLog);
+
     List<PullLog> list();
 
-    int update(PullLog pullLog);
-
-    int delete(Integer id);
-
     List<PullLog> listByPullLogQuery(PullLogQuery query);
+
+    Integer delete(Integer id);
 }
