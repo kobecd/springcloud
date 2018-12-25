@@ -16,7 +16,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.5.RELEASE</version>
+        <version>2.1.1.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -77,7 +77,6 @@
                 <artifactId>junit</artifactId>
                 <scope>test</scope>
             </dependency>
-
 
 
         </dependencies>
@@ -165,7 +164,16 @@
             </snapshots>
         </repository>
     </repositories>
-
+    <build>
+        <plugins>
+            <!--多模块打包：只需在启动类所在模块的POM文件：指定打包插件 -->
+            <!--该插件主要用途：构建可执行的JAR -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
     <!--modules-->
     <modules>
