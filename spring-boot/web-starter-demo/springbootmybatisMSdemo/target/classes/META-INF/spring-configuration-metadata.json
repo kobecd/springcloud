@@ -1,0 +1,18 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.antsoft.database.druid.DataSourceConfiguration",
+      "name": "druid.master",
+      "sourceMethod": "masterDataSource()",
+      "type": "javax.sql.DataSource"
+    },
+    {
+      "sourceType": "com.antsoft.database.druid.DataSourceConfiguration",
+      "name": "druid.slave",
+      "sourceMethod": "slaveDataSource1()",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": []
+}

@@ -1,7 +1,7 @@
 package com.del.serverrabbitmq.service;
 
+import com.arc.model.User;
 
-import model.User;
 
 public interface UserService {
 

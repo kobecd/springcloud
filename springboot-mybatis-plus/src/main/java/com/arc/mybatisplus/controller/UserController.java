@@ -1,12 +1,16 @@
+package com.arc.mybatisplus.controller;
+
+import com.arc.mybatisplus.model.enums.ErrorCode;
+import com.arc.mybatisplus.entity.User;
+import com.arc.mybatisplus.service.IUserService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.springboot.ErrorCode;
-import com.baomidou.springboot.entity.User;
 import com.baomidou.springboot.entity.enums.AgeEnum;
 import com.baomidou.springboot.entity.enums.PhoneEnum;
-import com.baomidou.springboot.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +49,7 @@ public class UserController extends ApiController {
      */
     @GetMapping("/test")
     public IPage<User> test() {
+
         return userService.page(new Page<User>(0, 12), null);
     }
 
@@ -163,7 +168,7 @@ public class UserController extends ApiController {
      * 启动  Application 加上 @EnableTransactionManagement 注解其实可无默认貌似就开启了<br>
      * 需要事物的方法加上 @Transactional 必须的哦！！
      */
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     @GetMapping("/test_transactional")
     public void testTransactional() {
         User user = new User(1000L, "测试事物", AgeEnum.ONE, 3);

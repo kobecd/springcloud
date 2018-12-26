@@ -18,7 +18,7 @@
         <relativePath>../</relativePath>
     </parent>
 
-    <dependencies>
+<!--    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -38,6 +38,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 
 </project>

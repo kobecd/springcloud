@@ -1,13 +1,11 @@
-package com.baomidou.springboot.mapper;
+package com.arc.mybatisplus.mapper;
 
-import java.util.List;
-
+import com.arc.mybatisplus.entity.User;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.springboot.SuperMapper;
-import com.baomidou.springboot.entity.User;
+import java.util.List;
 
 /**
  * User 表数据库控制层接口

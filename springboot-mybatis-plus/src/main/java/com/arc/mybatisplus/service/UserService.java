@@ -1,7 +1,8 @@
 package com.arc.mybatisplus.service;
 
 
-import com.arc.mybatisplus.model.entries.User;
+import com.arc.mybatisplus.entity.User;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 
 import java.util.List;
 
@@ -14,29 +15,19 @@ import java.util.List;
  */
 public interface UserService {
 
-    Long save(User user);
+    boolean deleteAll();
 
-    int delete(Long id);
+    List<User> selectListBySQL();
 
-    int update(User user);
+    List<User> selectListByWrapper(Wrapper wrapper);
 
-    User get(Long id);
-
-    List<User> list();
 
     /**
      * 分页查询用户表中的信息
      *
      * @return 注意默认分页大小
      */
-    List<User> page();
+//    List<User> page();
 
-    /**
-     * 根据用户名称获取用户信息
-     *
-     * @param username
-     * @return
-     */
-    User getByUserName(String username);
 
 }

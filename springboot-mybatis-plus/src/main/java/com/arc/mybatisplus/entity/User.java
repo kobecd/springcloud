@@ -1,6 +1,4 @@
-package com.baomidou.springboot.entity;
-
-import java.util.Date;
+package com.arc.mybatisplus.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -8,11 +6,13 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.springboot.entity.enums.AgeEnum;
 import com.baomidou.springboot.entity.enums.PhoneEnum;
 
+import java.util.Date;
+
 /**
  * 用户表
  */
 @SuppressWarnings("serial")
-public class User extends SuperEntity<User> {
+public class User extends com.baomidou.springboot.entity.SuperEntity<User> {
 
 
     /**
