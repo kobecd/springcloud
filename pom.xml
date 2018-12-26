@@ -116,18 +116,17 @@
 
     </dependencies>
 
-
-    <!--    <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </build>-->
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+            <!--多模块打包：只需在启动类所在模块的POM文件：指定打包插件 -->
+            <!--该插件主要用途：构建可执行的JAR -->
+
+            <!--<plugin>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -151,34 +150,9 @@
     </build>
 
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <build>
-        <plugins>
-            <!--多模块打包：只需在启动类所在模块的POM文件：指定打包插件 -->
-            <!--该插件主要用途：构建可执行的JAR -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <!--modules-->
     <modules>
         <module>api-common</module>
-        <module>mq</module>
         <module>sso</module>
         <module>cache</module>
     </modules>

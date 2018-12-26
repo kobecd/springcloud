@@ -3,38 +3,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.del</groupId>
-    <artifactId>server-rabbitmq-fanout</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
-    <name>server-rabbitmq-fanout</name>
-    <description>server-rabbitmq-fanout Spring Boot</description>
+    <groupId>com.arc</groupId>
+    <artifactId>model</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>model</name>
+    <description>model project for mq</description>
 
 
     <parent>
         <groupId>com.arc</groupId>
-        <artifactId>rabbitmq-fanout</artifactId>
+        <artifactId>rabbitmq-direct</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -42,8 +29,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -54,6 +39,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
