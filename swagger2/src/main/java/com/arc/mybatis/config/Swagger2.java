@@ -1,4 +1,4 @@
-package com.arc.swagger2.config;
+package com.arc.mybatis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

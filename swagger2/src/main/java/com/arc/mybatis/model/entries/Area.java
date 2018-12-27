@@ -1,7 +1,8 @@
-package com.arc.swagger2.model.entries;
+package com.arc.mybatis.model.entries;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 public class Area extends BaseModel {
 
     /**
@@ -32,4 +34,8 @@ public class Area extends BaseModel {
 
     private List<Area> children;// 子节点
 
+    public Area(String code, String name) {
+        this.areaCode = code;
+        this.areaName = name;
+    }
 }
