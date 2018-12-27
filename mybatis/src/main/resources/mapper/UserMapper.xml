@@ -71,17 +71,9 @@
 	</insert>
 
     <update id="update" parameterType="com.arc.mybatis.model.entries.SysUser">
-        UPDATE sys_user
-        <set>
-            <if test="username != null and username != ''">`username` = #{username,jdbcType=VARCHAR},</if>
-            <if test="password != null and password != ''">`password` = #{password,jdbcType=VARCHAR},</if>
-            <if test="displayName != null and displayName != ''">display_name = #{displayName,jdbcType=VARCHAR},</if>
-            <if test="tel != null and tel != ''">tel = #{tel,jdbcType=VARCHAR},</if>
-            <if test="email != null and email != ''">email = #{email,jdbcType=VARCHAR},</if>
-            <if test="status != null">`status` = #{status,jdbcType=INTEGER},</if>
-            <if test="updateTime != null">update_time =now()</if>
-        </set>
-        WHERE id = #{id,jdbcType=BIGINT}
+        UPDATE sys_user set `username`="sssssss"
+
+        WHERE id = 33
     </update>
 
 </mapper>
