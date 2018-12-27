@@ -8,6 +8,7 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -22,11 +23,6 @@ public class Swagger2 implements WebMvcConfigurer {
     @Bean
     //可以注入多个doket，也就是多个版本的api，可以在看到有三个版本groupName不能是重复的，v1和v2是ant风格匹配，配置文件
     public Docket createRestApi() {
-/*        ApiInfo apiInfo = new ApiInfoBuilder()
-                .title("Sam 项目接口文档")
-                .description("Magical Sam 项目的接口文档，符合RESTful API。")
-                .version("1.0")
-                .build();*/
         String scanPackage = "com.arc.swagger2.controller";
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
@@ -37,8 +33,6 @@ public class Swagger2 implements WebMvcConfigurer {
     }
 
 
-//
-
     /**
      * 说明：
      * 方法apiInfo() 用来创建该Api的基本信息（这些基本信息会展现在文档页面中）
@@ -47,15 +41,16 @@ public class Swagger2 implements WebMvcConfigurer {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("智慧家庭项目")
-                .description("这个是项目主页描述链接？ http://hwangfantasy.github.io/")
-                .termsOfServiceUrl("http://hwangfantasy.github.io/")
-//                .contact("项目负责人是CONTACT")
-                .version("1.0.0")
+                .title("项目标题：Springboot 2.1 集成 swagger2")
+                .description("项目代码托管在github.")
+                .termsOfServiceUrl("https://github.com/lamymay/ray.git")
+                .version("0.0.1-SNAPSHOT")
+                .contact(new Contact("叶超", "https://github.com/lamymay/ray.git", "lamymay@outlook.com"))
                 .build();
     }
 
     /**
+     * 解决404问题
      * 这个地方要重新注入一下资源文件，不然不会注入资源的，也没有注入requestHandlerMappping,相当于xml配置的
      * swagger资源配置
      * <mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"/>
