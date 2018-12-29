@@ -2,7 +2,6 @@ package com.del.serverrabbitmq.service.impl;
 
 
 import com.del.serverrabbitmq.service.UserService;
-import model.User;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

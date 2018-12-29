@@ -1,6 +1,6 @@
 package com.del.clientrabbitmq.config;
 
-import model.User;
+import com.arc.model.User;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.context.annotation.Configuration;
 

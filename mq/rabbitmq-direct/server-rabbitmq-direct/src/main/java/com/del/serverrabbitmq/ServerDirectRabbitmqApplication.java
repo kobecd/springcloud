@@ -1,7 +1,7 @@
 package com.del.serverrabbitmq;
 
+import com.arc.model.User;
 import com.del.serverrabbitmq.service.UserService;
-import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,12 +25,11 @@ public class ServerDirectRabbitmqApplication {
     @RequestMapping("send")
     public Object send() {
         User user = new User();
-        user.setId("" + new Date().getTime());
+        user.setId(System.currentTimeMillis());
         user.setUsername("" + new Date().getTime());
         user.setPassword("pass" + new Date().getTime());
         user.setNickName("测试对象" + new Date());
         user.setEmail("33333@qq.com");
-        user.setCardNumber(3333345L);
         userService.send(user);
         return user;
     }
@@ -38,6 +37,6 @@ public class ServerDirectRabbitmqApplication {
     @GetMapping("test")
     public Object test(String str) {
         userService.send(str);
-        return new Date()+str;
+        return new Date() + str;
     }
 }

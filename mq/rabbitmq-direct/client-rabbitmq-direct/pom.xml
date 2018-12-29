@@ -13,8 +13,8 @@
 
 
     <parent>
-        <groupId>com.arc</groupId>
         <artifactId>rabbitmq-direct</artifactId>
+        <groupId>com.arc</groupId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
@@ -29,8 +29,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -41,6 +39,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.arc</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.arc</groupId>-->
+            <!--<artifactId>model</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
 </project>
