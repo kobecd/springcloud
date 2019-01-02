@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rongyi.hla.mapper.rbac.RoleAuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.rongyi.rbac.model.entity.RoleAuthority">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="authority_id" jdbcType="INTEGER" property="authorityId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, role_id, authority_id
+  </sql>
+  <select id="selectByExample" parameterType="com.rongyi.rbac.model.entity.RoleAuthorityQueryCondition" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from role_authority
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_authority
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role_authority
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.rongyi.rbac.model.entity.RoleAuthorityQueryCondition">
+    delete from role_authority
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.rongyi.rbac.model.entity.RoleAuthority">
+    insert into role_authority (id, role_id, authority_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=BIGINT}, #{authorityId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rongyi.rbac.model.entity.RoleAuthority">
+    insert into role_authority
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="authorityId != null">
+        authority_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="authorityId != null">
+        #{authorityId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.rongyi.rbac.model.entity.RoleAuthorityQueryCondition" resultType="java.lang.Integer">
+    select count(*) from role_authority
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update role_authority
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=BIGINT},
+      </if>
+      <if test="record.authorityId != null">
+        authority_id = #{record.authorityId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update role_authority
+    set id = #{record.id,jdbcType=INTEGER},
+      role_id = #{record.roleId,jdbcType=BIGINT},
+      authority_id = #{record.authorityId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rongyi.rbac.model.entity.RoleAuthority">
+    update role_authority
+    <set>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="authorityId != null">
+        authority_id = #{authorityId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rongyi.rbac.model.entity.RoleAuthority">
+    update role_authority
+    set role_id = #{roleId,jdbcType=BIGINT},
+      authority_id = #{authorityId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <insert id="save"   parameterType="java.util.Map">
+     insert into role_authority ( <include refid="Base_Column_List" /> )
+     values 
+ 	 <foreach item="item" collection="auths" separator=","  index="">
+	     (null,#{roleId,jdbcType=BIGINT},#{item,jdbcType=INTEGER})
+	  </foreach>
+  </insert>
+  
+  <delete id="delRoleAuthByRoleId" parameterType="java.lang.Long">
+     delete from role_authority
+    where role_id = #{roleId,jdbcType=BIGINT} 
+  </delete>
+
+
+  <delete id="delRoleAuthByRoleIdAndAuthId" parameterType="com.rongyi.rbac.model.entity.RoleAuthority">
+     delete from role_authority
+    where role_id = #{roleId,jdbcType=INTEGER} AND  authority_id =  #{authorityId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="saveRoleAuth" parameterType="java.util.Map">
+     insert into role_authority (role_id,authority_id)
+     values 
+ 	 <foreach item="item" collection="auths" separator=","  index="">
+	     (#{roleId,jdbcType=BIGINT},#{item,jdbcType=INTEGER})
+	  </foreach>
+  </insert>
+  <select id="selectByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_authority
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </select>
+  </mapper>
