@@ -1,4 +1,4 @@
-package cn.net.yodoo.gree.ms.api.controller.system;
+package com.arc.mail.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import model.User;
@@ -17,7 +17,7 @@ import java.sql.*;
 @Controller
 @RestController
 @RequestMapping("/test")
-public class TestApi {
+public class TestController {
 
 
     //    @Value("${spring.datasource.url}")
@@ -36,7 +36,7 @@ public class TestApi {
     @RequestMapping("/1")
     public Object t1() {
         long start = System.currentTimeMillis();
-        User user1 = new TestApi().fun1();
+        User user1 = new TestController().fun1();
         log.info("jdbc 方式查询数据库耗时={} ms ", (System.currentTimeMillis() - start));
         System.out.println(user1.toString());
         return System.currentTimeMillis() - start;

@@ -18,11 +18,11 @@
     <dependencies>
         <dependency>
             <groupId>com.arc</groupId>
-            <artifactId>model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>mq-model</artifactId>
+            <!--<version>0.0.1-SNAPSHOT</version>-->
         </dependency>
     </dependencies>
-    
+
     <modules>
         <module>server-rabbitmq-fanout</module>
         <module>client-rabbitmq-fanout</module>

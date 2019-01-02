@@ -152,7 +152,7 @@
 
     <!--modules-->
     <modules>
-        <module>api-common</module>
+        <module>common</module>
         <module>sso</module>
         <module>cache</module>
     </modules>

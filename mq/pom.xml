@@ -23,17 +23,18 @@
         <java.version>1.8</java.version>
     </properties>
 
-<!--<dependencyManagement>-->
-    <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<groupId>com.arc</groupId>-->
-            <!--<artifactId>model</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
-<!--</dependencyManagement>-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.arc</groupId>
+                <artifactId>mq-model</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
+        <module>mq-model</module>
         <module>rabbitmq-direct</module>
         <module>rabbitmq-fanout</module>
         <module>rabbitmq-topic</module>

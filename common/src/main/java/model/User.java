@@ -1,16 +1,18 @@
 package model;
 
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 //user表对应的实体
 @ToString
-@Data
-public class User extends  BaseModel {
+@Setter
+@Getter
+public class User extends BaseModel {
     private static final long serialVersionUID = 1L;
 
-    private String id;                             //数据库中的id
+    private Long id;                             //数据库中的id
     private String nickName;            //用户的昵称---登陆时候的 username 用这个
     private String username;            //网页登陆时候的账号
     private String password;             //密码
