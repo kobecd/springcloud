@@ -5,15 +5,16 @@
 
 
     <groupId>com.arc</groupId>
-    <artifactId>model</artifactId>
+    <artifactId>common-model</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>model</name>
-    <description>model project for mq</description>
 
+    <name>common-model</name>
+    <description>common-model project for mq</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.arc</groupId>
-        <artifactId>mq</artifactId>
+        <artifactId>rabbitmq-direct</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
