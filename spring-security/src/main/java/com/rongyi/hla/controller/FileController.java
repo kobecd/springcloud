@@ -1,11 +1,6 @@
 package com.rongyi.hla.controller;
 
-import com.rongyi.api.ResponseVO;
-import com.rongyi.hla.service.product.FileService;
-import com.rongyi.hla.service.product.GroupService;
 import com.rongyi.hla.utils.UpYun;
-import com.rongyi.model.product.File;
-import com.rongyi.model.product.ProductGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,11 +48,6 @@ public class FileController {
     @Value("${hla.upyun.url.host}")
     public String upyunUrlHost;
 
-    @Autowired
-    private FileService fileService;
-
-    @Autowired
-    private GroupService groupService;
 
 
     /**

@@ -4,12 +4,9 @@ import com.rongyi.rbac.model.constants.Constant;
 import com.rongyi.rbac.model.entity.Authority;
 import com.rongyi.rbac.model.entity.UserInfo;
 import com.rongyi.rbac.model.entity.UserQueryCondition;
-import com.rongyi.hla.mapper.rbac.AuthorityMapper;
-import com.rongyi.hla.mapper.rbac.UserMapper;
 import com.rongyi.rbac.model.param.AccountParam;
 import com.rongyi.rbac.model.param.UserParam;
 import com.rongyi.utils.MD5Encryption;
-import com.rongyi.utils.MD5Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +20,7 @@ import java.util.Map;
  * Description：
  * Author:  Administrator
  * History: 变更记录
- * <ModifiedBy>    <ModifiedDate>     <ModifiedVersion>  
+ * <ModifiedBy>    <ModifiedDate>     <ModifiedVersion>
  * Administrator          2018/8/16 18:34          1.0
  * ModifiedRemark:
  * Copyright (C): 上海容易网电子商务股份有限公司
@@ -34,7 +31,7 @@ public class UserDao {
 
     @Autowired
     private UserMapper usersMapper;
-    
+
     @Autowired
     private AuthorityMapper authorityMapper;
     /**
@@ -139,7 +136,7 @@ public class UserDao {
 			return param.getUserId();
 		}
 	}
-	
+
     public int addNewUser(String username, String name, String nickname, String phone, String memo,String createBy)
     {
         UserInfo user = new UserInfo();
@@ -196,7 +193,7 @@ public class UserDao {
 		log.info( "checkPwd | " + usersInfo );
 		return usersInfo.getPassword().equals(MD5Utils.encrypt16(MD5Encryption.encrypt((String)oldPassword)));
 	}
-    
+
     public int updateStatus(Integer id,byte status,String reason){
     	UserInfo users = new UserInfo();
     	users.setId(id);
@@ -220,10 +217,10 @@ public class UserDao {
     	}
     	return usersMapper.updateByPrimaryKeySelective(users);
     }
-    
+
     public List<Authority> getAuthsByUserId(Integer userId){
     	return authorityMapper.getAuthsByUserId(userId);
     }
-    
+
 
 }

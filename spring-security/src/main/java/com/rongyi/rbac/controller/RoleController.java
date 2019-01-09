@@ -1,6 +1,5 @@
 package com.rongyi.rbac.controller;
 
-import com.rongyi.api.ResponseVO;
 import com.rongyi.rbac.model.constants.CodeEnum;
 import com.rongyi.rbac.model.param.RoleAuthParam;
 import com.rongyi.rbac.service.RoleAuthService;
