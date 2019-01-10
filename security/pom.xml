@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>security</name>
+    <description>SpringBoot security块构建示例</description>
+    <packaging>pom</packaging>
+
+    <groupId>com.arc</groupId>
+    <artifactId>security</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- 继承说明：这里继承SpringBoot提供的父工程 -->
+    <parent>
+        <groupId>com.arc</groupId>
+        <artifactId>arc</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <!-- 模块说明：这里声明多个子模块 -->
+    <modules>
+        <!--<module>security-1</module>-->
+        <!--<module>security-in-memory</module>-->
+        <module>server-security</module>
+    </modules>
+
+</project>
