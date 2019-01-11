@@ -1,0 +1,58 @@
+<configuration>
+    <springProfile name="dev,local">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder charset="UTF-8">
+                <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %m%n</pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <springProfile name="test,prod">
+        <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>/feikongbao/svr/log/api.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} %msg%n</pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
+    <logger name="org.apache" level="WARN" />
+    <logger name="org.springframework.scheduling" level="INFO" />
+    <logger name="com.netflix.discovery" level="INFO" />
+    <logger name="org.springframework.integration.endpoint" level="INFO" />
+    <logger name="org.springframework.core.env" level="INFO" />
+    <logger name="org.springframework.beans.factory.support" level="INFO" />
+    <logger name="org.springframework.context.annotation" level="INFO" />
+    <logger name="org.springframework.boot.autoconfigure.logging" level="INFO" />
+    <logger name="org.springframework.aop.framework.CglibAopProxy" level="INFO" />
+    <logger name="org.hibernate.loader.entity" level="INFO" />
+    <logger name="org.hibernate.persister.walking.spi.MetamodelGraphWalker" level="INFO" />
+    <logger name="org.springframework.boot.actuate.endpoint.jmx" level="INFO" />
+    <logger name="org.springframework.core.io.support.PathMatchingResourcePatternResolver" level="INFO" />
+    <logger name="org.hibernate.type.BasicTypeRegistry" level="INFO" />
+
+    <springProfile name="dev,local">
+        <logger name="org.springframework" level="DEBUG" />
+        <root level="DEBUG">
+            <appender-ref ref="STDOUT" />
+        </root>
+    </springProfile>
+
+    <springProfile name="test">
+        <logger name="org.springframework" level="DEBUG" />
+        <root level="DEBUG">
+            <appender-ref ref="RollingFile" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <logger name="org.springframework" level="INFO" />
+        <root level="INFO">
+            <appender-ref ref="RollingFile" />
+        </root>
+    </springProfile>
+</configuration>
