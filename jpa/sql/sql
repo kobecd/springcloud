@@ -1,3 +1,4 @@
+# 建表sql，表是：t_requirement
 
 
 
@@ -19,17 +20,3 @@ CREATE TABLE `t_requirement` (
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='系统用户表';
 
 
-
-
-
-
-CREATE TABLE `t_req_system` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `actual_scale` varchar(255) DEFAULT NULL COMMENT '实际规模/级别',
-  `assigner` varchar(255) DEFAULT NULL COMMENT '指定人',
-
-  `assigner_account` varchar(255) NOT NULL COMMENT '指定人账号',
-
-
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='系统用户表';
