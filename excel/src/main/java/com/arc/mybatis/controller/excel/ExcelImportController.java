@@ -1,7 +1,6 @@
 package com.arc.mybatis.controller.excel;
 
 import lombok.extern.slf4j.Slf4j;
-//import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +13,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+//import org.apache.commons.lang3.StringUtils;
 
 /**
  * @description:
@@ -39,6 +39,7 @@ public class ExcelImportController {
         return result;
     }
 
+
     @PostMapping("/upload2")
     public Object uploadFile2(MultipartFile file) {
         //对于文件做持久化操作
@@ -56,6 +57,29 @@ public class ExcelImportController {
         return false;
 
     }
+
+    @PostMapping("/upload/v1")
+    public Object uploadV1(MultipartFile file) throws IOException {
+        Object result = false;
+
+        InputStream in   = file.getInputStream();
+        File targetFile = new File(path);
+        OutputStream out = Files.newOutputStream(targetFile.toPath());
+        Assert.notNull(in, "No InputStream specified");
+        Assert.notNull(out, "No OutputStream specified");
+        int byteCount = 0;
+        byte[] buffer = new byte[4096];
+
+        int bytesRead;
+        for (boolean var4 = true; (bytesRead = in.read(buffer)) != -1; byteCount += bytesRead) {
+            out.write(buffer, 0, bytesRead);
+        }
+
+        out.flush();
+        return byteCount;
+
+    }
+
 
 
     //单个文件

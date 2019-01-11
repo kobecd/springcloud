@@ -1,6 +1,5 @@
 package com.arc.mongo.controller;
 
-import com.arc.model.domain.common.Person;
 import com.arc.mongo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +15,8 @@ public class MongoController {
 
 
     //test
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public Object test( ) {
-        Person person = new Person();
-        person.setAge(7);
-        person.setUsername("阿尔达");
-        person.setPassword("123456");
-        return     personService.save(person);
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public Object test() {
+        return null;
     }
 }

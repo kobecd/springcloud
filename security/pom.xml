@@ -13,18 +13,11 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <!-- 继承说明：这里继承SpringBoot提供的父工程 -->
-    <parent>
-        <groupId>com.arc</groupId>
-        <artifactId>arc</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
-    </parent>
 
     <!-- 模块说明：这里声明多个子模块 -->
-    <modules>
+    <!--<modules>-->
         <!--<module>security-1</module>-->
         <!--<module>security-in-memory</module>-->
-        <module>server-security</module>
-    </modules>
+    <!--</modules>-->
 
 </project>
