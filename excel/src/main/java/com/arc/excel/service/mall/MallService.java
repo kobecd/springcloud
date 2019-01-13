@@ -1,4 +1,4 @@
-package com.arc.excel.service;
+package com.arc.excel.service.mall;
 
 
 import com.arc.excel.model.entries.mall.Mall;
@@ -23,5 +23,8 @@ public interface MallService {
     Mall get(Long id);
 
     List<Mall> list();
+
+    Boolean importExcel(Long fileId);
+
 
 }

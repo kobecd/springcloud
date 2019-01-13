@@ -1,9 +1,9 @@
-package com.arc.excel.controller;
+package com.arc.excel.controller.test;
 
 import com.arc.excel.mapper.MallTaskMapper;
 import com.arc.excel.model.entries.mall.Mall;
 import com.arc.excel.model.entries.mall.MallTask;
-import com.arc.excel.service.MallService;
+import com.arc.excel.service.mall.MallService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

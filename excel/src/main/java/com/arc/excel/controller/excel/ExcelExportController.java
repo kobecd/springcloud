@@ -25,7 +25,7 @@ import java.io.FileOutputStream;
  * create by 程二狗 on 2018/10/12 0012
  * 测试为合并的多个单元格赋值，并为合并的单元格设置样式
  */
-public class ExcelExport3 {
+public class ExcelExportController {
     /**
      * 注意：同一行上的只能创建同一个行对象row  否则赋值的内容会被覆盖。
      */

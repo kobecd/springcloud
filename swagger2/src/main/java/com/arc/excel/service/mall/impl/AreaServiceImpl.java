@@ -1,4 +1,4 @@
-package com.arc.excel.service.impl;
+package com.arc.excel.service.mall.impl;
 
 import com.arc.excel.service.AreaService;
 import com.arc.excel.model.entries.Area;
