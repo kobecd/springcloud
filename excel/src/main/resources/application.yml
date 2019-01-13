@@ -3,8 +3,7 @@ server:
 
 spring:
   profiles:
-    active: local
-    #这里指定激活那个配置的空间
+    active: dev #这里指定激活那个配置的空间
   resources:
     add-mappings: false
     static-locations: classpath:/static/,classpath:/templates/index/
@@ -38,11 +37,11 @@ mybatis:
 ########################################################
 ---
 spring:
-  profiles: local
+  profiles: dev
   datasource:
     #爆红不要紧张，没有问题的只是编辑工具不能识别造成的，本身是正确的
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/excel?useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: admin
     hikari:
