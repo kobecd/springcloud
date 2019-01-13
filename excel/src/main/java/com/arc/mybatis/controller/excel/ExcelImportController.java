@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -28,7 +29,7 @@ import java.util.Date;
 @RequestMapping("/excel")
 public class ExcelImportController {
 
-    String path = "C:\\Users\\X\\Desktop\\upload\\";
+    String path = "D:\\Project\\Zan\\git\\ray\\excel\\src\\main\\resources\\upload\\";
 
     @PostMapping("/upload")
     public Object uploadFile(MultipartFile file) {
@@ -59,27 +60,44 @@ public class ExcelImportController {
     }
 
     @PostMapping("/upload/v1")
-    public Object uploadV1(MultipartFile file) throws IOException {
+    public Object uploadV1(MultipartFile file) {
         Object result = false;
+        //需求判断文件是否为空
+        if (file == null || file.isEmpty() || StringUtils.isEmpty(path)) {
+            log.info("上传失败，文件或者路径为空！");
+            return "上传失败，文件或者路径为空！";
+        }
+        try {
 
-        InputStream in   = file.getInputStream();
-        File targetFile = new File(path);
-        OutputStream out = Files.newOutputStream(targetFile.toPath());
-        Assert.notNull(in, "No InputStream specified");
-        Assert.notNull(out, "No OutputStream specified");
-        int byteCount = 0;
-        byte[] buffer = new byte[4096];
 
-        int bytesRead;
-        for (boolean var4 = true; (bytesRead = in.read(buffer)) != -1; byteCount += bytesRead) {
-            out.write(buffer, 0, bytesRead);
+            InputStream in = file.getInputStream();
+            File targetFile = new File(path);
+            Path path = targetFile.toPath();
+            System.out.println(path);
+            System.out.println(path);
+            System.out.println(path);
+            System.out.println(path);
+            System.out.println(path);
+            OutputStream out = Files.newOutputStream(path);
+            Assert.notNull(in, "No InputStream specified");
+            Assert.notNull(out, "No OutputStream specified");
+            int byteCount = 0;
+            byte[] buffer = new byte[4096];
+
+            int bytesRead;
+            for (boolean var4 = true; (bytesRead = in.read(buffer)) != -1; byteCount += bytesRead) {
+                out.write(buffer, 0, bytesRead);
+            }
+
+            out.flush();
+            return byteCount;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e;
+
         }
 
-        out.flush();
-        return byteCount;
-
     }
-
 
 
     //单个文件
@@ -121,7 +139,8 @@ public class ExcelImportController {
         String savedFilename = originalFilename + System.currentTimeMillis() + substring;
 
         System.out.println("全名=" + originalFilename);
-        System.out.println("后缀=" + substring);  System.out.println("组合名称=" + savedFilename);
+        System.out.println("后缀=" + substring);
+        System.out.println("组合名称=" + savedFilename);
 
 
         //文件路径问题
