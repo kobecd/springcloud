@@ -26,8 +26,8 @@ import java.util.Date;
  */
 @Slf4j
 @RestController
-@RequestMapping("/excel")
-public class ExcelImportController {
+@RequestMapping("/file")
+public class UploadController {
 
     String path = "D:\\Project\\Zan\\git\\ray\\excel\\src\\main\\resources\\upload\\";
 
@@ -88,8 +88,8 @@ public class ExcelImportController {
             for (boolean var4 = true; (bytesRead = in.read(buffer)) != -1; byteCount += bytesRead) {
                 out.write(buffer, 0, bytesRead);
             }
-
             out.flush();
+            log.debug("===============\n结果byteCount ={}",byteCount                    );
             return byteCount;
         } catch (Exception e) {
             e.printStackTrace();
