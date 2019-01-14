@@ -1,244 +1,174 @@
 package com.arc.excel.model.vo;
 
-
+import com.arc.excel.model.enums.ErrorCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
-public class ResponseVo implements Serializable {
-    private static final long serialVersionUID = 4807318268209609704L;
-    //数字0就是false，非0就是true
-    private static final int DEFAULT_SUCCESS_STATUS = 0;
-    private static final int DEFAULT_FAIL_STATUS = 1;
-    public static final ResponseVo.Meta SUCCESS = new ResponseVo.Meta(0, "success");
-    public static final ResponseVo.Meta FAILURE = new ResponseVo.Meta(1, "failure");
-    private ResponseVo.Meta meta;
-    private ResponseVo.Result result;
+/**
+ * 向前段统一返回数据，该类对结果做了统一封装
+ *
+ * @param <T>
+ */
+@Getter
+@Setter
+@ToString
+public class ResponseVo<T> implements Serializable {
 
+    private static final long serialVersionUID = 1L;
 
+    //状态信息
+    private int code;
+    private String msg;
+    private Boolean success;
+
+    //有效数据
+    private T data;
+
+    //构造器
     public ResponseVo() {
     }
 
-    public boolean isSuccess() {
-        return null != this.meta && 0 == this.meta.getErrno();
+    public ResponseVo(T data) {
+        this.data = data;
     }
 
-    public static ResponseVo success() {
-        return new ResponseVo(SUCCESS, (ResponseVo.Result) null);
+    public ResponseVo(ErrorCode errorCode) {
+        this.code = errorCode.getCode();
+        this.msg = errorCode.getMsg();
+        this.data = null;
     }
 
-    public static <T> ResponseVo success(T data) {
-        return new ResponseVo(SUCCESS, new ResponseVo.Result(data, (ResponseVo.Page) null));
+    public ResponseVo(int code, String msg, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
     }
 
-    public static <T> ResponseVo success(T data, Integer currentPage, Integer pageSize, Integer totalCount) {
-        return new ResponseVo(SUCCESS, data, currentPage, pageSize, totalCount);
+    public ResponseVo(int code, String msg, Boolean success, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.success = success;
+        this.data = data;
+    }
+
+
+    //success方法
+    public static <T> ResponseVo<T> success(T data) {
+        return new ResponseVo<T>(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMsg(), Boolean.TRUE, data);
+    }
+
+    public static <T> ResponseVo<T> success(ErrorCode enumCode) {
+        return new ResponseVo<T>(enumCode.getCode(), enumCode.getMsg(), Boolean.TRUE, null);
+    }
+
+    public static <T> ResponseVo<T> success(ErrorCode enumCode, T data) {
+        return new ResponseVo<T>(enumCode.getCode(), enumCode.getMsg(), Boolean.TRUE, data);
+    }
+
+    //失败
+    public static <T> ResponseVo<T> failure(ErrorCode enumCode) {
+        return new ResponseVo<T>(enumCode.getCode(), enumCode.getMsg(), Boolean.FALSE, null);
+    }
+
+    public static <T> ResponseVo<T> failure(T data) {
+        return new ResponseVo<T>(ErrorCode.FAILURE.getCode(), ErrorCode.FAILURE.getMsg(), Boolean.FALSE, data);
+    }
+
+    public static <T> ResponseVo<T> failure(ErrorCode enumCode, T data) {
+        return new ResponseVo<T>(enumCode.getCode(), enumCode.getMsg(), Boolean.FALSE, data);
     }
 
     public static ResponseVo failure() {
-        return new ResponseVo(FAILURE, (ResponseVo.Result) null);
+        return new ResponseVo(ErrorCode.FAILURE);
     }
 
-    public static ResponseVo failure(int errno, String msg) {
-        return new ResponseVo(new ResponseVo.Meta(errno, msg), (ResponseVo.Result) null);
-    }
-
-    public static <T> ResponseVo redRebate(int errno, String msg, T data) {
-        return new ResponseVo(new ResponseVo.Meta(errno, msg), new ResponseVo.Result(data, (ResponseVo.Page) null));
-    }
-
-    public static <T> ResponseVo failure(int errno, String msg, T data) {
-        return new ResponseVo(new ResponseVo.Meta(errno, msg), new ResponseVo.Result(data, (ResponseVo.Page) null));
-    }
-
-    private <T> ResponseVo(ResponseVo.Meta meta, T data, Integer currentPage, Integer pageSize, Integer totalCount) {
-        this.meta = meta;
-        if (data != null && currentPage != null && pageSize != null && totalCount != null) {
-            this.result = new ResponseVo.Result(data, new ResponseVo.Page(currentPage, pageSize, totalCount));
-        }
-
-    }
-
-    private ResponseVo(ResponseVo.Meta meta, ResponseVo.Result result) {
-        this.meta = meta;
-        this.result = result;
-    }
-
-    public ResponseVo.Meta getMeta() {
-        return this.meta;
-    }
-
-    public void setMeta(int errno, String msg) {
-        this.meta = new ResponseVo.Meta(errno, msg);
-    }
-
-    public void setMeta(ResponseVo.Meta meta) {
-        this.meta = meta;
-    }
-
-    public ResponseVo.Result getResult() {
-        return this.result;
-    }
-
-    public void setResult(ResponseVo.Result result) {
-        this.result = result;
-    }
-
-
-
-    public static class Page implements Serializable {
-        private static final long serialVersionUID = -9015310768471855060L;
-        private Integer currentPage;
-        private Integer pageSize;
-        private Integer totalCount;
-        private Integer totalPage;
-
-        private Page() {
-            this.pageSize = 10;
-            this.totalPage = 0;
-        }
-
-        private Page(Integer currentPage, Integer pageSize, Integer totalCount) {
-            this.pageSize = 10;
-            this.totalPage = 0;
-            this.currentPage = currentPage;
-            this.pageSize = pageSize;
-            this.totalCount = totalCount;
-        }
-
-        public void setCurrentPage(Integer currentPage) {
-            this.currentPage = currentPage;
-        }
-
-        public void setPageSize(Integer pageSize) {
-            this.pageSize = pageSize;
-        }
-
-        public void setTotalCount(Integer totalCount) {
-            this.totalCount = totalCount;
-        }
-
-        public void setTotalPage(Integer totalPage) {
-            this.totalPage = totalPage;
-        }
-
-        public Integer getCurrentPage() {
-            return this.currentPage;
-        }
-
-        public Integer getPageSize() {
-            return this.pageSize;
-        }
-
-        public Integer getTotalCount() {
-            return this.totalCount;
-        }
-
-        public Integer getTotalPage() {
-            if (this.pageSize != null && this.pageSize > 0) {
-                if (this.totalCount % this.pageSize == 0) {
-                    this.totalPage = this.totalCount / this.pageSize;
-                } else {
-                    this.totalPage = this.totalCount / this.pageSize + 1;
-                }
-            }
-
-            return this.totalPage;
-        }
-
-    }
-
-    public static class Meta implements Serializable {
-        private int errno;
-        private String msg;
-
-        private Meta() {
-        }
-
-        private Meta(int errno, String msg) {
-            this.errno = errno;
-            this.msg = msg;
-        }
-
-        public void setErrno(int errno) {
-            this.errno = errno;
-        }
-
-        public void setMsg(String msg) {
-            this.msg = msg;
-        }
-
-        public String getMsg() {
-            return this.msg;
-        }
-
-        public int getErrno() {
-            return this.errno;
-        }
-
-//        public boolean equals(Object o) {
-//            if (this == o) {
-//                return true;
-//            } else if (o != null && this.getClass() == o.getClass()) {
-//                ResponseVo.Meta meta = (ResponseVo.Meta) o;
-//                return (new EqualsBuilder()).append(this.errno, meta.errno).append(this.msg, meta.msg).isEquals();
-//            } else {
-//                return false;
-//            }
-//        }
 //
-//        public int hashCode() {
-//            return (new HashCodeBuilder(17, 37)).append(this.errno).append(this.msg).toHashCode();
+//    /**
+//     * 处理微服务的返回结果
+//     *
+//     * @param response
+//     * @param <T>
+//     * @return
+//     */
+//    public static <T> ResponseVo<T> buildResponse(MicroServiceResponse<T> response) {
+//        if (response == null) {
+//            throw new BusinessRuntimeException(ErrorCode.NULL_RESPONSE);
 //        }
-//
-//        public String toString() {
-//            return (new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)).append("errno", this.errno).append("msg", this.msg).toString();
-//        }
-    }
-
-    public static class Result<T> implements Serializable {
-        private ResponseVo.Page page;
-        private T data;
-
-        private Result() {
-        }
-
-        private Result(T data, ResponseVo.Page page) {
-            this.data = data;
-            this.page = page;
-        }
-
-        public ResponseVo.Page getPage() {
-            return this.page;
-        }
-
-        public void setPage(ResponseVo.Page page) {
-            this.page = page;
-        }
-
-        public T getData() {
-            return this.data;
-        }
-
-        public void setData(T data) {
-            this.data = data;
-        }
-
-//        public String toString() {
-//            return (new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)).append("page", this.page).append("data", this.data).toString();
-//        }
-    }
-
-    //    public static void main(String[] args) {
-//        List<String> list = new ArrayList();
-//        list.add("1");
-//        list.add("2");
-//        Map<String, Object> map = new HashMap();
-//        map.put("usable", true);
-//        System.out.println(JSONObject.fromObject(success(map)));
-//        System.out.println(JSONObject.fromObject(success()));
-//        System.out.println(JSONObject.fromObject(success("处理成功：返回单个对象")));
-//        System.out.println(JSONObject.fromObject(success("处理成功：返回对象集合List<Object>", 1, 10, 200)));
-//        System.out.println(JSONObject.fromObject(failure()));
-//        System.out.println(JSONObject.fromObject(failure(1020001, "业务出错")));
+//        return StringUtils.equals(response.getCode(), ErrorCode.SUCCESS.getCode()) ? ResponseVo.success(response.getData()) : ResponseVo.failure(ErrorCode.buildFailure(response.getCode(), response.getMsg()));
 //    }
+//
+//    /**
+//     * 处理微服务的返回结果（类型转换）
+//     *
+//     * @param response
+//     * @param <T>
+//     * @return
+//     */
+//    public static <T> ResponseVo<T> convertResponse(MicroServiceResponse<?> response, Class<T> target) {
+//        if (response == null || target == null) {
+//            throw new BusinessRuntimeException(ErrorCode.NULL_RESPONSE);
+//        }
+//        T instance = BeanCopierUtil.copyBean(response.getData(), target);
+//        return StringUtils.equals(response.getCode(), ErrorCode.SUCCESS.getCode()) ? ResponseVo.success(instance) : ResponseVo.failure(ErrorCode.buildFailure(response.getCode(), response.getMsg()));
+//    }
+//
+//    /**
+//     * 处理微服务的返回结果（分页类型转换）
+//     *
+//     * @param response
+//     * @param <T>
+//     * @return
+//     */
+//    public static <T> ResponseVo<PageResponse<T>> convertPageResponse(MicroServiceResponse<? extends PageResponse> response, Class<T> target) {
+//        if (response == null || target == null) {
+//            throw new BusinessRuntimeException(ErrorCode.NULL_RESPONSE);
+//        }
+//        if (response.getData() == null) {
+//            throw new BusinessRuntimeException(ErrorCode.PAGE_NULL_RESPONSE);
+//        }
+//        List<T> list = BeanCopierUtil.copyList(response.getData().getData(), target);
+//        PageResponse<T> instance = new PageResponse<>();
+//        instance.setData(list);
+//        instance.setTotalPages(response.getData().getTotalPages());
+//        instance.setTotalElements(response.getData().getTotalElements());
+//        return StringUtils.equals(response.getCode(), ErrorCode.SUCCESS.getCode()) ? ResponseVo.success(instance) : ResponseVo.failure(ErrorCode.buildFailure(response.getCode(), response.getMsg()));
+//    }
+//
+//    /**
+//     * 处理微服务的返回结果（列表类型转换）
+//     *
+//     * @param response
+//     * @param <T>
+//     * @return
+//     */
+//    public static <T> ResponseVo<List<T>> convertListResponse(MicroServiceResponse<? extends List> response, Class<T> target) {
+//        if (response == null || target == null) {
+//            throw new BusinessRuntimeException(ErrorCode.NULL_RESPONSE);
+//        }
+//        List<T> instance = BeanCopierUtil.copyList(response.getData(), target);
+//        return StringUtils.equals(response.getCode(), ErrorCode.SUCCESS.getCode()) ? ResponseVo.success(instance) : ResponseVo.failure(ErrorCode.buildFailure(response.getCode(), response.getMsg()));
+//    }
+//
+//    /**
+//     * 处理微服务的返回结果（含参数名映射列表类型转换）
+//     *
+//     * @param response
+//     * @param <T>
+//     * @return
+//     */
+//    public static <T> ResponseVo<List<T>> convertListResponse(MicroServiceResponse<? extends List> response, Class<T> target, Map<String, String> relation) {
+//        if (response == null || target == null) {
+//            throw new BusinessRuntimeException(ErrorCode.NULL_RESPONSE);
+//        }
+//        List<T> instance = BeanCopierUtil.copyList(response.getData(), target, relation);
+//        return StringUtils.equals(response.getCode(), ErrorCode.SUCCESS.getCode()) ? ResponseVo.success(instance) : ResponseVo.failure(ErrorCode.buildFailure(response.getCode(), response.getMsg()));
+//    }
+
 }

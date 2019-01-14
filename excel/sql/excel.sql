@@ -154,3 +154,36 @@ INSERT INTO `t_sys_file` VALUES (3, '1547380750700b7bf38b3e30a497baf981e475466f1
 INSERT INTO `t_sys_file` VALUES (4, '1547380760212c0af7b038fdd4b808d3f47e151729ed5_原始文件.xlsx', 'xlsx', NULL, NULL, NULL, NULL, 'C:\\Users\\X\\Desktop\\upload\\1547380760212c0af7b038fdd4b808d3f47e151729ed5_原始文件.xlsx', 'C:\\Users\\X\\Desktop\\upload\\1547380760212c0af7b038fdd4b808d3f47e151729ed5_原始文件.xlsx', NULL, NULL, NULL, '2019-01-13 19:59:20', '2019-01-13 19:59:20');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+# 题目规则
+CREATE TABLE `t_question_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `task_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '任务名称',
+  `town_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '镇',
+  `road` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '街道',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  `state` int(1) NULL DEFAULT NULL COMMENT '逻辑删除用的标识',
+  `create_date` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `update_date` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+#列对应规则  用level分级， 用parent分组，有多组方案注意
+CREATE TABLE `t_excel_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+    `parent_id`  bigint(20)  DEFAULT NULL COMMENT '父级id',
+    `level` int(3) DEFAULT NULL COMMENT '级别',
+  `x_axis` int(10) NULL DEFAULT NULL COMMENT 'x轴',
+  `y_axis`int(10) NULL DEFAULT NULL  COMMENT 'y轴',
+  `address` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'excel描述方式的坐标位置',
+
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+
+  `cell_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '单元格类型：STRING/NUMERIC/BOOLEAN/FORMULA/BLANK',
+  `create_date` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `update_date` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+

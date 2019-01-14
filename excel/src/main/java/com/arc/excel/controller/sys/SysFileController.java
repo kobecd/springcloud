@@ -1,6 +1,7 @@
 package com.arc.excel.controller.sys;
 
 import com.arc.excel.model.entries.sys.SysFile;
+import com.arc.excel.model.vo.ResponseVo;
 import com.arc.excel.service.sys.SysFileService;
 import com.arc.excel.util.FileWriteUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -28,12 +29,12 @@ public class SysFileController {
     private SysFileService sysFileService;
 
     @PostMapping("/upload/v1")
-    public Object uploadV1(MultipartFile file) {
+    public ResponseVo uploadV1(MultipartFile file) {
         String toDiskPath = null;
         //需求判断文件是否为空
         if (file == null || file.isEmpty()) {
             log.info("上传失败，文件或者路径为空！");
-            return "上传失败，文件或者路径为空！";
+            return ResponseVo.failure("上传失败，文件或者路径为空！");
         }
         try {
 
@@ -60,12 +61,12 @@ public class SysFileController {
             sysFileService.save(sysFile);
         }
 
-        return toDiskPath;
+        return ResponseVo.success(toDiskPath);
     }
 
 
-    @PostMapping("/upload/2")
-    public Object uploadFile2(MultipartFile file) {
+    @PostMapping("/upload/v2")
+    public ResponseVo uploadFile2(MultipartFile file) {
         //对于文件做持久化操作
         //读取文件并解析
 
@@ -78,13 +79,13 @@ public class SysFileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return ResponseVo.failure();
 
     }
 
 
     @PostMapping("/upload/v3")
-    private String writeFileToDisk(MultipartFile file, String path) {
+    private ResponseVo writeFileToDisk(MultipartFile file, String path) {
 
         System.out.println(file == null);
         System.out.println(file.isEmpty());
@@ -153,10 +154,10 @@ public class SysFileController {
             log.debug("结果={}", targetFile.toPath());
 //            int copy = copy(file.getInputStream(), Files.newOutputStream(targetFile.toPath()));
 //            log.debug("结果={}", copy);
-            return fullPath;
+            return ResponseVo.success(fullPath);
         } catch (Exception e) {
             log.error("文件上传失败！", e);
-            return null;
+            return ResponseVo.failure();
         }
     }
 

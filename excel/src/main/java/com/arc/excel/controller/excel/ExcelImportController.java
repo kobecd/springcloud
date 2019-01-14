@@ -11,6 +11,7 @@ import com.arc.excel.mapper.MallAreaMapper;
 import com.arc.excel.mapper.MallMapper;
 import com.arc.excel.mapper.MallQuestionMapper;
 import com.arc.excel.mapper.MallTaskMapper;
+import com.arc.excel.model.vo.ResponseVo;
 import com.arc.excel.service.mall.MallService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ExcelImportController {
      * 注意：同一行上的只能创建同一个行对象row  否则赋值的内容会被覆盖。
      */
     @GetMapping("/v1")
-    public Object main(@RequestParam Long id) {
-        return mallService.importExcel(id);
+    public ResponseVo v1(@RequestParam Long id) {
+        return ResponseVo.success(mallService.importExcel(id));
     }
 }
