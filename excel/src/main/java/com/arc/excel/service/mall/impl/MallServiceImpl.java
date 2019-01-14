@@ -105,17 +105,33 @@ public class MallServiceImpl implements MallService {
         //y 坐标比较准确， x坐标及其不准确
         xIndex = 190;
 
-
         //按行取值， 则按行 迭代，--列编号递增，即固定y，增大x
         for (int y = 0; y < yIndex; y++) {
-
             for (int x = 0; x < xIndex; x++) {
                 System.out.println("坐标（x，y）：" + x + "," + y + "   " + getCellValue(rowsMap, x, y));
-
             }
-
-//            System.out.println(getCellValue(rowsMap,69,i));
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //注意 行列都是从0开始的  小心越界
         System.out.println("---------------------------------");
@@ -277,18 +293,6 @@ public class MallServiceImpl implements MallService {
                     System.out.println("getColumnIndex =" + cell.getColumnIndex());
                     System.out.println("getRowIndex =" + cell.getRowIndex());
                     System.out.println("getAddress =" + cell.getAddress());//A1=(0,0)
-//                    System.out.println("getHyperlink =" + cell.getHyperlink());
-//                    System.out.println("getCellType =" + cell.getCellType());//STRING
-////                    System.out.println("getBooleanCellValue =" + cell.getBooleanCellValue());//Cannot get a BOOLEAN value from a STRING cell
-////                    System.out.println("getDateCellValue =" + cell.getDateCellValue());// Cannot get a NUMERIC value from a STRING cell
-////                    System.out.println("getCellFormula =" + cell.getCellFormula());// 	 Cannot get a FORMULA value from a STRING cell
-//                    System.out.println("getCellComment =" + cell.getCellComment());
-//                    System.out.println("字符串类型 CellType STRING=" + CellType.STRING);
-//                    System.out.println("表达式类型 CellType FORMULA= " + CellType.FORMULA);
-//                    System.out.println("数值类型 CellType NUMERIC= " + CellType.NUMERIC);
-//                    System.out.println("布尔类型 CellType BLANK= " + CellType.BOOLEAN);
-//                    System.out.println("空，不知道何时算空 CellType BLANK= " + CellType.BLANK);
-//                    System.out.println("异常类型，不知道何时算异常  CellType ERROR= " + CellType.ERROR);
                     switch (cell.getCellType()) { // 不同的数据类型
                         //// 字符串类型
                         case STRING:
@@ -345,6 +349,98 @@ public class MallServiceImpl implements MallService {
 
 
     public static void main(String[] args) {
+        fun2();
+
+
+    }
+
+    private static void fun2() {
+
+        for (String s :  getColumnLabels(26)) {
+            System.out.print(s);
+        }
+
+        System.out.println();
+
+        int index = 27;
+        String[] columnLabels = getColumnLabels(index);
+        for (int i = index = index-1; i < columnLabels.length; i++) {
+            System.out.println(columnLabels[i]);
+        }
+
+        //java excel 列编号 数字转字母
+
+
+
+//        for (String s :columnLabels ) {
+//            System.out.print(s);
+//        }
+
+    }
+
+    private static String[] sources = new String[]{
+            "A","B","C","D","E","F","G","H",
+            "I","J","K","L","M","N","O","P",
+            "Q","R","S","T","U","V","W","X","Y","Z"
+    };
+
+    /**
+     * (256 for *.xls, 16384 for *.xlsx)
+     * @param columnNum 列的个数，至少要为1
+     * @throws IllegalArgumentException 如果 columnNum 超出该范围 [1,16384]
+     * @return 返回[1,columnNum]共columnNum个对应xls列字母的数组
+     */
+    public static String[] getColumnLabels(int columnNum) {
+        if(columnNum<1||columnNum>16384)
+            throw new IllegalArgumentException();
+        String[] columns = new String[columnNum];
+        if(columnNum<27){	//小于27列 不用组合
+            System.arraycopy(sources, 0, columns, 0, columnNum);
+            return columns;
+        }
+        System.arraycopy(sources, 0, columns, 0, 26);	//前26列不需要进行组合
+
+        //因为基于数组是从0开始，每到新一轮letterIdx 会递增，所以第一轮 在递增前是-1
+        int letterIdx = -1;
+        int currentLen = 26;//第一轮组合(2个字母的组合)是分别与A-Z进行拼接 所以是26
+        int remainder;
+        int lastLen = 0;	//用于定位上文提到的i%currentLen实际在数组中的位置
+        int totalLen = 26;	//totalLen=currentLen+lastLen
+        int currentLoopIdx = 0; //用来记录当前组合所有情形的个数
+
+        for(int i=26;i<columnNum;i++){ //第27列(对应数组的第26个位置)开始组合
+
+            //currentLen是上个组合所有情形的个数，与它取余找到要与上个组合的哪种情形进行拼接
+            remainder = currentLoopIdx%currentLen;
+
+            if(remainder==0){
+                letterIdx++; //完成一次上个组合的遍历，转到下个字母进行拼接
+                int j = letterIdx%26;
+
+                //A-Z 26个子母都与上个组合所有情形都进行过拼接了，需要进行下个组合的拼接
+                if(j==0&&letterIdx!=0){
+                    lastLen = totalLen; //下个组合的lastLen是上个组合的totalLen
+
+                    /**
+                     * 下个组合的currentLen是上个组合的所有组合情形的个数
+                     * （等于上个组合的currentLen*26)，26也就是拼接在前面的A-Z的个数
+                     */
+                    currentLen = 26*currentLen;
+
+                    totalLen = currentLen+lastLen; //为下一轮的开始做准备
+                    currentLoopIdx = 0; //到下一轮了 因此需要重置
+                }
+            }
+            /**
+             * sources[letterIdx%26]是该轮要拼接在前面的字母
+             * columns[remainder+lastLen]是上个组合被拼接的情形
+             */
+            columns[i] = sources[letterIdx%26]+columns[remainder+lastLen];
+            currentLoopIdx++;
+        }
+        return columns;
+    }
+    private static void fun1() {
         Map<String, List<Object>> domainMap = new HashMap<String, List<Object>>();
         List<Mall> malls1 = new ArrayList<>();
         List<MallArea> areas1 = new ArrayList<>();
@@ -376,4 +472,6 @@ public class MallServiceImpl implements MallService {
         System.out.println(malls);
         System.out.println(areas);
     }
+
+
 }
