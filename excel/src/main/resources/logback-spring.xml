@@ -15,7 +15,7 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
     <contextName>${appName}日志：)</contextName>
     <!--<contextName>logback-demo</contextName>-->
     <!--输出到控制台 ConsoleAppender-->
-    <appender name="consoleLogTest" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
         <!--展示格式 layout-->
 <!--
         %d表示日期，
@@ -58,7 +58,7 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
         <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-            <FileNamePattern>${logback.logdir}/info.${logback.appname}.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${logDir}/${appName}.%d{yyyy-MM-dd}.log</FileNamePattern>
             <!--只保留最近90天的日志-->
             <maxHistory>90</maxHistory>
             <!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志-->
@@ -86,10 +86,10 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
 
 
     <!--logback.LogbackDemo：类的全路径  范围有重叠的话，范围小的（更具体的），有效-->
-    <logger name="com.arc.wechat.web" level="DEBUG" additivity="false">
-    </logger>
+    <logger name="com.arc.excel" level="DEBUG" additivity="false"/>
 
-    <logger name="com.car.app" level="#logback.loglevel#"/>
+
+    <!--<logger name="com.car.app" level="#logback.loglevel#"/>-->
 
     <!--不知道这个是做什么的， 感觉是配置的-->
     <!--<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">-->
@@ -101,14 +101,14 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
     <!--根据 application.yml增加环境选择的配置active: dev
     active 的环境，自动采用上面配置的springProfile的 logger 日志-->
     <springProfile name="test,dev">
-        <logger name="com.example.demo.controller" level="DEBUG" additivity="false">
+        <logger name="com.arc.excel.controller" level="DEBUG" additivity="false">
             <appender-ref ref="consoleLog"/>
         </logger>
     </springProfile>
 
     <!-- 生产环境. -->
     <springProfile name="prod">
-        <logger name="com.example.demo.controller" level="INFO" additivity="false">
+        <logger name="com.arc.excel.controller" level="INFO" additivity="false">
             <appender-ref ref="consoleLog"/>
         </logger>
     </springProfile>
