@@ -152,11 +152,31 @@ public class MallServiceImpl implements MallService {
 
             //task 信息入库
 
+            //0 工单id
+            //1 任务id
+            //2
             task.setWorkerId((long) NameUtil.getIntegerInCodeString(getCellValue(rowsMap, 0, y)));
             task.setMallId((long) NameUtil.getIntegerInCodeString(getCellValue(rowsMap, 1, y)));
-            task.setTitle(getCellValue(rowsMap, 3, y));
-            task.setTaskType(getCellValue(rowsMap, 4, y));
-            task.setTaskType(getCellValue(rowsMap, 4, y));
+            task.setTitle(getCellValue(rowsMap, 2, y));
+            task.setTaskType(getCellValue(rowsMap, 3, y));
+
+            //salary 报酬 Integer = double扩大100X
+            task.setAdmin(getCellValue(rowsMap, 21, y));
+            task.setDescription(getCellValue(rowsMap, 22, y));
+
+
+            task.setUpdateDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 11, y)));
+            task.setCreateDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 12, y)));
+
+            task.setOnlineDate(NameUtil.getDateCodeString(getCellValue(rowsMap,13,y)));//N
+            task.setOfflineDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 14, y)));//O
+
+            task.setTasFinishDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 15, y)));//P
+
+            task.setBeiginDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 16, y)));// Q
+            task.setEndDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 17, y)));//R
+
+            task.setCustomerNumber(getCellValue(rowsMap,"AK",y));//AK
 
 //            task.setSalary(getCellValue());
         }
@@ -286,6 +306,18 @@ public class MallServiceImpl implements MallService {
             log.error("map中取({},{})值时候出错={}", x, y, e.getCause());
             return null;
         }
+    }
+    private String getCellValue(Map<Integer, List<String>> rowsMap, String x, int y) {
+        try {
+            return rowsMap.get(y).get(getX(x));
+        } catch (Exception e) {
+            log.error("map中取({},{})值时候出错={}", x, y, e.getCause());
+            return null;
+        }
+    }
+
+    private int getX(String x) {
+        return 0;
     }
 
 

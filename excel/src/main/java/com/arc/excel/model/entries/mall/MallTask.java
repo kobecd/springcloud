@@ -21,10 +21,14 @@ public class MallTask extends BaseModel {
 //    新加字段
     private Long workId;// 工单id
     private Long mallId;// 任务id
+    private String taskArea;//任务所在区域 AC
+
+    //@todo begin
+    private Date beiginDate;// 用户开始时间
+    private Date tasFinishDate;// 任务结束时间
 
 
-
-	private String title;// 任务标题
+    private String title;// 任务标题
 	private String code;// 代码(注意导入的数据是name+code，入库时候分离了)
 	private String name;// 任务名称
 	private String lotNumber;// 批次号
@@ -53,7 +57,7 @@ public class MallTask extends BaseModel {
 	private Integer reviewTime;// 审核实际（审单时间）单位：min
 	private String admin;// 管理员
 	private Integer needWorkerNumbewr;// 需要人数
-	private String customerNumber;// 客户编号
+	private String customerNumber;// 客户编号 AK
 	private Integer canPriority;// 是否金牌用户优先
 	private Integer canTaskRepeatExecution;// 任务能否重复执行
 	private Integer canWorkerRepeatExecution;// 执行人能否重复执行
@@ -63,10 +67,18 @@ public class MallTask extends BaseModel {
 	private Integer canDisplayInHall;// 是否在大厅显示
 	private String note;// 备注
 	private Integer state;// 状态
-	private Date onlineDate;// 任务上线时间
+
+
+
+    private Date onlineDate;// 任务上线时间
 	private Date offlineDate;// 任务下线时间
-	private Date beiginDate;// 任务开始时间
-	private Date endDate;// 任务结束时间
+
+
+
+
+    //
+	private Date endDate;// 用户结束时间
+
 	private Date createDate;// 创建时间（任务浏览开始时间）
 	private Date updateDate;// 更新时间（管理员更新时间）
 }

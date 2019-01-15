@@ -3,6 +3,8 @@ package com.arc.excel.util;
 import lombok.extern.slf4j.Slf4j;
 
 import java.security.spec.EncodedKeySpec;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @description:
@@ -12,6 +14,7 @@ import java.security.spec.EncodedKeySpec;
 @Slf4j
 public class NameUtil {
 
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     /**
      * The Unix separator character.
      */
@@ -65,15 +68,33 @@ public class NameUtil {
     }
 
     /**
+     * 格式化时间
+     *
+     * @param dateString
+     * @return
+     */
+    public static Date getDateCodeString(String dateString) {
+        try {
+//            sj:2018-12-31 19:40:33
+            sdf.format(dateString.replace("sj:", ""));
+        } catch (Exception e) {
+            log.error("{}", e);
+            return null;
+        }
+        return null;
+    }
+
+    /**
      * double格式的数据字符串转保留两位小数，四舍五入，后转为Integer
      *
      * @param codeString
      * @param precision  精度 ，即保留几位
      * @return
      */
-    public static Double getUpToIntegerInCodeString(String codeString,int precision ) {
+    public static Double getUpToIntegerInCodeString(String codeString, int precision) {
         return Double.valueOf(String.format("%.2f", codeString));
     }
+
     public static Integer getUpToIntegerInCodeString1(String codeString) {
         try {
             if (codeString == null) {
@@ -94,11 +115,11 @@ public class NameUtil {
 
                     //尝试取出三个数字 1整数 2精度 3取舍位
                     Integer integerPart = 0;
-                    Integer precisionPart = Integer.valueOf(codeString.substring(lastIndexOfPoint+1, lastIndexOfPoint + 4 < codeString.length() ? lastIndexOfPoint + 4 : codeString.length()));
+                    Integer precisionPart = Integer.valueOf(codeString.substring(lastIndexOfPoint + 1, lastIndexOfPoint + 4 < codeString.length() ? lastIndexOfPoint + 4 : codeString.length()));
                     Integer carryBytePart = 0;
 
 
-                }else {
+                } else {
                     Integer integerPart = Integer.valueOf(codeString.substring(0, lastIndexOfPoint + 3 < codeString.length() ? lastIndexOfPoint + 3 : codeString.length()));
 
 
@@ -109,11 +130,11 @@ public class NameUtil {
                     if (codeString.length() > 3) {
 //                        Integer test = Integer.valueOf(a.substring(lastIndexOfPoint+1, lastIndexOfPoint+3<a.length()? lastIndexOfPoint+3:a.length()));
                         //小数点后的两位
-                        Integer back = Integer.valueOf(codeString.substring(lastIndexOfPoint+1, lastIndexOfPoint+3<codeString.length()? lastIndexOfPoint+3:codeString.length()));
+                        Integer back = Integer.valueOf(codeString.substring(lastIndexOfPoint + 1, lastIndexOfPoint + 3 < codeString.length() ? lastIndexOfPoint + 3 : codeString.length()));
                         Integer tem = Integer.valueOf(codeString.substring(3, 4));
                         if (tem > 4) {
                             return back += 1;
-                        }else {
+                        } else {
                             return back;
                         }
                     } else {
@@ -129,14 +150,14 @@ public class NameUtil {
                         Integer tem = Integer.valueOf(codeString.substring(3, 4));
                         if (tem > 4) {
                             return back += 1;
-                        }else {
+                        } else {
                             return back;
                         }
                     } else {
                         //.12=12
                         return Integer.valueOf(codeString.substring(1, codeString.length()));
                     }
-                }else {
+                } else {
                     //无小数点直接返回
                     return Integer.valueOf(codeString);
                 }
@@ -221,24 +242,24 @@ public class NameUtil {
         System.out.println("444.12.13".indexOf("."));//3
 
 //        System.out.println(String.format("%.2f",11222));//165.46
-        System.out.println(String.format("%.2f",165.4555413524));//165.46
-        System.out.println(String.format("%.2f",165.415413524));//165.42
-        System.out.println(String.format("%.1f",165.415413524));//165.4
-        System.out.println(String.format("%.0f",165.415413524));//165
+        System.out.println(String.format("%.2f", 165.4555413524));//165.46
+        System.out.println(String.format("%.2f", 165.415413524));//165.42
+        System.out.println(String.format("%.1f", 165.415413524));//165.4
+        System.out.println(String.format("%.0f", 165.415413524));//165
 
 
         System.out.println("#####################");
         codeString = ".2345";
-        System.out.println(codeString.substring(0,1));//.
-        System.out.println(codeString.substring(0,2));//.2
-        System.out.println(codeString.substring(1,3));//23
-        System.out.println(codeString.substring(1,4));//234
+        System.out.println(codeString.substring(0, 1));//.
+        System.out.println(codeString.substring(0, 2));//.2
+        System.out.println(codeString.substring(1, 3));//23
+        System.out.println(codeString.substring(1, 4));//234
         //0,2
         System.out.println("#####################");
 
-        System.out.println(codeString.substring(1,codeString.lastIndexOf(".")+3));
-        System.out.println(codeString.substring(1,codeString.lastIndexOf(".")+2<codeString.length()?codeString.lastIndexOf("."):codeString.lastIndexOf(".")+2));
-        Integer precisionPart = Integer.valueOf(codeString.substring(lastIndexOfPoint+1, lastIndexOfPoint + 4 < codeString.length() ? lastIndexOfPoint + 4 : codeString.length()));
+        System.out.println(codeString.substring(1, codeString.lastIndexOf(".") + 3));
+        System.out.println(codeString.substring(1, codeString.lastIndexOf(".") + 2 < codeString.length() ? codeString.lastIndexOf(".") : codeString.lastIndexOf(".") + 2));
+        Integer precisionPart = Integer.valueOf(codeString.substring(lastIndexOfPoint + 1, lastIndexOfPoint + 4 < codeString.length() ? lastIndexOfPoint + 4 : codeString.length()));
 
         System.out.println(precisionPart);
     }
