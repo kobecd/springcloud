@@ -6,10 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 /**
  * 向前段统一返回数据，该类对结果做了统一封装
@@ -60,6 +56,9 @@ public class ResponseVo<T> implements Serializable {
 
 
     //success方法
+    public static <T> ResponseVo<T> success(   ) {
+        return new ResponseVo<T>(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMsg(), Boolean.TRUE, null);
+    }
     public static <T> ResponseVo<T> success(T data) {
         return new ResponseVo<T>(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMsg(), Boolean.TRUE, data);
     }

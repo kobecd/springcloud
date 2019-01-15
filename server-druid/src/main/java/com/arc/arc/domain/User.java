@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class User extends BaseDomain {
+public class User extends BaseModel {
     private String username;
     private String password;
 //    private Integer age;

@@ -1,0 +1,158 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /hla
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  security:
+    user:
+      name: admin
+      password: admin
+  profiles:
+    active: local         #指定激活那一份配置 dev local test product
+  application:
+    name: app-hla-manage
+  resources:
+    add-mappings: false
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+  jackson:
+#    default-property-inclusion: NON_NULL
+    locale: zh_CN
+    time-zone: GMT+8
+
+
+
+#mybatis:
+mybatis-plus:
+#为实体对象所在的包，跟数据库表一一对应
+#实体扫描，多个package用逗号或者分号分隔
+#  type-aliases-package: com.rongyi.model,com.rongyi.dto
+#mapper文件的位置
+  mapper-locations: classpath:mapper/*.xml
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    #序列接口实现类配置
+    #key-generator: com.baomidou.springboot.xxx
+    #逻辑删除配置（下面3个配置）
+#    logic-delete-value: 0
+#    logic-not-delete-value: 1
+    #自定义SQL注入器
+    #sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    #自定义填充策略接口实现
+    #meta-object-handler: com.baomidou.springboot.xxx
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+
+########################################################
+#          Environment for Development 开发环境配置
+########################################################
+---
+spring:
+  profiles: dev
+  datasource:
+    platform: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.205:3306/hla?useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&allowMultiQueries=true&useSSL=false
+    username: rongyi
+    password: rongyi123$qwer
+
+
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 50000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  redis:
+    host: 192.168.1.205
+    port: 6379
+    password: 123456789
+    database: 15
+
+#配置参数For互道链接
+hla:
+  hudao:
+    appId: ntdf769391213117cc8c96ab767cced8
+    appSecret: ac1a3a209cf35dd6ddd7f4b527a22c7d
+    accessTokenUrl: http://42.159.88.244:4000/api/v6/data/auth_token/get
+    host: http://42.159.88.244:4000
+    ip: 42.159.88.244
+    port: 4000
+   #查询sku列表 spu列表
+    skuUrl: http://42.159.88.244:4000/api/v6/shop/product/query/get
+    spuUrl: http://42.159.88.244:4000/api/v6/shop/product/spu/query/get
+    groupUrl: http://42.159.88.244:4000/api/v6/shop/product/group/query/get
+
+
+########################################################
+#          Environment for Localhost  本地开发环境配置
+########################################################
+---
+spring:
+  profiles: local
+  datasource:
+    platform: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://192.168.1.205:3306/hla?useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&allowMultiQueries=true&useSSL=false
+#    username: rongyi
+#    password: rongyi123$qwer
+    url: jdbc:mysql://127.0.0.1:3306/hla?useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&allowMultiQueries=true&useSSL=false
+    username: root
+    password: admin
+
+
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 50000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 15
+
+#配置参数For互道链接
+hla:
+  hudao:
+    appId: ntdf769391213117cc8c96ab767cced8
+    appSecret: ac1a3a209cf35dd6ddd7f4b527a22c7d
+    accessTokenUrl: http://42.159.88.244:4000/api/v6/data/auth_token/get
+    host: http://42.159.88.244:4000
+    ip: 42.159.88.244
+    port: 4000
+    #查询sku列表 spu列表
+    skuUrl: http://42.159.88.244:4000/api/v6/shop/product/query/get
+    spuUrl: http://42.159.88.244:4000/api/v6/shop/product/spu/query/get
+    groupUrl: http://42.159.88.244:4000/api/v6/shop/product/group/query/get
+
+
+########################################################
+#          Environment for Production 线上环境配置
+########################################################
+---
+spring:
+  profiles: prod
+

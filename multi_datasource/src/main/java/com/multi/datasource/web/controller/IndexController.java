@@ -1,10 +1,10 @@
 package com.multi.datasource.web.controller;
 
 
-import com.arc.model.domain.common.Area;
-import com.arc.model.domain.common.User;
-import com.multi.datasource.mapper.master.UserMapper;
 import com.multi.datasource.mapper.cluster.AreaMapper;
+import com.multi.datasource.mapper.master.UserMapper;
+import com.multi.datasource.model.domain.Area;
+import com.multi.datasource.model.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,7 +1,7 @@
 package com.multi.datasource.mapper.cluster;
 
 
-import com.arc.model.domain.common.Area;
+import com.multi.datasource.model.domain.Area;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
