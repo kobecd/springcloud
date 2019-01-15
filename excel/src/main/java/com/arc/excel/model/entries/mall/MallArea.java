@@ -18,7 +18,9 @@ public class MallArea extends BaseModel {
 
     private Long id;// 主键ID
     private Long areaCode;// 地区代码
-    private String shortCode="000000";// 短吗
+
+    //@todo 修改表
+    private String shortCode;// 地区代码
     private String areaName;// 地区名称
     private String tag;// 地址标签
     private String note;// 备注

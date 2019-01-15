@@ -17,6 +17,13 @@ public class MallTask extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;// 主键ID
+
+//    新加字段
+    private Long workId;// 工单id
+    private Long mallId;// 任务id
+
+
+
 	private String title;// 任务标题
 	private String code;// 代码(注意导入的数据是name+code，入库时候分离了)
 	private String name;// 任务名称
@@ -33,6 +40,7 @@ public class MallTask extends BaseModel {
 	private String latitudeBegin;// 开始纬度 Latitude 简写Lat
 	private String longitudeEnd;// 结束经度 Longitude 简写Lng
 	private String latitudeEnd;// 结束纬度 Latitude 简写Lat
+
 	private Integer salary;// 报酬
 	private Integer salaryTotal;// 报酬解算金额
 	private Integer salaryIncrease;// 调价幅度

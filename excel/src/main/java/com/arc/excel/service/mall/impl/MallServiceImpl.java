@@ -8,6 +8,7 @@ import com.arc.excel.model.entries.mall.MallQuestion;
 import com.arc.excel.model.entries.mall.MallTask;
 import com.arc.excel.model.entries.sys.SysFile;
 import com.arc.excel.service.mall.MallService;
+import com.arc.excel.util.NameUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -21,6 +22,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.acl.LastOwnerException;
 import java.util.*;
 import java.util.List;
 
@@ -98,74 +100,91 @@ public class MallServiceImpl implements MallService {
         //@todo 可能会溢出？
         int xIndex = rowsMap.get(0).size();
 
-        System.out.println("xIndex--yIndex="+xIndex+"  "+ yIndex);
-        System.out.println("xIndex--yIndex="+xIndex+"  "+ yIndex);
-        System.out.println("xIndex--yIndex="+xIndex+"  "+ yIndex);
-        System.out.println("xIndex--yIndex="+xIndex+"  "+ yIndex);
+        System.out.println("xIndex--yIndex=          " + xIndex + "  " + yIndex);
         //y 坐标比较准确， x坐标及其不准确
-        xIndex = 190;
+//        xIndex = 190;
 
         //按行取值， 则按行 迭代，--列编号递增，即固定y，增大x
-        for (int y = 0; y < yIndex; y++) {
+        for (int y = 1; y < yIndex; y++) {
+
+            Mall mall = new Mall();
+            MallArea area = new MallArea();
+            MallQuestion question = new MallQuestion();
+            MallTask task = new MallTask();
+
             for (int x = 0; x < xIndex; x++) {
-                System.out.println("坐标（x，y）：" + x + "," + y + "   " + getCellValue(rowsMap, x, y));
+                log.debug("坐标 x,y（{}，{}）=   {}", x, y, getCellValue(rowsMap, x, y));
             }
+
+            //mall信息处理
+            mall.setTaskName(getCellValue(rowsMap, 2, y));
+            mall.setMallName(getCellValue(rowsMap, 26, y));
+            mall.setMallArea(getCellValue(rowsMap, 27, y));
+            mall.setProvinceName(getCellValue(rowsMap, 27, y));
+            mall.setCityName(getCellValue(rowsMap, 27, y));
+            mall.setDistrictName(getCellValue(rowsMap, 27, y));
+            mall.setTownName(NameUtil.getCodeInName(mall.getMallName()));
+            mall.setNote("商场与地址地址是一对一的关系，现在暂时2019/01/15先在mall表中记录地址信息");
+
+            mallMapper.save(mall);
+
+
+            //mall area 信息入库
+            String areaName = getCellValue(rowsMap, 23, y);
+            area.setAreaName(NameUtil.getNameInName(areaName));
+            area.setShortCode(NameUtil.getCodeInName(areaName));
+            Integer areaResult = saveArea(area);
+
+            areaName = getCellValue(rowsMap, 24, y);
+            area.setAreaName(NameUtil.getNameInName(areaName));
+            area.setShortCode(NameUtil.getCodeInName(areaName));
+             areaResult += saveArea(area);
+
+            areaName = getCellValue(rowsMap, 25, y);
+            area.setAreaName(NameUtil.getNameInName(areaName));
+            area.setShortCode(NameUtil.getCodeInName(areaName));
+            areaResult +=   saveArea(area);
+
+
+            //question信息入库
+            question.setQuestion("");
+            int qResult = saveQuestion(question);
+
+            //task 信息入库
+
+            task.setWorkerId((long) NameUtil.getIntegerInCodeString(getCellValue(rowsMap, 0, y)));
+            task.setMallId((long) NameUtil.getIntegerInCodeString(getCellValue(rowsMap, 1, y)));
+            task.setTitle(getCellValue(rowsMap, 3, y));
+            task.setTaskType(getCellValue(rowsMap, 4, y));
+            task.setTaskType(getCellValue(rowsMap, 4, y));
+
+//            task.setSalary(getCellValue());
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //注意 行列都是从0开始的  小心越界
-        System.out.println("---------------------------------");
-        System.out.println("按行取值, 则按行 迭代，--列编号递增，即固定y，增大x");
-
-        System.out.print(getCellValue(rowsMap, 0, 0));
-        System.out.print(getCellValue(rowsMap, 1, 0));
-        System.out.print(getCellValue(rowsMap, 2, 0));
-        System.out.print(getCellValue(rowsMap, 3, 0));
-        System.out.print(getCellValue(rowsMap, 4, 0));
-        System.out.print(getCellValue(rowsMap, 5, 0));
-        System.out.print(getCellValue(rowsMap, 6, 0));
-        System.out.print(getCellValue(rowsMap, 7, 0));
-        System.out.println("\n---------------------------------");
-        System.out.print(getCellValue(rowsMap, 0, 1));
-        System.out.print(getCellValue(rowsMap, 1, 1));
-        System.out.print(getCellValue(rowsMap, 2, 1));
-        System.out.print(getCellValue(rowsMap, 3, 1));
-        System.out.print(getCellValue(rowsMap, 4, 1));
-        System.out.print(getCellValue(rowsMap, 5, 1));
-        System.out.print(getCellValue(rowsMap, 6, 1));
-        System.out.print(getCellValue(rowsMap, 7, 1));
-        System.out.println("---------------------------------");
-        System.out.println("  按列取值");
-        System.out.println(getCellValue(rowsMap, 0, 0));
-        System.out.println(getCellValue(rowsMap, 0, 1));
-        System.out.println(getCellValue(rowsMap, 0, 2));
-        System.out.println(getCellValue(rowsMap, 0, 3));
-        System.out.println(getCellValue(rowsMap, 0, 4));
-
-//        System.out.println(getCellValue(rowsMap,5,1));
-
-
         return true;
+    }
+
+    private Integer saveArea(MallArea area) {
+        try {
+            return areaMapper.save(area);
+        } catch (Exception e) {
+            log.error("{}", e);
+            e.printStackTrace();
+            System.out.println("area 错误" + e.getCause());
+        }
+        return 0;
+
+    }
+
+    private int saveQuestion(MallQuestion question) {
+        try {
+            return questionMapper.save(question);
+        } catch (Exception e) {
+            log.error("{}", e);
+            e.printStackTrace();
+            System.out.println("area 错误" + e.getCause());
+        }
+        return 0;
     }
 
 
@@ -285,57 +304,137 @@ public class MallServiceImpl implements MallService {
             Map<Integer, List<String>> data = new HashMap<>();
 
             //i 表示行数 左上角为0行0列，坐标A1
-            int i = 0;
-            for (Row row : sheet) { // 行
-                data.put(i, new ArrayList<String>());
-                for (Cell cell : row) { // 单元格
-                    System.out.println("##############" + i + "#################");
-                    System.out.println("getColumnIndex =" + cell.getColumnIndex());
-                    System.out.println("getRowIndex =" + cell.getRowIndex());
-                    System.out.println("getAddress =" + cell.getAddress());//A1=(0,0)
-                    switch (cell.getCellType()) { // 不同的数据类型
-                        //// 字符串类型
-                        case STRING:
-                            data.get(i).add(cell.getRichStringCellValue().getString());
-                            break;
-                        //数值类型
-                        case NUMERIC:
-                            if (DateUtil.isCellDateFormatted(cell)) {
-                                data.get(i).add(cell.getDateCellValue().toString());
-                                System.out.println("getDateCellValue------->" + cell.getDateCellValue());
+//            int i = 0;
 
-                            } else {
-                                System.out.println("数值类型 getNumericCellValue------->" + cell.getNumericCellValue());
-                                System.out.println("数值类型 ------->" + new Double(cell.getNumericCellValue()).toString());
-                                data.get(i).add(new Double(cell.getNumericCellValue()).toString());
-                            }
-                            break;
-                        //布尔类型
-                        case BOOLEAN:
-                            System.out.println("布尔类型 getBooleanCellValue------->" + cell.getBooleanCellValue());
-                            System.out.println("布尔类型  ------->" + new Boolean(cell.getBooleanCellValue()).toString());
-                            data.get(i).add(new Boolean(cell.getBooleanCellValue()).toString());
-                            break;
-                        //公式类型
-                        case FORMULA:
-                            data.get(i).add(cell.getCellFormula());
-                            break;
-                        //空白类型
-                        case BLANK:
-                            data.get(i).add("");
-                            break;
-                        default:
-                            //...;
-                            log.debug("进入了 default，行号={}", i);
-                            break;
+            //最大列  x
+            int xLength = sheet.getRow(0).getLastCellNum();
+            System.out.println("getLastCellNum          " + xLength);
+
+
+            //最小行号  y
+            int yLength = sheet.getLastRowNum();
+            System.out.println("getLastRowNum         " + yLength);
+
+
+            System.out.println("getPhysicalNumberOfCells  " + sheet.getRow(0).getPhysicalNumberOfCells());
+            System.out.println("getRowNum                " + sheet.getRow(0).getRowNum());
+            System.out.println("getSheet                       " + sheet.getRow(0).getSheet());
+            System.out.println("getZeroHeight             " + sheet.getRow(0).getZeroHeight());
+
+//            for (Row row : sheet) {  // 行
+
+            for (int y = 0; y <= yLength; y++) {
+                //没一行new 一个list 保存数据
+                data.put(y, new ArrayList<String>());
+
+                //取y行
+                Row row = sheet.getRow(y);
+//                System.out.println(row.toString());
+//                short height = row.getHeight();
+                for (int x = 0; x < xLength; x++) {
+                    Cell cell = row.getCell(x);
+                    if (cell == null) {
+//                        row.createCell(x);
+                        System.out.println("当前cell 坐标(" + x + "," + y + ")  " + "  为空即null，已经创见列空单元格补全列");
+                        data.get(y).add("");
+                    } else {
+
+
+                        switch (cell.getCellType()) { // 不同的数据类型
+                            //// 字符串类型
+                            case STRING:
+                                data.get(y).add(cell.getRichStringCellValue().getString());
+                                System.out.println(cell.getRichStringCellValue().getString());
+                                break;
+                            //数值类型
+                            case NUMERIC:
+                                if (DateUtil.isCellDateFormatted(cell)) {
+                                    data.get(y).add(cell.getDateCellValue().toString());
+                                    System.out.println("getDateCellValue------->" + cell.getDateCellValue());
+                                } else {
+                                    System.out.println("数值类型 getNumericCellValue------->" + cell.getNumericCellValue());
+                                    System.out.println("数值类型 ------->" + new Double(cell.getNumericCellValue()).toString());
+                                    data.get(y).add(new Double(cell.getNumericCellValue()).toString());
+                                }
+                                break;
+                            //布尔类型
+                            case BOOLEAN:
+                                System.out.println("布尔类型 getBooleanCellValue------->" + cell.getBooleanCellValue());
+                                System.out.println("布尔类型  ------->" + new Boolean(cell.getBooleanCellValue()).toString());
+                                data.get(y).add(new Boolean(cell.getBooleanCellValue()).toString());
+                                break;
+                            //公式类型
+                            case FORMULA:
+                                data.get(y).add(cell.getCellFormula());
+                                break;
+                            //空白类型
+                            case BLANK:
+                                data.get(y).add("");
+                                break;
+                            default:
+                                //...;
+                                data.get(y).add("");
+
+                                log.debug("进入了 default，行号={}", y);
+                                break;
+                        }
                     }
+
+
                 }
-                //https://www.cnblogs.com/jyyjava/p/8074322.html
-                //https://blog.csdn.net/holmofy/article/details/82532311
-                //https://www.baidu.com/baidu?wd=poi+excel+解析&tn=54002054_dg&ie=utf-8
-                i++;
             }
-            log.debug("读取数据的行数={}，map大小=", i, data.size());
+
+//            for (Cell cell : row) { // 单元格
+//                System.out.println("##############" + i + "#################");
+//                System.out.println(cell.getAddress() + "    =  (" + cell.getColumnIndex() + "," + cell.getRowIndex() + ")    " + cell);
+//                System.out.println(cell.getAddress() + "    =  (" + cell.getColumnIndex() + "," + cell.getRowIndex() + ")    " + cell.toString());
+//                data.get(i).add(cell.toString());
+
+//
+//                    switch (cell.getCellType()) { // 不同的数据类型
+//                        //// 字符串类型
+//                        case STRING:
+//                            data.get(i).add(cell.getRichStringCellValue().getString());
+//                            System.out.println(cell.getRichStringCellValue().getString());
+//                            break;
+//                        //数值类型
+//                        case NUMERIC:
+//                            if (DateUtil.isCellDateFormatted(cell)) {
+//                                data.get(i).add(cell.getDateCellValue().toString());
+//                                System.out.println("getDateCellValue------->" + cell.getDateCellValue());
+//                            } else {
+//                                System.out.println("数值类型 getNumericCellValue------->" + cell.getNumericCellValue());
+//                                System.out.println("数值类型 ------->" + new Double(cell.getNumericCellValue()).toString());
+//                                data.get(i).add(new Double(cell.getNumericCellValue()).toString());
+//                            }
+//                            break;
+//                        //布尔类型
+//                        case BOOLEAN:
+//                            System.out.println("布尔类型 getBooleanCellValue------->" + cell.getBooleanCellValue());
+//                            System.out.println("布尔类型  ------->" + new Boolean(cell.getBooleanCellValue()).toString());
+//                            data.get(i).add(new Boolean(cell.getBooleanCellValue()).toString());
+//                            break;
+//                        //公式类型
+//                        case FORMULA:
+//                            data.get(i).add(cell.getCellFormula());
+//                            break;
+//                        //空白类型
+//                        case BLANK:
+//                            data.get(i).add("");
+//                            break;
+//                        default:
+//                            //...;
+//                            data.get(i).add("");
+//
+//                            log.debug("进入了 default，行号={}", i);
+//                            break;
+//                    }
+//            }
+            //https://www.cnblogs.com/jyyjava/p/8074322.html
+            //https://blog.csdn.net/holmofy/article/details/82532311
+            //https://www.baidu.com/baidu?wd=poi+excel+解析&tn=54002054_dg&ie=utf-8
+//                i++;
+//            }
             return data;
         } catch (
                 FileNotFoundException e) {
@@ -356,7 +455,7 @@ public class MallServiceImpl implements MallService {
 
     private static void fun2() {
 
-        for (String s :  getColumnLabels(26)) {
+        for (String s : getColumnLabels(26)) {
             System.out.print(s);
         }
 
@@ -364,12 +463,27 @@ public class MallServiceImpl implements MallService {
 
         int index = 27;
         String[] columnLabels = getColumnLabels(index);
-        for (int i = index = index-1; i < columnLabels.length; i++) {
+        for (int i = index = index - 1; i < columnLabels.length; i++) {
+            System.out.println(columnLabels[i]);
+        }
+
+        index = 117;//DM
+        columnLabels = getColumnLabels(index);
+        for (int i = index = index - 1; i < columnLabels.length; i++) {
+            System.out.println(columnLabels[i]);
+        }
+        index = 189;//GG
+        columnLabels = getColumnLabels(index);
+        for (int i = index = index - 1; i < columnLabels.length; i++) {
+            System.out.println(columnLabels[i]);
+        }
+        index = 468;//QZ
+        columnLabels = getColumnLabels(index);
+        for (int i = index = index - 1; i < columnLabels.length; i++) {
             System.out.println(columnLabels[i]);
         }
 
         //java excel 列编号 数字转字母
-
 
 
 //        for (String s :columnLabels ) {
@@ -379,55 +493,56 @@ public class MallServiceImpl implements MallService {
     }
 
     private static String[] sources = new String[]{
-            "A","B","C","D","E","F","G","H",
-            "I","J","K","L","M","N","O","P",
-            "Q","R","S","T","U","V","W","X","Y","Z"
+            "A", "B", "C", "D", "E", "F", "G", "H",
+            "I", "J", "K", "L", "M", "N", "O", "P",
+            "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
     };
 
     /**
      * (256 for *.xls, 16384 for *.xlsx)
+     *
      * @param columnNum 列的个数，至少要为1
+     * @return 返回[1, columnNum]共columnNum个对应xls列字母的数组
      * @throws IllegalArgumentException 如果 columnNum 超出该范围 [1,16384]
-     * @return 返回[1,columnNum]共columnNum个对应xls列字母的数组
      */
     public static String[] getColumnLabels(int columnNum) {
-        if(columnNum<1||columnNum>16384)
+        if (columnNum < 1 || columnNum > 16384)
             throw new IllegalArgumentException();
         String[] columns = new String[columnNum];
-        if(columnNum<27){	//小于27列 不用组合
+        if (columnNum < 27) {    //小于27列 不用组合
             System.arraycopy(sources, 0, columns, 0, columnNum);
             return columns;
         }
-        System.arraycopy(sources, 0, columns, 0, 26);	//前26列不需要进行组合
+        System.arraycopy(sources, 0, columns, 0, 26);    //前26列不需要进行组合
 
         //因为基于数组是从0开始，每到新一轮letterIdx 会递增，所以第一轮 在递增前是-1
         int letterIdx = -1;
         int currentLen = 26;//第一轮组合(2个字母的组合)是分别与A-Z进行拼接 所以是26
         int remainder;
-        int lastLen = 0;	//用于定位上文提到的i%currentLen实际在数组中的位置
-        int totalLen = 26;	//totalLen=currentLen+lastLen
+        int lastLen = 0;    //用于定位上文提到的i%currentLen实际在数组中的位置
+        int totalLen = 26;    //totalLen=currentLen+lastLen
         int currentLoopIdx = 0; //用来记录当前组合所有情形的个数
 
-        for(int i=26;i<columnNum;i++){ //第27列(对应数组的第26个位置)开始组合
+        for (int i = 26; i < columnNum; i++) { //第27列(对应数组的第26个位置)开始组合
 
             //currentLen是上个组合所有情形的个数，与它取余找到要与上个组合的哪种情形进行拼接
-            remainder = currentLoopIdx%currentLen;
+            remainder = currentLoopIdx % currentLen;
 
-            if(remainder==0){
+            if (remainder == 0) {
                 letterIdx++; //完成一次上个组合的遍历，转到下个字母进行拼接
-                int j = letterIdx%26;
+                int j = letterIdx % 26;
 
                 //A-Z 26个子母都与上个组合所有情形都进行过拼接了，需要进行下个组合的拼接
-                if(j==0&&letterIdx!=0){
+                if (j == 0 && letterIdx != 0) {
                     lastLen = totalLen; //下个组合的lastLen是上个组合的totalLen
 
                     /**
                      * 下个组合的currentLen是上个组合的所有组合情形的个数
                      * （等于上个组合的currentLen*26)，26也就是拼接在前面的A-Z的个数
                      */
-                    currentLen = 26*currentLen;
+                    currentLen = 26 * currentLen;
 
-                    totalLen = currentLen+lastLen; //为下一轮的开始做准备
+                    totalLen = currentLen + lastLen; //为下一轮的开始做准备
                     currentLoopIdx = 0; //到下一轮了 因此需要重置
                 }
             }
@@ -435,11 +550,12 @@ public class MallServiceImpl implements MallService {
              * sources[letterIdx%26]是该轮要拼接在前面的字母
              * columns[remainder+lastLen]是上个组合被拼接的情形
              */
-            columns[i] = sources[letterIdx%26]+columns[remainder+lastLen];
+            columns[i] = sources[letterIdx % 26] + columns[remainder + lastLen];
             currentLoopIdx++;
         }
         return columns;
     }
+
     private static void fun1() {
         Map<String, List<Object>> domainMap = new HashMap<String, List<Object>>();
         List<Mall> malls1 = new ArrayList<>();
