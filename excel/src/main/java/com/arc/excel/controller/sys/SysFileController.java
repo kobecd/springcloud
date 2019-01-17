@@ -3,7 +3,7 @@ package com.arc.excel.controller.sys;
 import com.arc.excel.model.entries.sys.SysFile;
 import com.arc.excel.model.vo.ResponseVo;
 import com.arc.excel.service.sys.SysFileService;
-import com.arc.excel.util.FileWriteUtil;
+import com.arc.excel.utils.FileWriteUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;

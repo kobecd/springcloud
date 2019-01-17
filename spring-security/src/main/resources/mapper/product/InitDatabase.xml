@@ -9,7 +9,7 @@
     <!--<result property="path" column="file_path" javaType="string" jdbcType="VARCHAR" />-->
     <!--<result property="name" column="file_name" javaType="string" jdbcType="VARCHAR" />-->
     <!--<result property="suffix" column="file_suffix" javaType="string" jdbcType="VARCHAR" />-->
-    <!--<result property="createDate" column="file_create_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />-->
+    <!--<result property="createDate" column="file_create_date" javaType="java.utils.Date" jdbcType="TIMESTAMP" />-->
     <!--</resultMap>-->
 
 

@@ -2,7 +2,7 @@
 //
 //import com.arc.arc.domain.User;
 //
-//import java.util.List;
+//import java.utils.List;
 //
 //public interface IUserService {
 //

@@ -6,7 +6,7 @@ import org.springframework.util.StringUtils;
  * @author: yb
  * Description:
  * DATE: 2017/10/31 15:06
- * Package:com.rongyi.coupon.util
+ * Package:com.rongyi.coupon.utils
  * Project:easy-coupon
  */
 public class SplitDateRangeUtil {

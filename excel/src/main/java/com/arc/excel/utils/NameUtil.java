@@ -1,8 +1,7 @@
-package com.arc.excel.util;
+package com.arc.excel.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.security.spec.EncodedKeySpec;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -190,6 +189,53 @@ public class NameUtil {
     }
 
     public static void main(String[] args) {
+//        test();
+//        test3();
+        test4();
+
+    }
+
+    private static void test4() {
+        System.out.println(convertStringToNumber("a"));
+        System.out.println(convertStringToNumber("z"));
+        System.out.println(convertStringToNumber("aA"));
+        System.out.println(convertStringToNumber("az"));
+
+    }
+
+    private static void test3() {
+
+        System.out.println((int) 'A');//65
+        System.out.println((int) 'Z');//90
+
+//        System.out.println('Z'-'A');//25
+//        System.out.println('a'-'A');//32
+
+        System.out.println((int) 'a');///97  和大写字母之间有6个符号 [\]^_`
+        System.out.println((int) 'z');//122
+
+        System.out.println("------------");
+
+        System.out.println(convertCharToNumber('a'));
+        System.out.println(convertCharToNumber('a'));
+        System.out.println(convertCharToNumber('Z'));
+        System.out.println(convertStringToNumber("AZ"));// AA 26    AB 27
+        System.out.println(convertStringToNumber("AA"));
+        System.out.println(convertStringToNumber("AB"));
+
+        System.out.println("------------");
+        System.out.println(excelColStrToNum("Z"));//26
+        System.out.println(excelColStrToNum("AA"));//AA=27=26+1
+        System.out.println(excelColStrToNum("AB"));//AB=28=26+2
+        System.out.println(excelColStrToNum("AZ"));//AZ=52=26+26    1*26+26
+
+        System.out.println(excelColStrToNum("BA"));//BA=26+26+1     2*26+1
+        System.out.println(excelColStrToNum("BZ"));//BA=26+26+26
+    }
+
+    private static void test() {
+
+
 //        System.out.println(getNameInName("惠州市/277"));
 //        System.out.println(getIntegerInCodeString("111.0"));
 //        System.out.println(getIntegerInCodeString("0111.0"));
@@ -263,4 +309,118 @@ public class NameUtil {
 
         System.out.println(precisionPart);
     }
+
+
+    /**
+     * 根据string返回
+     *
+     * @param str
+     * @return
+     */
+    public static Integer convertStringToNumber(final String str) {
+        //A-Z 65-90         a-z 97-122       大小写相差32
+        int back = 0;
+        for (char ch : str.toCharArray()) {
+            back += convertCharToNumber(ch);
+        }
+
+        int length = str.length();
+        if (length == 1) {
+            return convertCharToNumber(str.toCharArray()[0]);
+        } else if (length == 2) {
+            // AA=27=26+1
+            // AB=28=26+2
+            // AC=29=26+3
+            // AD=30=26+4
+            // ....
+            // AZ=52=26+26
+            //从左往右拿
+
+            return convertCharToNumber(str.toCharArray()[0]) * 26 + convertCharToNumber(str.toCharArray()[1]);
+
+//            System.out.println(str.toCharArray()[0]);
+//            System.out.println(str.toCharArray()[1]);
+//            System.out.println(str.toCharArray()[2]);
+//            System.out.println(convertCharToNumber(str.toCharArray()[0]));
+//            System.out.println(convertCharToNumber(str.toCharArray()[1]));
+
+
+
+        }
+        return back;
+    }
+
+    public static int convertCharToASCII(final char ch) {
+        return (int) ch;
+    }
+
+    /**
+     * char转换为1开始的数字
+     *
+     * @param ch
+     * @return
+     */
+    public static int convertCharToNumber(final char ch) {
+        int tem = (int) ch;
+        return tem < 97 ? tem - 64 : tem - 96;
+    }
+
+
+    public static void ASCIIToConvert() {
+
+        String value = "97 57 51 53 50 49 46 54 52 49 ";
+
+        StringBuffer sbu = new StringBuffer();
+        String[] chars = value.split(" ");
+        System.out.println("--------------------------");
+        for (int i = 0; i < chars.length; i++) {
+            int i1 = Integer.parseInt(chars[i]);
+            System.out.println((char) i1);
+            sbu.append((char) i1);
+        }
+        System.out.println(sbu.toString());
+
+    }
+
+
+    /**
+     * 该方法用来将Excel中的ABCD列转换成具体的数据
+     * @param column:ABCD列名称
+     * @return integer：将字母列名称转换成数字
+     * **/
+    public static int excelColStrToNum(String column) {
+        int num = 0;
+        int result = 0;
+        int length =column.length();
+        for(int i = 0; i < length; i++) {
+            char ch = column.charAt(length - i - 1);
+            num = (int)(ch - 'A' + 1) ;
+            num *= Math.pow(26, i);
+            result += num;
+        }
+        return result;
+    }
+
+    /**
+     * 该方法用来将具体的数据转换成Excel中的ABCD列
+     * @param columnIndex：需要转换成字母的数字
+     * @return column:ABCD列名称
+     * **/
+    public static String excelColIndexToStr(int columnIndex) {
+        if (columnIndex <= 0) {
+            return null;
+        }
+        String columnStr = "";
+        columnIndex--;
+        do {
+            if (columnStr.length() > 0) {
+                columnIndex--;
+            }
+            columnStr = ((char) (columnIndex % 26 + (int) 'A')) + columnStr;
+            columnIndex = (int) ((columnIndex - columnIndex % 26) / 26);
+        } while (columnIndex > 0);
+        return columnStr;
+    }
+
+
 }

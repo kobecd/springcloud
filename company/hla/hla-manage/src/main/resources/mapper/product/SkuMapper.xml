@@ -167,7 +167,7 @@
 
 
     <!-- 批量更新第一种方法，通过接收传进来的参数list进行循环着组装sql -->
-<!--    <update id="batchUpdate" parameterType="java.util.List">
+<!--    <update id="batchUpdate" parameterType="java.utils.List">
 
         <foreach collection="list" separator=";" item="item">
             UPDATE product_sku

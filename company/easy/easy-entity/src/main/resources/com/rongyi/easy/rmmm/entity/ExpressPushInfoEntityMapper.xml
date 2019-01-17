@@ -15,6 +15,6 @@
     <result column="data" property="data" jdbcType="VARCHAR" />
   </resultMap>
   <!-- <resultMap id="ResultMapWithBLOBs" type="com.rongyi.easy.rmmm.entity.ExpressPushInfoEntity" extends="BaseResultMap" >
-    <result column="data" property="data" typeHandler="com.rongyi.core.common.util.ConvertBlobTypeHandler" />
+    <result column="data" property="data" typeHandler="com.rongyi.core.common.utils.ConvertBlobTypeHandler" />
   </resultMap> -->
 </mapper>

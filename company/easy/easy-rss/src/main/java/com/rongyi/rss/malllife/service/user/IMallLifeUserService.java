@@ -6,9 +6,9 @@ import com.rongyi.easy.malllife.vo.UserInfoVO;
 
 import org.bson.types.ObjectId;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.utils.List;
+import java.utils.Map;
+import java.utils.Set;
 
 */
 /*
@@ -152,7 +152,7 @@ public interface IMallLifeUserService {
      *//*
 
     public void collectCommodity(Set<String> collectCommoditys, ObjectId userId) throws Exception ;
-    
+
     */
 /**
      * 根据买家姓名模糊查询买家信息
@@ -199,7 +199,7 @@ public interface IMallLifeUserService {
 
 	public List<UserInfoVO> getUsersByNicknameUsername(String nickname,
 			String username);
-	
+
 	 */
 /**
      * 根据id列表批量取出用户信息
@@ -208,7 +208,7 @@ public interface IMallLifeUserService {
      *//*
 
 	public Map<String,UserInfoVO> getUserListByIdList(List<ObjectId> idList);
-	
+
 	*/
 /**
 	 * 根据主键查询

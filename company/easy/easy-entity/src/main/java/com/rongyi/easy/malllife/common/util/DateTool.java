@@ -39,13 +39,13 @@ public class DateTool {
 
 	/** 默认日期时间格式 */
 	public static final String FORMAT_DATETIME = "yyyy-MM-dd HH:mm:ss";
-	
+
 	public static final DateFormat DATETIME_FORMATTOR =  new SimpleDateFormat(FORMAT_DATETIME);
 
 	public static final String FORMAT_MICROSECOND = "yyyyMMddHHmmssmmm";
 	public static final String FORMAT_MICROSECOND2 = "yyyyMMddHHmmss";
 	public static final String FORMAT_DATE_2 = "yyyyMMdd";
-	
+
 	public static final String MONGOSTRINGTODATE = "EEE MMM dd HH:mm:ss zzz yyyy";
 
 	/** 日志 */
@@ -57,7 +57,7 @@ public class DateTool {
 	 * 将日期转换成字符格式
 	 *
 	 * @param date
-	 *            java.util.Date类型
+	 *            java.utils.Date类型
 	 * @param format
 	 *            如果为null或""，默认为DATE格式
 	 * @return 无法成功转换则返回null
@@ -383,7 +383,7 @@ public class DateTool {
 	    }
 	    return 0;
 	}
-	
+
 	public static Date mongoStringTodate(String date){
 		Date stringToDate=null;
 		DateFormat df = new SimpleDateFormat(MONGOSTRINGTODATE, java.util.Locale.ENGLISH);
@@ -392,21 +392,21 @@ public class DateTool {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		return stringToDate;
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public static Date stringToDateSolr(String date){
 		Date stringToDate=new Date(date);
 		Date returnDate=new Date(stringToDate.getYear(),stringToDate.getMonth(),stringToDate.getDate()-1,stringToDate.getHours()-4,stringToDate.getMinutes(),stringToDate.getSeconds());
 		return returnDate;
 	}
-	
+
 	public static String getCurrentDateTime() {
 		return  DATETIME_FORMATTOR.format(new Date());
 	}
-	
+
 	public static String formatDatetime(Date date) {
 		return null != date ? DATETIME_FORMATTOR.format(date) : null;
 	}

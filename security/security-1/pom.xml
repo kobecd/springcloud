@@ -12,7 +12,7 @@
 	<groupId>com.arc</groupId>
 	<artifactId>security-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>security-1</name>
+	<name>security-1 基于数据库db的认证</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

@@ -1,31 +1,11 @@
 package com.rongyi.core.common;
 
-import com.jianzhou.sdk.BusinessService;
-import com.rongyi.core.constant.Constants;
-import com.rongyi.core.sms.SmsConfig;
-import com.rongyi.core.sms.SmsEntity;
-
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Iterator;
-
 /**
  * 类MessageManger.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author jiejie 2014年6月10日 下午2:09:18
  */
 @Deprecated
@@ -73,7 +53,7 @@ public class MessageManger {
 //            getMethod.releaseConnection();
 //        }
 //    }
-    
+
     /**
      * 发送短信
      * 云短信通道
@@ -101,7 +81,7 @@ public class MessageManger {
 //            getMethod.releaseConnection();
 //        }
 //    }
-    
+
     /**
      * 发送短信
      * @param phone  手机号
@@ -235,10 +215,10 @@ public class MessageManger {
 		//Properties pro = PropertiesUtil.getProperties(classesPath);
 		//messageChannel = pro.getProperty(Constants.Common.MESSAGE_CHANNEL);
 		logger.info("messageChannel--->"+ messageChannel);
-//    	if(propertyConfigurer!=null && propertyConfigurer.getProperty(Constants.Common.MESSAGE_CHANNEL) != null) {    		
+//    	if(propertyConfigurer!=null && propertyConfigurer.getProperty(Constants.Common.MESSAGE_CHANNEL) != null) {
 //    		messageChannel = propertyConfigurer.getProperty(Constants.Common.MESSAGE_CHANNEL).toString();
 //    	}
-		
+
     	if("1".equals(messageChannel)) {
     		result = sendYunSmsMessage(phone, message);
     	}else if("2".equals(messageChannel)) {

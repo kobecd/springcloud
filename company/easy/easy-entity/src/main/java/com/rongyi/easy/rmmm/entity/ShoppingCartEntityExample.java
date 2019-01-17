@@ -1,8 +1,8 @@
 //package com.rongyi.easy.rmmm.entity;
 //
-//import java.util.ArrayList;
-//import java.util.Date;
-//import java.util.List;
+//import java.utils.ArrayList;
+//import java.utils.Date;
+//import java.utils.List;
 //
 //public class ShoppingCartEntityExample {
 //    protected String orderByClause;

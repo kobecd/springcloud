@@ -4,7 +4,7 @@ package com.rongyi.core.util;
  * Description:
  * Author: yb
  * DATE: 2017/7/26 16:59
- * Package:com.rongyi.core.util.soap
+ * Package:com.rongyi.core.utils.soap
  * Project:easy-market
  */
 import org.slf4j.Logger;
@@ -39,7 +39,7 @@ public class DesEcbUtil {
     private static final String ALGORITHM_STR = "DES/ECB/NoPadding";
 
     private static final String CHARSET = "gb2312";
-    
+
     private static final String CHARUTF8 = "UTF-8";
 
     /**
@@ -128,7 +128,7 @@ public class DesEcbUtil {
         byte decryptedData[] = cipher.doFinal(encryptedData);
         return new String(decryptedData, CHARSET);
     }
-    
+
     public static String byteArr2HexStr(byte[] arrB) throws Exception {
         int iLen = arrB.length;
         // 每个byte用两个字符才能表示，所以字符串的长度是数组长度的两倍
@@ -161,21 +161,21 @@ public class DesEcbUtil {
         }
         return tmp.toString();
     }
-     
-    
+
+
     private static byte[] hexStr2ByteArr(String str) throws Exception{
     	byte[] arrB = str.getBytes();
     	int len = arrB.length;
-    	//两个字符表示一个字节，所以字节数组长度是字符串长度除以2 
+    	//两个字符表示一个字节，所以字节数组长度是字符串长度除以2
     	byte[] arrOut = new byte[len/2];
     	for(int i=0;i<len;i=i+2){
-    		String strTmp = new String(arrB,i,2); 
+    		String strTmp = new String(arrB,i,2);
     		arrOut[i/2] = (byte)Integer.parseInt(strTmp, 16);
     	}
-    	
+
     	return arrOut;
     }
-    
+
     /**
      * 字节解密
      * @param arrB
@@ -183,7 +183,7 @@ public class DesEcbUtil {
      * @return
      * @throws Exception
      */
-    public static String decryptByte(byte[] arrB, String key) throws Exception { 
+    public static String decryptByte(byte[] arrB, String key) throws Exception {
     	LOGGER.info("解密decryptByDes|key:" + key);
     	// DES算法要求有一个可信任的随机数源
         SecureRandom sr = new SecureRandom();
@@ -201,7 +201,7 @@ public class DesEcbUtil {
         byte decryptedData[] = cipher.doFinal(arrB);
         return new String(decryptedData, CHARSET);
     }
-    
+
     /**
      * 字符串解密
      * @param source
@@ -209,7 +209,7 @@ public class DesEcbUtil {
      * @return
      * @throws Exception
      */
-    public static String decryptStr(String source, String key) throws Exception { 
+    public static String decryptStr(String source, String key) throws Exception {
     	LOGGER.info("解密decryptByDes|key:" + key);
     	byte[] arrB = hexStr2ByteArr(source);
     	// DES算法要求有一个可信任的随机数源

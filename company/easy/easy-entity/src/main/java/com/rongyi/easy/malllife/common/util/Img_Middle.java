@@ -1,4 +1,4 @@
-//package com.rongyi.easy.malllife.common.util;
+//package com.rongyi.easy.malllife.common.utils;
 //
 //import java.awt.Color;
 //import java.awt.Graphics2D;
@@ -7,15 +7,15 @@
 //import java.io.File;
 //import java.io.FileOutputStream;
 //import java.io.IOException;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
+//import java.utils.logging.Level;
+//import java.utils.logging.Logger;
 //
 //import com.sun.image.codec.jpeg.JPEGCodec;
 //import com.sun.image.codec.jpeg.JPEGEncodeParam;
 //import com.sun.image.codec.jpeg.JPEGImageEncoder;
 //
 ///**
-// * 
+// *
 // * @author Liu Chao
 // */
 //public class Img_Middle {
@@ -26,7 +26,7 @@
 //	}
 //
 //	/**
-//	 * 
+//	 *
 //	 * @param f
 //	 *            图片所在的文件夹路径
 //	 * @param filelist
@@ -42,7 +42,7 @@
 //	 * @param per
 //	 *            百分比
 //	 */
-//	
+//
 //	private static String Tosmallerpic(String f, File filelist, String ext, String n, double w, double h, float per) {
 //		String newPicName = n.substring(0, n.indexOf(".")) + ext + n.substring(n.indexOf("."));
 //		Image src;
@@ -67,8 +67,8 @@
 //			encoder.encode(tag, jep);
 //
 //			newimage.close();
-//			
-//			
+//
+//
 //			return newPicName;
 //		} catch (IOException ex) {
 //			Logger.getLogger(Img_Middle.class.getName()).log(Level.SEVERE, null, ex);
@@ -81,7 +81,7 @@
 //	public static boolean convertPicInTempFloder(String imgName) {
 //		//缩图百分比 默认为0.9
 //		double per =0.9;
-//		
+//
 //		String f = Img_Middle.class.getResource("").toString() + "tempImg/";
 //		String n = imgName;
 //		f = PicFileUpYun.getRealUrl(f);
@@ -94,7 +94,7 @@
 //
 //				imgName = Tosmallerpic(f, file, "_middle", n, per, per, (float) 0.7);
 //				per = per*0.9;
-//			
+//
 //			}
 //		}
 //		return boo;

@@ -2,7 +2,7 @@
 package com.rongyi.service.impl;
 
 import com.rongyi.core.common.PagingVO;
-import com.rongyi.core.util.BeanToMapUtil;
+import com.rongyi.core.utils.BeanToMapUtil;
 import com.rongyi.easy.bsoms.entity.BIndustry;
 import com.rongyi.easy.bsoms.vo.AccountSearchVO;
 import com.rongyi.easy.bsoms.vo.BusinessAccountVO;
@@ -25,9 +25,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.utils.ArrayList;
+import java.utils.List;
+import java.utils.Map;
 
 @Service
 public class IndustryServiceImpl {
@@ -48,7 +48,7 @@ public class IndustryServiceImpl {
 	*/
 /**
 	 * 查询商家账号
-	 * 
+	 *
 	 * @param searchParam
 	 * @param optId
 	 * @return
@@ -300,7 +300,7 @@ public class IndustryServiceImpl {
 	*/
 /**
 	 * 返回行业版本的权限
-	 * 
+	 *
 	 * @param industryId
 	 * @param industryVersionId
 	 * @return

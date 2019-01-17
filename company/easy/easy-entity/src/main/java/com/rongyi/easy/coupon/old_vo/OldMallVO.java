@@ -3,7 +3,7 @@
 //import org.apache.commons.lang.builder.ToStringBuilder;
 //
 //import java.io.Serializable;
-//import java.util.List;
+//import java.utils.List;
 //
 //public class OldMallVO implements Serializable {
 //

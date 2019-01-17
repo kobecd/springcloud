@@ -11,14 +11,14 @@ import java.sql.*;
 
 /**
  * className:ConvertBlobTypeHandler
- * 
+ *
  * 自定义typehandler，解决mybatis存储blob字段后，出现乱码的问题 配置mapper.xml： <result
- * typeHandler="cn.ffcs.drive.common.util.ConvertBlobTypeHandler"/>
- * 
+ * typeHandler="cn.ffcs.drive.common.utils.ConvertBlobTypeHandler"/>
+ *
  * @author pengyh
  * @version 1.0.0
  * @date 2014-07-09 11:15:23
- * 
+ *
  */
 public class ConvertBlobTypeHandler extends BaseTypeHandler<String> {
 	protected Logger logger = LoggerFactory.getLogger(ConvertBlobTypeHandler.class);

@@ -1,28 +1,24 @@
 package com.arc.excel.service.mall.impl;
 
 import com.arc.excel.mapper.*;
-import com.arc.excel.model.entries.BaseModel;
 import com.arc.excel.model.entries.mall.Mall;
 import com.arc.excel.model.entries.mall.MallArea;
 import com.arc.excel.model.entries.mall.MallQuestion;
 import com.arc.excel.model.entries.mall.MallTask;
 import com.arc.excel.model.entries.sys.SysFile;
 import com.arc.excel.service.mall.MallService;
-import com.arc.excel.util.NameUtil;
+import com.arc.excel.utils.NameUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.acl.LastOwnerException;
 import java.util.*;
 import java.util.List;
 

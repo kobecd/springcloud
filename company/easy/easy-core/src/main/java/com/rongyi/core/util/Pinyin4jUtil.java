@@ -1,6 +1,6 @@
 /**
  * @Title: Pinyin4jUtil.java
- * @Package util
+ * @Package utils
  * @Description: TODO
  * @author 閮戜害姊?  zhengyiliang@rongyi.com
  * @date 2015骞?10鏈?8鏃? 涓嬪崍2:46:58

@@ -2,7 +2,7 @@
 package com.rongyi.easy.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.utils.Date;
 
 import org.bson.types.ObjectId;
 
@@ -12,7 +12,7 @@ import org.mongodb.morphia.annotations.Property;
 
 *
  * 类UserAddressPojo.java的实现描述：TODO 类实现描述
- * 
+ *
  * @author Lc 2015年2月12日 下午2:12:03
 
 

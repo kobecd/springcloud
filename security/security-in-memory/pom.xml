@@ -11,7 +11,7 @@
 	<groupId>com.arc</groupId>
 	<artifactId>security-in-memory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>security-in-memory</name>
+	<name>security-in-memory 基于内存的认证</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

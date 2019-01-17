@@ -9,8 +9,8 @@ import org.mongodb.morphia.annotations.Property;
 import org.bson.types.ObjectId;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
+import java.utils.Date;
+import java.utils.Set;
 
 @Entity(value = "users", noClassnameStored = true)
 public class MallLifeUserEntity implements Serializable {
@@ -98,7 +98,7 @@ public class MallLifeUserEntity implements Serializable {
 	 public String getUserName() {
 	 return userName;
 	 }
-	
+
 	 public void setUserName(String userName) {
 	 this.userName = userName;
 	 }

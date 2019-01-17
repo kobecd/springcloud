@@ -16,7 +16,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 /**
- * Spring context util
+ * Spring context utils
  */
 public class SpringContextUtil implements ApplicationContextAware {
 
@@ -32,18 +32,18 @@ public class SpringContextUtil implements ApplicationContextAware {
 
     /**
      * Gets spring bean by bean name
-     * 
+     *
      * @param name bean name
      * @return spring bean
      */
     public static Object getBean(String name) throws BeansException {
         return applicationContext.getBean(name);
     }
-    
+
     public static Object getBean(String name, Class<?> requiredType){
         return applicationContext.getBean(name, requiredType);
     }
-    
+
     public static <T> Map<String, T> getBeansOfType(Class<T> type) {
         return getApplicationContext().getBeansOfType(type);
     }

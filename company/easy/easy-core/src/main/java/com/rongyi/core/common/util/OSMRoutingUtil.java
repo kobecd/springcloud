@@ -1,17 +1,17 @@
-/** 
- * @Title: OSMRoutingUtil.java 
- * @Package com.rongyi.core.common.util 
+/**
+ * @Title: OSMRoutingUtil.java
+ * @Package com.rongyi.core.common.utils
  * @Description: 根据订单号的奇偶转发到不同的osm消息队列
  * @author 郑亦梁  zhengyiliang@rongyi.com
- * @date 2015年6月1日 下午6:03:33 
- * @version V1.0   
+ * @date 2015年6月1日 下午6:03:33
+ * @version V1.0
  * Copyright (C),上海容易网电子商务有限公司
  */
 package com.rongyi.core.common.util;
 
 /**
  * @author ZhengYl
- * 
+ *
  */
 public class OSMRoutingUtil {
 

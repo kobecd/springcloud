@@ -11,7 +11,7 @@
     <groupId>com.arc</groupId>
     <artifactId>jpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>jpa</name>
+    <name>jpa 简单范例</name>
     <description>JPA project for Spring Boot</description>
 
     <properties>

@@ -54,7 +54,7 @@ public class DateTool {
 	 * 将日期转换成字符格式
 	 *
 	 * @param date
-	 *            java.util.Date类型
+	 *            java.utils.Date类型
 	 * @param format
 	 *            如果为null或""，默认为DATE格式
 	 * @return 无法成功转换则返回null
@@ -188,8 +188,8 @@ public class DateTool {
 		cal.add(Calendar.MONTH, num);
 		return cal.getTime();
 	}
-	
-	
+
+
 
 	/**
 	 * 添加天数。

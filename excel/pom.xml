@@ -6,7 +6,8 @@
     <groupId>com.arc</groupId>
     <artifactId>excel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>excel</name>
+
+    <name>excel 导入导出范例 by poi </name>
     <description>Springboot excel Mybatis with mysql Demo project for Spring Boot</description>
 
     <parent>

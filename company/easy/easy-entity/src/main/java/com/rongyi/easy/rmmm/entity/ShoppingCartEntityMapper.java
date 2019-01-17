@@ -2,7 +2,7 @@
 //
 //import com.rongyi.easy.rmmm.entity.ShoppingCartEntity;
 //import com.rongyi.easy.rmmm.entity.ShoppingCartEntityExample;
-//import java.util.List;
+//import java.utils.List;
 //import org.apache.ibatis.annotations.Param;
 //
 //public interface ShoppingCartEntityMapper {
