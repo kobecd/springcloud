@@ -17,7 +17,9 @@ public class MallQuestion extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;// 主键ID
-	private String question;// 名称
+    private Long mallId;//mall的id，做关联
+
+    private String question;// 名称
 	private String answer;// 答案
 	private String reason;// 依据
 	private String note;// 备注

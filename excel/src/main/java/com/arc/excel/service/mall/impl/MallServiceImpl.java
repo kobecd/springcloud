@@ -6,7 +6,9 @@ import com.arc.excel.model.entries.mall.MallArea;
 import com.arc.excel.model.entries.mall.MallQuestion;
 import com.arc.excel.model.entries.mall.MallTask;
 import com.arc.excel.model.entries.sys.SysFile;
+import com.arc.excel.service.mall.MallQuestionService;
 import com.arc.excel.service.mall.MallService;
+import com.arc.excel.service.mall.MallTaskService;
 import com.arc.excel.utils.NameUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
@@ -39,10 +41,10 @@ public class MallServiceImpl implements MallService {
     private MallAreaMapper areaMapper;
 
     @Resource
-    private MallQuestionMapper questionMapper;
+    private MallQuestionService mallQuestionService;
 
     @Resource
-    private MallTaskMapper taskMapper;
+    private MallTaskService taskService;
 
     @Resource
     private SysFileMapper fileMapper;
@@ -105,7 +107,6 @@ public class MallServiceImpl implements MallService {
 
             Mall mall = new Mall();
             MallArea area = new MallArea();
-            MallQuestion question = new MallQuestion();
             MallTask task = new MallTask();
 
             for (int x = 0; x < xIndex; x++) {
@@ -142,9 +143,6 @@ public class MallServiceImpl implements MallService {
             areaResult +=   saveArea(area);
 
 
-            //question信息入库
-            question.setQuestion("");
-            int qResult = saveQuestion(question);
 
             //task 信息入库
 
@@ -164,17 +162,40 @@ public class MallServiceImpl implements MallService {
             task.setUpdateDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 11, y)));
             task.setCreateDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 12, y)));
 
-            task.setOnlineDate(NameUtil.getDateCodeString(getCellValue(rowsMap,13,y)));//N
-            task.setOfflineDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 14, y)));//O
+            task.setOnlineDate(NameUtil.getDateCodeString(getCellValue(rowsMap,"N",y)));//N
+            task.setOfflineDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 14, y)));//O=14
 
-            task.setTasFinishDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 15, y)));//P
+            task.setTaskFinishDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 15, y)));//P=15
 
-            task.setBeiginDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 16, y)));// Q
-            task.setEndDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 17, y)));//R
+            task.setBeginDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 16, y)));// Q=16
+            task.setEndDate(NameUtil.getDateCodeString(getCellValue(rowsMap, 17, y)));//R=17
 
             task.setCustomerNumber(getCellValue(rowsMap,"AK",y));//AK
+            task.setAdmin(getCellValue(rowsMap,"V",y));
+            taskService.save(task);
 
-//            task.setSalary(getCellValue());
+            //question
+
+            //题目1
+
+            //从BR=69 开始 后面每隔4列就是一个问题
+            for (int questionIndex = 69; questionIndex < yIndex; ) {
+                //question信息入库
+                MallQuestion question = new MallQuestion();
+                question.setQuestion(getCellValue(rowsMap,questionIndex,y));//BR=69
+                question.setAnswer(getCellValue(rowsMap, questionIndex+1, y));
+                question.setReason(getCellValue(rowsMap, questionIndex+2, y));
+                question.setNote(getCellValue(rowsMap, questionIndex+3, y));
+                mallQuestionService.save(question);
+
+
+                questionIndex += 4;
+
+            }
+
+
+
+
         }
         //注意 行列都是从0开始的  小心越界
         return true;
@@ -192,16 +213,6 @@ public class MallServiceImpl implements MallService {
 
     }
 
-    private int saveQuestion(MallQuestion question) {
-        try {
-            return questionMapper.save(question);
-        } catch (Exception e) {
-            log.error("{}", e);
-            e.printStackTrace();
-            System.out.println("area 错误" + e.getCause());
-        }
-        return 0;
-    }
 
 
 //    /**
@@ -305,7 +316,7 @@ public class MallServiceImpl implements MallService {
     }
     private String getCellValue(Map<Integer, List<String>> rowsMap, String x, int y) {
         try {
-            return rowsMap.get(y).get(getX(x));
+            return rowsMap.get(y).get(NameUtil.convertStringToNumberAddNegative(x));
         } catch (Exception e) {
             log.error("map中取({},{})值时候出错={}", x, y, e.getCause());
             return null;

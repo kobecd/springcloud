@@ -75,12 +75,11 @@ public class NameUtil {
     public static Date getDateCodeString(String dateString) {
         try {
 //            sj:2018-12-31 19:40:33
-            sdf.format(dateString.replace("sj:", ""));
+            return sdf.parse(dateString.replace("sj:", ""));
         } catch (Exception e) {
             log.error("{}", e);
             return null;
         }
-        return null;
     }
 
     /**
@@ -191,8 +190,13 @@ public class NameUtil {
     public static void main(String[] args) {
 //        test();
 //        test3();
-        test4();
+//        test4();
+        test5();
 
+    }
+
+    private static void test5() {
+        System.out.println(convertStringToNumberAddNegative("BR"));
     }
 
     private static void test4() {
@@ -312,6 +316,17 @@ public class NameUtil {
 
 
     /**
+     * 根据string返回数字
+     * 从零开始
+     *
+     * @param str
+     * @return
+     */
+    public static Integer convertStringToNumberAddNegative(final String str) {
+        return convertStringToNumber(str) - 1;
+    }
+
+    /**
      * 根据string返回
      *
      * @param str
@@ -337,15 +352,6 @@ public class NameUtil {
             //从左往右拿
 
             return convertCharToNumber(str.toCharArray()[0]) * 26 + convertCharToNumber(str.toCharArray()[1]);
-
-//            System.out.println(str.toCharArray()[0]);
-//            System.out.println(str.toCharArray()[1]);
-//            System.out.println(str.toCharArray()[2]);
-//            System.out.println(convertCharToNumber(str.toCharArray()[0]));
-//            System.out.println(convertCharToNumber(str.toCharArray()[1]));
-
-
-
         }
         return back;
     }
@@ -366,35 +372,19 @@ public class NameUtil {
     }
 
 
-    public static void ASCIIToConvert() {
-
-        String value = "97 57 51 53 50 49 46 54 52 49 ";
-
-        StringBuffer sbu = new StringBuffer();
-        String[] chars = value.split(" ");
-        System.out.println("--------------------------");
-        for (int i = 0; i < chars.length; i++) {
-            int i1 = Integer.parseInt(chars[i]);
-            System.out.println((char) i1);
-            sbu.append((char) i1);
-        }
-        System.out.println(sbu.toString());
-
-    }
-
-
     /**
      * 该方法用来将Excel中的ABCD列转换成具体的数据
+     *
      * @param column:ABCD列名称
      * @return integer：将字母列名称转换成数字
-     * **/
+     **/
     public static int excelColStrToNum(String column) {
         int num = 0;
         int result = 0;
-        int length =column.length();
-        for(int i = 0; i < length; i++) {
+        int length = column.length();
+        for (int i = 0; i < length; i++) {
             char ch = column.charAt(length - i - 1);
-            num = (int)(ch - 'A' + 1) ;
+            num = (int) (ch - 'A' + 1);
             num *= Math.pow(26, i);
             result += num;
         }
@@ -403,9 +393,10 @@ public class NameUtil {
 
     /**
      * 该方法用来将具体的数据转换成Excel中的ABCD列
+     *
      * @param columnIndex：需要转换成字母的数字
      * @return column:ABCD列名称
-     * **/
+     **/
     public static String excelColIndexToStr(int columnIndex) {
         if (columnIndex <= 0) {
             return null;

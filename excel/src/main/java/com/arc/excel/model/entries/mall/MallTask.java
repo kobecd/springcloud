@@ -17,15 +17,15 @@ public class MallTask extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;// 主键ID
+    private Long mallId;//mall的id，做关联
 
-//    新加字段
+
+    //    新加字段
     private Long workId;// 工单id
-    private Long mallId;// 任务id
     private String taskArea;//任务所在区域 AC
 
-    //@todo begin
-    private Date beiginDate;// 用户开始时间
-    private Date tasFinishDate;// 任务结束时间
+    private Date beginDate;// 用户开始时间
+    private Date taskFinishDate;// 任务结束时间
 
 
     private String title;// 任务标题
@@ -55,7 +55,7 @@ public class MallTask extends BaseModel {
 	private Integer limitTime;// 限时（任务完成时限，单位：min）
 	private Integer costTime;// 耗时（做单时长，单位：min）
 	private Integer reviewTime;// 审核实际（审单时间）单位：min
-	private String admin;// 管理员
+	private String admin;// 管理员V
 	private Integer needWorkerNumbewr;// 需要人数
 	private String customerNumber;// 客户编号 AK
 	private Integer canPriority;// 是否金牌用户优先
@@ -72,8 +72,6 @@ public class MallTask extends BaseModel {
 
     private Date onlineDate;// 任务上线时间
 	private Date offlineDate;// 任务下线时间
-
-
 
 
     //

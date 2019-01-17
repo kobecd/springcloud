@@ -6,6 +6,8 @@ logback:
 
 
 spring:
+  application:
+    name: EXCEL解析
   profiles:
     active: dev #这里指定激活那个配置的空间
   resources:
