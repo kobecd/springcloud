@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-@RequestMapping("/log")
+@RequestMapping("/cache")
 public class CacheController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class CacheController {
         long start = System.currentTimeMillis();
         PullLog pullLog = pullLogService.get(id);
         log.info("------------------------------------");
-        log.info("get data  use {} ms ", System.currentTimeMillis() - start);
+        log.info("Get data  use {} ms ", System.currentTimeMillis() - start);
         log.info("------------------------------------");
         return pullLog;
     }
@@ -57,7 +57,6 @@ public class CacheController {
     @RequestMapping("/query")
     public Object query(@RequestBody PullLogQuery query) {
         log.debug("结果={}",query);
-        log.debug("结果={}",query.getName());
         return pullLogService.listByPullLogQuery(query);
     }
 

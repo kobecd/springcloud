@@ -2,6 +2,7 @@ package com.arc.cache.model.query;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
  */
 @Setter
 @Getter
+@ToString
 public class PullLogQuery  implements Serializable {
 
     private Integer id;// 日志主键

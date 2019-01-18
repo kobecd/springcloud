@@ -55,7 +55,7 @@
     <insert id="save" parameterType="com.arc.cache.model.domain.PullLog" useGeneratedKeys="true" keyProperty="id">
             INSERT INTO pull_log (
                 success,
-                name,
+                `name`,
                 source_address,
                 operator,
                 remark,
