@@ -17,3 +17,6 @@
 `printf("输出”);`
 
 ************
+
+[测试](https://blog.daliansky.net/macOS-Mojave-10.14-18A391-official-version-with-Clover-4674-original-image.html)
+[测试clover](https://github.com/sqlsec/clover)
