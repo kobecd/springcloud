@@ -1,4 +1,4 @@
-package com.arc.jpa.model;
+package com.arc.jpa.model.domain;
 
 import lombok.Getter;
 import lombok.Setter;

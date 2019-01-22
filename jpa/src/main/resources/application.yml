@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 9001
 
 spring:
   #  devtools:
@@ -7,21 +7,9 @@ spring:
   #      port: 35739
   #35729
   application:
-    name: s-jpa
+    name: jpa
   profiles:
     active: dev
-
-
-#swagger2配置
-#swagger2:
-#  base-package: cn.net.yodoo.gree.ms.api.controller
-#  title: API接口文档
-#  description:
-#  version: 1.0.0
-#  terms-of-service-url: http://www.feikongbao.com/
-#  contact-name:
-#  contact-url:
-#  contact-email:
 
 
 ---
