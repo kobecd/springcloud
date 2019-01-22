@@ -1,6 +1,6 @@
-package com.arc.securityinmemory.model.entries.sys;
+package com.arc.securityinmemory.model.domain.sys;
 
-import com.arc.securityinmemory.model.entries.BaseModel;
+import com.arc.securityinmemory.model.domain.BaseModel;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package com.arc.securityinmemory.model.entries;
+package com.arc.securityinmemory.model.domain;
 
 import lombok.Getter;
 import lombok.Setter;

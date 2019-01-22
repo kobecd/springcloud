@@ -45,7 +45,7 @@ public class IndexController {
                 "\n" +
                 "Single Thread Rating: 1930\n" +
                 "Samples: 32*\n" +
-                "*Margin for error: Low\n";
+                "*Margin for error1: Low\n";
 
         String replace = raw.replace("\n", "");
         System.out.println(replace);
