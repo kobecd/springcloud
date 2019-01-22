@@ -33,15 +33,15 @@
 				var message = errors == 1
 					? 'You missed 1 field. It has been highlighted below'
 					: 'You missed ' + errors + ' fields.  They have been highlighted below';
-				$("div.error span").html(message);
-				$("div.error").show();
+				$("div.error1 span").html(message);
+				$("div.error1").show();
 			} else {
-				$("div.error").hide();
+				$("div.error1").hide();
 			}
 		},
 		onkeyup: false,
 		submitHandler: function() {
-			$("div.error").hide();
+			$("div.error1").hide();
 			alert("submit! use link below to go to the other step");
 		},
 		messages: {

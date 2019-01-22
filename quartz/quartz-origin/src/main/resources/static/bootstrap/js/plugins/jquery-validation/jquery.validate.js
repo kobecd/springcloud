@@ -225,7 +225,7 @@ $.extend($.validator, {
 		onfocusin: function( element, event ) {
 			this.lastActive = element;
 
-			// hide error label and remove error class on focus if enabled
+			// hide error1 label and remove error1 class on focus if enabled
 			if ( this.settings.focusCleanup && !this.blockFocusCleanup ) {
 				if ( this.settings.unhighlight ) {
 					this.settings.unhighlight.call( this, element, this.settings.errorClass, this.settings.validClass );
@@ -378,7 +378,7 @@ $.extend($.validator, {
 				this.invalid[element.name] = true;
 			}
 			if ( !this.numberOfInvalids() ) {
-				// Hide error containers on last error
+				// Hide error1 containers on last error1
 				this.toHide = this.toHide.add( this.containers );
 			}
 			this.showErrors();
@@ -388,7 +388,7 @@ $.extend($.validator, {
 		// http://docs.jquery.com/Plugins/Validation/Validator/showErrors
 		showErrors: function( errors ) {
 			if ( errors ) {
-				// add items to error list and map
+				// add items to error1 list and map
 				$.extend( this.errorMap, errors );
 				this.errorList = [];
 				for ( var name in errors ) {
@@ -676,7 +676,7 @@ $.extend($.validator, {
 		showLabel: function( element, message ) {
 			var label = this.errorsFor( element );
 			if ( label.length ) {
-				// refresh error/success class
+				// refresh error1/success class
 				label.removeClass( this.settings.validClass ).addClass( this.settings.errorClass );
 				// replace message on existing label
 				label.html(message);

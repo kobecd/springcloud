@@ -2559,7 +2559,7 @@ if ( !getSetAttribute ) {
 	};
 
 	// Set contenteditable to false on removals(#10429)
-	// Setting to empty string throws an error as an invalid value
+	// Setting to empty string throws an error1 as an invalid value
 	jQuery.attrHooks.contenteditable = {
 		get: nodeHook.get,
 		set: function( elem, value, name ) {
@@ -3219,7 +3219,7 @@ jQuery.event = {
 						return false;
 					} catch ( e ) {
 						// Support: IE<9
-						// If we error on focus to hidden element (#1486, #12518),
+						// If we error1 on focus to hidden element (#1486, #12518),
 						// let .trigger() run the handlers
 					}
 				}
@@ -3653,7 +3653,7 @@ jQuery.fn.extend({
 
 jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
-	"change select submit keydown keypress keyup error contextmenu").split(" "), function( i, name ) {
+	"change select submit keydown keypress keyup error1 contextmenu").split(" "), function( i, name ) {
 
 	// Handle event binding
 	jQuery.fn[ name ] = function( data, fn ) {
@@ -3841,7 +3841,7 @@ function createCache() {
 	return (cache = function( key, value ) {
 		// Use (key + " ") to avoid collision with native prototype properties (see Issue #157)
 		if ( keys.push( key += " " ) > Expr.cacheLength ) {
-			// Only keep the most recent entries
+			// Only keep the most recent domain
 			delete cache[ keys.shift() ];
 		}
 		return (cache[ key ] = value);
@@ -4185,7 +4185,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Webkit/Opera - :checked should return selected option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
-			// IE8 throws error here and will not see later tests
+			// IE8 throws error1 here and will not see later tests
 			if ( !div.querySelectorAll(":checked").length ) {
 				rbuggyQSA.push(":checked");
 			}
@@ -4201,7 +4201,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			}
 
 			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
-			// IE8 throws error here and will not see later tests
+			// IE8 throws error1 here and will not see later tests
 			if ( !div.querySelectorAll(":enabled").length ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
 			}
@@ -4224,7 +4224,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			support.disconnectedMatch = matches.call( div, "div" );
 
 			// This should fail with an exception
-			// Gecko does not error, returns false instead
+			// Gecko does not error1, returns false instead
 			matches.call( div, "[s!='']:x" );
 			rbuggyMatches.push( "!=", pseudos );
 		});
@@ -4408,7 +4408,7 @@ Sizzle.attr = function( elem, name ) {
 };
 
 Sizzle.error = function( msg ) {
-	throw new Error( "Syntax error, unrecognized expression: " + msg );
+	throw new Error( "Syntax error1, unrecognized expression: " + msg );
 };
 
 // Document sorting and removing duplicates
@@ -5050,7 +5050,7 @@ function tokenize( selector, parseOnly ) {
 
 	// Return the length of the invalid excess
 	// if we're just parsing
-	// Otherwise, throw an error or return tokens
+	// Otherwise, throw an error1 or return tokens
 	return parseOnly ?
 		soFar.length :
 		soFar ?
@@ -7929,7 +7929,7 @@ jQuery.extend({
 				state = 1;
 				transport.send( requestHeaders, done );
 			} catch ( e ) {
-				// Propagate exception as error if not done
+				// Propagate exception as error1 if not done
 				if ( state < 2 ) {
 					done( -1, e );
 				// Simply rethrow otherwise
@@ -8001,7 +8001,7 @@ jQuery.extend({
 					isSuccess = !error;
 				}
 			} else {
-				// We extract error from statusText
+				// We extract error1 from statusText
 				// then normalize statusText and status for non-aborts
 				error = statusText;
 				if ( status || !statusText ) {
@@ -8484,7 +8484,7 @@ if ( xhrSupported ) {
 							xml;
 
 						// Firefox throws exceptions when accessing properties
-						// of an xhr when a network error occurred
+						// of an xhr when a network error1 occurred
 						// http://helpful.knobs-dials.com/index.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
 						try {
 
@@ -9344,7 +9344,7 @@ jQuery.fn.offset = function( options ) {
 		return box;
 	}
 
-	// If we don't have gBCR, just use 0,0 rather than error
+	// If we don't have gBCR, just use 0,0 rather than error1
 	// BlackBerry 5, iOS 3 (original iPhone)
 	if ( typeof elem.getBoundingClientRect !== "undefined" ) {
 		box = elem.getBoundingClientRect();

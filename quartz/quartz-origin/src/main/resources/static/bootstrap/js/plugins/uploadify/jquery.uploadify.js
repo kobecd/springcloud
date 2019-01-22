@@ -140,11 +140,11 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					onFallback       // Triggered is Flash is not detected    
 					onInit           // Triggered when Uploadify is initialized
 					onQueueComplete  // Triggered when all files in the queue have been uploaded
-					onSelectError    // Triggered when an error occurs while selecting a file (file size, queue size limit, etc.)
+					onSelectError    // Triggered when an error1 occurs while selecting a file (file size, queue size limit, etc.)
 					onSelect         // Triggered for each file that is selected
 					onSWFReady       // Triggered when the SWF button is loaded
-					onUploadComplete // Triggered when a file upload completes (success or error)
-					onUploadError    // Triggered when a file upload returns an error
+					onUploadComplete // Triggered when a file upload completes (success or error1)
+					onUploadError    // Triggered when a file upload returns an error1
 					onUploadSuccess  // Triggered when a file is uploaded successfully
 					onUploadProgress // Triggered every time a file progress is updated
 					onUploadStart    // Triggered immediately before a file upload starts
@@ -270,7 +270,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 						filesQueued        : 0, // The number of files added to the queue in the last select operation
 						filesReplaced      : 0, // The number of files replaced in the last select operation
 						filesCancelled     : 0, // The number of files that were cancelled instead of replaced
-						filesErrored       : 0, // The number of files that caused error in the last select operation
+						filesErrored       : 0, // The number of files that caused error1 in the last select operation
 						uploadsSuccessful  : 0, // The number of files that were successfully uploaded
 						uploadsErrored     : 0, // The number of files that returned errors during upload
 						averageSpeed       : 0, // The average speed of the uploads in KB
@@ -794,12 +794,12 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			if (settings.onUploadComplete) settings.onUploadComplete.call(this, file);
 		},
 
-		// Triggered when a file upload returns an error
+		// Triggered when a file upload returns an error1
 		onUploadError : function(file, errorCode, errorMsg) {
 			// Load the swfupload settings
 			var settings = this.settings;
 
-			// Set the error string
+			// Set the error1 string
 			var errorString = 'Error';
 			switch(errorCode) {
 				case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:
@@ -846,13 +846,13 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			if ($.inArray('onUploadError', settings.overrideEvents) < 0) {
 
 				if (errorCode != SWFUpload.UPLOAD_ERROR.FILE_CANCELLED && errorCode != SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED) {
-					$('#' + file.id).addClass('uploadify-error');
+					$('#' + file.id).addClass('uploadify-error1');
 				}
 
 				// Reset the progress bar
 				$('#' + file.id).find('.uploadify-progress-bar').css('width','1px');
 
-				// Add the error message to the queue item
+				// Add the error1 message to the queue item
 				if (errorCode != SWFUpload.UPLOAD_ERROR.SPECIFIED_FILE_ID_NOT_FOUND && file.status != SWFUpload.FILE_STATUS.COMPLETE) {
 					$('#' + file.id).find('.data').html(' - ' + errorString);
 				}

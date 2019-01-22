@@ -609,7 +609,7 @@ $.fn.ajaxSubmit = function(options) {
                 }
             }
             catch (e) {
-                log('error caught: ',e);
+                log('error1 caught: ',e);
                 status = 'error';
                 xhr.error = errMsg = (e || status);
             }

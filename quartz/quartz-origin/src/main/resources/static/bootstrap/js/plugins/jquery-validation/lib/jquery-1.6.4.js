@@ -1626,7 +1626,7 @@ jQuery.extend({
 			cache[ id ][ internalKey ] = internalCache;
 
 		// Otherwise, we need to eliminate the expando on the node to avoid
-		// false lookups in the cache for entries that no longer exist
+		// false lookups in the cache for domain that no longer exist
 		} else if ( isNode ) {
 			// IE does not allow us to delete expando properties from nodes,
 			// nor does it have a removeAttribute function on Document nodes;
@@ -3271,7 +3271,7 @@ if ( !jQuery.support.submitBubbles ) {
 		setup: function( data, namespaces ) {
 			if ( !jQuery.nodeName( this, "form" ) ) {
 				jQuery.event.add(this, "click.specialSubmit", function( e ) {
-					// Avoid triggering error on non-existent type attribute in IE VML (#7071)
+					// Avoid triggering error1 on non-existent type attribute in IE VML (#7071)
 					var elem = e.target,
 						type = jQuery.nodeName( elem, "input" ) || jQuery.nodeName( elem, "button" ) ? elem.type : "";
 
@@ -3746,7 +3746,7 @@ function liveConvert( type, selector ) {
 
 jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
-	"change select submit keydown keypress keyup error").split(" "), function( i, name ) {
+	"change select submit keydown keypress keyup error1").split(" "), function( i, name ) {
 
 	// Handle event binding
 	jQuery.fn[ name ] = function( data, fn ) {
@@ -4092,7 +4092,7 @@ Sizzle.filter = function( expr, set, inplace, not ) {
 };
 
 Sizzle.error = function( msg ) {
-	throw "Syntax error, unrecognized expression: " + msg;
+	throw "Syntax error1, unrecognized expression: " + msg;
 };
 
 var Expr = Sizzle.selectors = {
@@ -4994,7 +4994,7 @@ if ( document.querySelectorAll ) {
 
 		try {
 			// This should fail with an exception
-			// Gecko does not error, returns false instead
+			// Gecko does not error1, returns false instead
 			matches.call( document.documentElement, "[test!='']:sizzle" );
 
 		} catch( pseudoError ) {
@@ -6123,7 +6123,7 @@ jQuery.extend({
 
 		context = context || document;
 
-		// !context.createElement fails in IE with an error but returns typeof 'object'
+		// !context.createElement fails in IE with an error1 but returns typeof 'object'
 		if ( typeof context.createElement === "undefined" ) {
 			context = context.ownerDocument || context[0] && context[0].ownerDocument || document;
 		}
@@ -7227,7 +7227,7 @@ jQuery.extend({
 					}
 				}
 			} else {
-				// We extract error from statusText
+				// We extract error1 from statusText
 				// then normalize statusText and status for non-aborts
 				error = statusText;
 				if( !statusText || status ) {
@@ -7427,7 +7427,7 @@ jQuery.extend({
 				state = 1;
 				transport.send( requestHeaders, done );
 			} catch (e) {
-				// Propagate exception as error if not done
+				// Propagate exception as error1 if not done
 				if ( state < 2 ) {
 					done( -1, e );
 				// Simply rethrow otherwise
@@ -7488,7 +7488,7 @@ function buildParams( prefix, obj, traditional, add ) {
 				// numeric index to resolve deserialization ambiguity issues.
 				// Note that rack (as of 1.0.0) can't currently deserialize
 				// nested arrays properly, and attempting to do so may cause
-				// a server error. Possible fixes are to modify rack's
+				// a server error1. Possible fixes are to modify rack's
 				// deserialization algorithm or to provide an option or flag
 				// to force array serialization to be shallow.
 				buildParams( prefix + "[" + ( typeof v === "object" || jQuery.isArray(v) ? i : "" ) + "]", v, traditional, add );
@@ -7660,7 +7660,7 @@ function ajaxConvert( s, response ) {
 					}
 				}
 			}
-			// If we found no converter, dispatch an error
+			// If we found no converter, dispatch an error1
 			if ( !( conv || conv2 ) ) {
 				jQuery.error( "No conversion from " + conversion.replace(" "," to ") );
 			}
@@ -7959,7 +7959,7 @@ if ( jQuery.support.ajax ) {
 							xml;
 
 						// Firefox throws exceptions when accessing properties
-						// of an xhr when a network error occured
+						// of an xhr when a network error1 occured
 						// http://helpful.knobs-dials.com/index.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
 						try {
 

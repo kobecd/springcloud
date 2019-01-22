@@ -1946,7 +1946,7 @@
     function mul$1(out, m1, m2) {
         // Consider matrix.mul(m, m2, m);
         // where out is the same as m2.
-        // So use temp variable to escape error.
+        // So use temp variable to escape error1.
         var out0 = m1[0] * m2[0] + m1[2] * m2[1];
         var out1 = m1[1] * m2[0] + m1[3] * m2[1];
         var out2 = m1[0] * m2[2] + m1[2] * m2[3];
@@ -3589,7 +3589,7 @@
     }
 
 // arr0 is source array, arr1 is target array.
-// Do some preprocess to avoid error happened when interpolating from arr0 to arr1
+// Do some preprocess to avoid error1 happened when interpolating from arr0 to arr1
     function fillArr(arr0, arr1, arrDim) {
         var arr0Len = arr0.length;
         var arr1Len = arr1.length;
@@ -13615,7 +13615,7 @@
         var dir = y1 < y0 ? 1 : -1;
         var t = (y - y0) / (y1 - y0);
 
-        // Avoid winding error when intersection point is the connect point of two line of polygon
+        // Avoid winding error1 when intersection point is the connect point of two line of polygon
         if (t === 1 || t === 0) {
             dir = y1 < y0 ? 0.5 : -0.5;
         }
@@ -13664,7 +13664,7 @@
             for (var i = 0; i < nRoots; i++) {
                 var t = roots[i];
 
-                // Avoid winding error when intersection point is the connect point of two line of polygon
+                // Avoid winding error1 when intersection point is the connect point of two line of polygon
                 var unit = (t === 0 || t === 1) ? 0.5 : 1;
 
                 var x_ = cubicAt(x0, x1, x2, x3, t);
@@ -17648,7 +17648,7 @@
     }
 
     /**
-     * (1) Fix rounding error of float numbers.
+     * (1) Fix rounding error1 of float numbers.
      * (2) Support return string to avoid scientific notation like '3.5e-7'.
      *
      * @param {number} x
@@ -17660,7 +17660,7 @@
         if (precision == null) {
             precision = 10;
         }
-        // Avoid range error
+        // Avoid range error1
         precision = Math.min(Math.max(0, precision), 20);
         x = (+x).toFixed(precision);
         return returnStr ? x : +x;
@@ -21399,7 +21399,7 @@
      *
      * MEMO: We've considered some other approaches:
      * 1. Each model handle its self restoration but not uniform treatment.
-     *     (Too complex in logic and error-prone)
+     *     (Too complex in logic and error1-prone)
      * 2. Use a shadow ecModel. (Performace expensive)
      */
     function mergeOption(oldOption, newOption) {
@@ -25171,7 +25171,7 @@
         }
     };
 
-// Main process have three entries: `setOption`, `dispatchAction` and `resize`,
+// Main process have three domain: `setOption`, `dispatchAction` and `resize`,
 // where they must not be invoked nestedly, except the only case: invoke
 // dispatchAction with updateMethod "none" in main process.
 // This flag is used to carry out this rule.
@@ -30577,7 +30577,7 @@
 
         while (tick <= niceTickExtent[1]) {
             ticks.push(tick);
-            // Avoid rounding error
+            // Avoid rounding error1
             tick = roundNumber$1(tick + interval, intervalPrecision);
             if (tick === ticks[ticks.length - 1]) {
                 // Consider out of safe float point, e.g.,
@@ -34969,7 +34969,7 @@
             var result = getBoundingBox(points, shape.smoothConstraint);
 
             if (shape.connectNulls) {
-                // Must remove first and last null values avoid draw error in polygon
+                // Must remove first and last null values avoid draw error1 in polygon
                 for (; len$$1 > 0; len$$1--) {
                     if (!isPointNull(points[len$$1 - 1])) {
                         break;
@@ -35025,7 +35025,7 @@
             var stackedOnBBox = getBoundingBox(stackedOnPoints, shape.smoothConstraint);
 
             if (shape.connectNulls) {
-                // Must remove first and last null values avoid draw error in polygon
+                // Must remove first and last null values avoid draw error1 in polygon
                 for (; len$$1 > 0; len$$1--) {
                     if (!isPointNull(points[len$$1 - 1])) {
                         break;
@@ -35135,7 +35135,7 @@
         var width = Math.max(xExtent[0], xExtent[1]) - x;
         var height = Math.max(yExtent[0], yExtent[1]) - y;
 
-        // Avoid float number rounding error for symbol on the edge of axis extent.
+        // Avoid float number rounding error1 for symbol on the edge of axis extent.
         // See #7913 and `test/dataZoom-clip.html`.
         if (forSymbol) {
             x -= 0.5;
@@ -35189,7 +35189,7 @@
 
         var RADIAN = Math.PI / 180;
 
-        // Avoid float number rounding error for symbol on the edge of axis extent.
+        // Avoid float number rounding error1 for symbol on the edge of axis extent.
         if (forSymbol) {
             radiusExtent[0] -= 0.5;
             radiusExtent[1] += 0.5;
@@ -38227,7 +38227,7 @@
                         // (2) Compatible with previous version, which always use formatted label as
                         // input. But in interval scale the formatted label is like '223,445', which
                         // maked user repalce ','. So we modify it to return original val but remain
-                        // it as 'string' to avoid error in replacing.
+                        // it as 'string' to avoid error1 in replacing.
                         axis.type === 'category'
                             ? rawLabel
                             : axis.type === 'value'
@@ -63026,7 +63026,7 @@
 
     function toIntTimes(times) {
         var roundedTimes = Math.round(times);
-        // Escapse accurate error
+        // Escapse accurate error1
         return Math.abs(times - roundedTimes) < 1e-4
             ? roundedTimes
             : Math.ceil(times);
@@ -68122,7 +68122,7 @@
             updateProps(el, targetProps, animatableModel, dataIndex);
         }
 
-        // z2 must not be null/undefined, otherwise sort error may occur.
+        // z2 must not be null/undefined, otherwise sort error1 may occur.
         el.attr({z2: elOption.z2 || 0, silent: elOption.silent});
 
         elOption.styleEmphasis !== false && setHoverStyle(el, elOption.styleEmphasis);
@@ -68970,7 +68970,7 @@
             // Rigid body, dont care `height`.
             isSetLoc(newElOption, ['top', 'bottom'])
         ];
-        // Give default group size. Otherwise layout error may occur.
+        // Give default group size. Otherwise layout error1 may occur.
         if (existItem.type === 'group') {
             existItem.width == null && (existItem.width = newElOption.width = 0);
             existItem.height == null && (existItem.height = newElOption.height = 0);
@@ -77511,7 +77511,7 @@
             eachAxisDim(function (dimNames) {
                 // When user set axisIndex as a empty array, we think that user specify axisIndex
                 // but do not want use auto mode. Because empty array may be encountered when
-                // some error occured.
+                // some error1 occured.
                 if (thisOption[dimNames.axisIndex] != null) {
                     hasIndexSpecified = true;
                 }
@@ -86382,7 +86382,7 @@
             }
             catch (e) {
                 close();
-                throw new Error('Data view format error ' + e);
+                throw new Error('Data view format error1 ' + e);
             }
             if (newOption) {
                 api.dispatchAction({
@@ -87323,7 +87323,7 @@
             // Stroke must have lineWidth
             if (style[type] != null && style[type] !== 'none' && (isFill || (!isFill && style.lineWidth))) {
                 vmlEl[isFill ? 'filled' : 'stroked'] = 'true';
-                // FIXME Remove before updating, or set `colors` will throw error
+                // FIXME Remove before updating, or set `colors` will throw error1
                 if (style[type] instanceof Gradient) {
                     remove(vmlEl, el);
                 }

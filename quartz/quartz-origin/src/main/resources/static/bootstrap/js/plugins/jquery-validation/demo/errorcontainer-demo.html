@@ -46,7 +46,7 @@ $().ready(function() {
 	$("#form1").validate({
 		errorLabelContainer: $("#form1 div.error")
 	});
-	
+
 	var container = $('div.container');
 	// validate the form when it is submitted
 	var validator = $("#form2").validate({
@@ -55,7 +55,7 @@ $().ready(function() {
 		wrapper: 'li',
 		meta: "validate"
 	});
-	
+
 	$(".cancel").click(function() {
 		validator.resetForm();
 	});
@@ -87,7 +87,7 @@ $().ready(function() {
 	</fieldset>
 </form>
 
-<!-- our error container -->
+<!-- our error1 container -->
 <div class="container">
 	<h4>There are serious errors in your form submission, please see below for details.</h4>
 	<ol>

@@ -723,7 +723,7 @@ $.fn.ajaxSubmit = function(options) {
                 }
             }
             catch (err) {
-                log('error caught: ',err);
+                log('error1 caught: ',err);
                 status = 'error';
                 xhr.error = errMsg = (err || status);
             }

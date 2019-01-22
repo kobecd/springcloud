@@ -25,7 +25,7 @@ swagger:
   description: API文档
   base-package:  com.op.copyems.Controller
   base-path: /**
-  exclude-path: /error
+  exclude-path: /error1
   version: @project.version@
 
 
