@@ -1,5 +1,7 @@
 package com.arc.async.service;
 
+import java.util.concurrent.Future;
+
 /**
  * @description:
  * @author: yechao
@@ -16,4 +18,8 @@ public interface PlanService {
     boolean sandMail(long id);
 
     void sandMailV2(long id);
+
+    Future sandMailV3(long l);
+
+
 }

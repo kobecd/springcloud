@@ -3,9 +3,12 @@ package com.arc.async.service.impl;
 import com.arc.async.service.PlanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.concurrent.Future;
 
 /**
  * @description:
@@ -32,6 +35,20 @@ public class PlanServiceImpl implements PlanService {
         log.debug("#######################");
         log.debug("{}", back);
         log.debug("#######################");
+    }
+
+
+    @Override
+    @Async
+    public Future sandMailV3(long id) {
+        String url = "http://127.0.0.1:9001/test/v1?id=12";
+        String back = get(url);
+        log.debug("#######################");
+        log.debug("{}", back);
+        log.debug("#######################");
+
+        return new AsyncResult<>(String.format("这个是第{%s}个异步调用的证书", id));
+
     }
 
     @Async
