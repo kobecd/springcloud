@@ -156,6 +156,7 @@
         <module>sso</module>
         <module>cache</module>
         <module>quartz</module>
+        <module>ms</module>
     </modules>
 
 
