@@ -1,0 +1,59 @@
+server:
+  port: 8001
+
+
+logback:
+  dir: /log
+
+
+spring:
+  application:
+    name: ws
+  profiles:
+    active: dev #这里指定激活那个配置的空间
+  resources:
+    add-mappings: false
+    static-locations: classpath:/static/,classpath:/templates/index/
+  #   static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  #,file:${web.upload-path},file:${web.vue-path}
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /static/**
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    #https://blog.csdn.net/zoeou/article/details/78629032
+
+
+
+
+#配置日志
+#  这里日志用xml去配置
+
+test:
+#  key1:
+
+
+
+########################################################
+#          不同环境         Environment for Localhost  注意：数据配置在这里
+########################################################
+---
+spring:
+  profiles: dev
+
+########################################################
+#          不同环境         Environment for      注意：数据配置在这里
+########################################################
+---
+spring:
+  profiles: test
+########################################################
+#          不同环境         Environment for      注意：数据配置在这里
+########################################################
+---
+spring:
+  profiles: prod

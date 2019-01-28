@@ -49,7 +49,7 @@ public class MallController {
      * 方法： DELETE
      * http://lip:port/mall/1
      *
-     * @return
+     * @return String
      */
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable Long id) {

@@ -14,7 +14,8 @@ import java.util.List;
  * @author: yechao
  * @date: 2019/1/17 22:38
  */
-@Service@Slf4j
+@Service
+@Slf4j
 public class MallTaskServiceImpl implements MallTaskService {
 
     @Autowired
@@ -26,7 +27,7 @@ public class MallTaskServiceImpl implements MallTaskService {
             int save = mallTaskMapper.save(task);
             return save == 0 ? null : task.getId();
         } catch (Exception e) {
-            log.error("##########################mallTaskMapper.save出错={}",e);
+            log.error("##########################mallTaskMapper.save出错={}", e);
         }
         return null;
     }

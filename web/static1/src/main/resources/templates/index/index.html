@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/common/index :: index">
+</head>
+<body class="easyui-layout">
+<div id="divHeader" data-options="region:'north'"></div>
+<div id="divMenuBar" data-options="region:'west'"></div>
+<div id="divFooter" data-options="region:'south'"></div>
+<div id="divContent" data-options="region:'center'">
+    <div id="tabs">
+        <div title="欢迎使用" style="padding:20px;overflow:hidden;" id="home">
+            <h1>欢迎<span type="text" th:text="${username}"/>使用智慧家庭后台管理系统</h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>

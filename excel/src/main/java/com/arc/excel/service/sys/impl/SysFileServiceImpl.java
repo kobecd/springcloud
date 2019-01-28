@@ -3,20 +3,19 @@ package com.arc.excel.service.sys.impl;
 import com.arc.excel.mapper.SysFileMapper;
 import com.arc.excel.model.entries.sys.SysFile;
 import com.arc.excel.service.sys.SysFileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @description:
  * @author: yechao
- * @date: 2019/1/13 19:41
+ * @since : 2019/1/13 19:41
  */
 @Service
 public class SysFileServiceImpl implements SysFileService {
 
-    @Autowired
+    @Resource
     private SysFileMapper sysFileMapper;
 
 

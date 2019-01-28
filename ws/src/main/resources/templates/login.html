@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>login</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/static/css/main.css" th:href="@{/static/css/main.css}"/>
+</head>
+<body>
+
+
+
+<div>
+    <h1>login</h1>
+</div>
+
+<br>
+
+<h1>Login page</h1>
+<p>Example user: user / password</p>
+
+
+
+
+<form th:action="@{/login}" method="post">
+    <label for="username">Username</label>:
+    <input type="text" id="username" name="username" autofocus="autofocus"/> <br/>
+    <label for="password">Password</label>:
+    <input type="password" id="password" name="password"/> <br/>
+    <input type="submit" value="Log in"/>
+</form>
+<p><a href="/" th:href="@{/}">Back to home page</a></p>
+</body>
+<script type="text/javascript">
+    let url="ws://malebazi.com/adaptor/saleclue/call/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vdWNjYy5jYyIsInRlbmFudElkIjo0NywidWlkIjoxMTYwMSwiZXhwIjozNjc0NjQxMTc3LCJpYXQiOjE1MjcxNTc1MzB9.2f_oRHkh7zzxTwGxo_FQkZfLD4bAy50YfUA-nctdHuM";
+    const socket = new WebSocket(url);
+    // Connection opened
+    socket.addEventListener('open', function (event) {
+        alert("链接成功")
+        socket.send('{"type":"idle","callId":"123"}');
+    });
+    socket.onerror=e=>{
+        alert("error")
+    }
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+        console.log('Message from server', event.data);
+    });
+
+    socket.addEventListener('close', function (event) {
+        alert("关闭成功")
+    });
+
+</script>
+</html>

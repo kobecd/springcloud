@@ -1,0 +1,26 @@
+server:
+  port: 8006
+
+spring:
+  profiles:
+    active: local    #这里指定激活那个配置的空间
+
+swagger:
+  print-init: true
+  enabled: true
+  docket:
+    base-package:  com.arc.swagger3.controller
+
+#  title: ms-API
+#  description: API文档
+#  base-path: /**
+#  exclude-path: /error
+#  version: @project.version@
+
+
+########################################################
+#          不同环境         Environment for Localhost  注意：数据配置在这里
+########################################################
+---
+spring:
+  profiles: local

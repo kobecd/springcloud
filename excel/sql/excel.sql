@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 80012
  Source Host           : 127.0.0.1:3306
- Source Schema         : excel
+ Source Schema         : swagger3
 
  Target Server Type    : MySQL
  Target Server Version : 80012

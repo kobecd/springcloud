@@ -1,7 +1,5 @@
 package com.arc.excel.model.enums;
 
-//import com.baomidou.mybatisplus.extension.api.IErrorCode;
-
 /**
  * 错误码
  *

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/login/vegas.min.css" />
+    <link rel="stylesheet" href="/css/login/login.css" />
+    <title>登录Login</title>
+</head>
+<body>
+<div id="container">
+    <div id="wrapper">
+        <div id="login" class="animate form">
+            <form action="#" autocomplete="on">
+                <h1>Log in</h1>
+                <p class="user">
+                    <label for="username"  data-icon="u"> 用户名： </label>
+                    <input id="username" name="username" required="required" type="text" placeholder="eg. Zhang Shan"/>
+                    <span class="verify">请输入用户名</span>
+                </p>
+                <p class="pass">
+                    <label for="password"  data-icon="p"> 密&emsp;码： </label>
+                    <input id="password" name="password" required="required" type="password" placeholder="eg. Zhang Shan"/>
+                    <span class="verify">请输入密码</span>
+                </p>
+                <p class="login button">
+                    <input type="button" value="Login" id="loginIn"/>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/easyui/jquery.min.js"></script>
+<script src="/js/login/vegas.min.js"></script>
+<script src="/js/login/login.js"></script>
+</body>
+
+</html>

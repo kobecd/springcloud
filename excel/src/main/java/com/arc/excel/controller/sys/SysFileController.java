@@ -16,9 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.*;
 
 /**
- * @description: 文件上传接口
- * @author: yechao
- * @date: 2019/1/13 17:51
+ * 文件上传接口
+ *
+ * @author May
+ * @since : 2019/1/13 17:51
  */
 @Slf4j
 @RestController
@@ -30,7 +31,7 @@ public class SysFileController {
 
     @PostMapping("/upload/v1")
     public ResponseVo uploadV1(MultipartFile file) {
-        String toDiskPath = null;
+        String toDiskPath;
         //需求判断文件是否为空
         if (file == null || file.isEmpty()) {
             log.info("上传失败，文件或者路径为空！");
@@ -52,8 +53,8 @@ public class SysFileController {
             SysFile sysFile = new SysFile();
             String fileName = toDiskPath.substring(toDiskPath.lastIndexOf(File.separator) + 1);
             String fileSuffix = toDiskPath.substring(toDiskPath.lastIndexOf(FileWriteUtil.EXTENSION_SEPARATOR) + 1);
-            System.out.println("fileName-------->"+fileName);
-            System.out.println("fileSuffix-------->"+fileSuffix);
+            System.out.println("fileName-------->" + fileName);
+            System.out.println("fileSuffix-------->" + fileSuffix);
             sysFile.setName(fileName);
             sysFile.setSuffix(fileSuffix);
             sysFile.setNote(toDiskPath);

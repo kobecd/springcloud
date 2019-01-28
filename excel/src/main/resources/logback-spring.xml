@@ -86,7 +86,7 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
 
 
     <!--logback.LogbackDemo：类的全路径  范围有重叠的话，范围小的（更具体的），有效-->
-    <logger name="com.arc.excel" level="DEBUG" additivity="false"/>
+    <logger name="com.arc.swagger3" level="DEBUG" additivity="false"/>
 
 
     <!--<logger name="com.car.app" level="#logback.loglevel#"/>-->
@@ -101,14 +101,14 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
     <!--根据 application.yml增加环境选择的配置active: dev
     active 的环境，自动采用上面配置的springProfile的 logger 日志-->
     <springProfile name="test,dev">
-        <logger name="com.arc.excel.controller" level="DEBUG" additivity="false">
+        <logger name="com.arc.swagger3.controller" level="DEBUG" additivity="false">
             <appender-ref ref="consoleLog"/>
         </logger>
     </springProfile>
 
     <!-- 生产环境. -->
     <springProfile name="prod">
-        <logger name="com.arc.excel.controller" level="INFO" additivity="false">
+        <logger name="com.arc.swagger3.controller" level="INFO" additivity="false">
             <appender-ref ref="consoleLog"/>
         </logger>
     </springProfile>

@@ -1,7 +1,7 @@
 package com.arc.excel.controller.test;
 
-import com.arc.excel.service.sys.UserService;
 import com.arc.excel.model.entries.sys.SysUser;
+import com.arc.excel.service.sys.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import java.util.List;
  * 用户相关的的接口by RESTful
  *
  * @author yehcao
- * @date 2018/12/25
+ * @since 2018/12/25
  */
 @Slf4j
 @Controller
@@ -22,14 +22,14 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private SysUserService userService;
 
 
     /**
      * 获取单个用户
      *
-     * @param id
-     * @return
+     * @param id 主键
+     * @return SysUser
      */
     @GetMapping(value = "/{id}")
     public SysUser user(@PathVariable Long id) {

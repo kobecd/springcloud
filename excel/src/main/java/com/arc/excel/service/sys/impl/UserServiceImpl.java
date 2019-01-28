@@ -1,12 +1,13 @@
 package com.arc.excel.service.sys.impl;
 
 import com.arc.excel.mapper.UserMapper;
-import com.arc.excel.service.sys.UserService;
 import com.arc.excel.model.entries.sys.SysUser;
+import com.arc.excel.service.sys.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,9 +16,9 @@ import java.util.List;
  * @description:
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements SysUserService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
 

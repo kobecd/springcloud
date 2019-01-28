@@ -1,6 +1,5 @@
 package com.arc.excel.service.mall;
 
-
 import com.arc.excel.model.entries.mall.Mall;
 
 import java.util.List;

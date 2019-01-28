@@ -1,6 +1,8 @@
 package com.arc.excel.service.mall.impl;
 
-import com.arc.excel.mapper.*;
+import com.arc.excel.mapper.MallAreaMapper;
+import com.arc.excel.mapper.MallMapper;
+import com.arc.excel.mapper.SysFileMapper;
 import com.arc.excel.model.entries.mall.Mall;
 import com.arc.excel.model.entries.mall.MallArea;
 import com.arc.excel.model.entries.mall.MallQuestion;
@@ -22,7 +24,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
-import java.util.List;
 
 /**
  * @author: yechao
@@ -522,7 +523,7 @@ public class MallServiceImpl implements MallService {
             System.out.println(columnLabels[i]);
         }
 
-        //java excel 列编号 数字转字母
+        //java swagger3 列编号 数字转字母
 
 
 //        for (String s :columnLabels ) {

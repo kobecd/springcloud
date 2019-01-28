@@ -80,10 +80,10 @@ public class HttpUtilByRestTemplate {
      * @return
      */
     //带cookie，header，参数
-    public String post(String url, String jSesionId) {
+    public String post(String url, String jsessionId) {
         RestTemplate template = new RestTemplate();
 
-        log.debug("参数 url={},jsessionId={},token={},template={}", url, jSesionId, template);
+        log.debug("参数 url={},jsessionId={},token={},template={}", url, jsessionId, template);
         log.debug("参数={}", template.toString());
 
 
@@ -98,7 +98,7 @@ public class HttpUtilByRestTemplate {
         String intent = null;
         String number = null;
         String code = null;
-        requestHeaders.add("JSESSIONID", jSesionId);
+        requestHeaders.add("JSESSIONID", jsessionId);
         requestHeaders.add("key", testKey);
         requestHeaders.add("number", number);
         requestHeaders.add("code", code);

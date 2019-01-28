@@ -1,6 +1,5 @@
 package com.arc.excel.model.entries.mall;
 
-
 import com.arc.excel.model.entries.BaseModel;
 import lombok.Getter;
 import lombok.Setter;

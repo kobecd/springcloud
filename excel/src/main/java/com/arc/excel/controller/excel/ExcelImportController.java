@@ -1,16 +1,11 @@
 package com.arc.excel.controller.excel;
 
-
 /**
- * @description: excel 导入
+ * @description: swagger3 导入
  * @author: yechao
  * @date: 2019/1/9 11:41
  */
 
-import com.arc.excel.mapper.MallAreaMapper;
-import com.arc.excel.mapper.MallMapper;
-import com.arc.excel.mapper.MallQuestionMapper;
-import com.arc.excel.mapper.MallTaskMapper;
 import com.arc.excel.model.vo.ResponseVo;
 import com.arc.excel.service.mall.MallService;
 import lombok.extern.slf4j.Slf4j;

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/easyui/jquery.min.js"></script>
+
+</head>
+<body>
+	<script type="text/javascript">
+		function convert(rows){
+			function exists(rows, parentId){
+				for(var i=0; i<rows.length; i++){
+					if (rows[i].id == parentId) return true;
+				}
+				return false;
+			}
+			
+			var nodes = [];
+			// get the top level nodes
+			for(var i=0; i<rows.length; i++){
+				var row = rows[i];
+				if (!exists(rows, row.parentId)){
+					nodes.push({
+						id:row.id,
+						text:row.name,
+						url:row.url,
+					});
+				}
+			}
+			var toDo = [];
+			for(var i=0; i<nodes.length; i++){
+				toDo.push(nodes[i]);
+			}
+			while(toDo.length){
+				var node = toDo.shift();	// the parent node
+				// get the children nodes
+				for(var i=0; i<rows.length; i++){
+					var row = rows[i];
+					if (row.parentId == node.id){
+						var child = {id:row.id,text:row.name,url:row.url};
+						if (node.children){
+							node.children.push(child);
+						} else {
+							node.children = [child];
+						}
+						node.state = "closed"
+						toDo.push(child);
+					}
+				}
+			}
+			return nodes;
+		}
+		
+		$(function(){
+			$('#tt').tree({
+				url:'tree.json',
+                method:'get',
+				loadFilter: function(rows){
+					return convert(rows);
+				},
+				animate:true,
+				onClick:function(node){
+					if(node.url){
+						//有链接打开选项卡
+						addNewTab(node.text, node.url)
+					}else{
+						//没有链接打开或关闭节点的触发器
+						$('#tt').tree("toggle",node.target);
+					}
+				}
+			});
+		});
+	</script>
+	<ul id="tt" data-options="animate:true,lines:true"  style="padding:12px">
+	</ul>
+
+</body>
+</html>
