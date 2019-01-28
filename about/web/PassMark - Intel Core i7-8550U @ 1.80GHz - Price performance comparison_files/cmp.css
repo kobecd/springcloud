@@ -1,0 +1,129 @@
+/* Floating Sidebar Comparison Box */
+
+#sidebar {
+	width:250px; 
+	padding:5px; 
+	background: #eee; 
+	float:right; 		
+	
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+	z-index: 10;
+}
+
+#sidebar_button {
+	display: none;
+	margin: 5px auto 0 auto;
+}
+			
+			
+#portamento_container { /* take the positioning of the sidebar, and become the start point for the sidebar positioning */
+	float: right; 
+	position:fixed;	
+	margin-right:20px;
+	z-index:10;
+	right: 2em;
+} 		
+		
+#portamento_container #sidebar { /* no need to float anymore, become absolutely positoned */
+	float:none;
+	position:absolute;		
+}
+ 
+#portamento_container #sidebar.fixed { /* if the panel is sliding, it needs position:fixed */
+	position:fixed;
+	right: 20px;
+} 			
+
+
+.compare_table table { 
+	border-collapse: collapse; 
+	text-align: left; 
+	width: 100%; 
+} 
+
+.compare_table {
+	font: normal 12px/150% Arial, Helvetica, sans-serif; 
+	background: #fff; 
+	overflow: hidden; 
+	border: 1px solid #416b73;		
+	
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px; 
+}
+
+.compare_table table td, .compare_table table th { 
+	padding: 3px 10px; 
+}
+
+.compare_table table thead th {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #416b73), color-stop(1, #00557F) );
+	background:-moz-linear-gradient( center top, #416b73 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#416b73', endColorstr='#00557F');
+	background-color:#416b73; 
+	color:#ffffff; 
+	font-size: 15px; 
+	font-weight: bold; 
+	border-left: 1px solid #0070A8; 
+} 
+
+.compare_table table thead th:first-child { 
+	border: none; 
+}
+
+.compare_table table tbody td { 
+	color: #00496B; 
+	border-left: 1px solid #E1EEF4;
+	font-size: 12px;font-weight: normal; 
+}
+
+.compare_table table tbody .alt td { 
+	background: #E1EEF4; 
+	color: #00496B; 
+}
+
+.compare_table table tbody td:first-child { 
+	border-left: none; 
+}
+
+.compare_table table tbody tr:last-child td { 
+	border-bottom: none; 
+}
+
+.compare_table table tfoot td div { 
+	border-top: 1px solid #416b73;
+	background: #E1EEF4;
+} 
+
+.compare_table table tfoot td { padding: 0; font-size: 12px } 
+
+.compare_table table tfoot td div{ padding: 2px; }.compare_table table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }.compare_table table tfoot  li { display: inline; }.compare_table table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 1px solid #416b73;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #416b73), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #416b73 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#416b73', endColorstr='#00557F');background-color:#416b73; }.compare_table table tfoot ul.active, .compare_table table tfoot ul a:hover { text-decoration: none;border-color: #416b73; color: #FFFFFF; background: none; background-color:#00557F;}div.dhtmlx_window_active, div.dhx_modal_cover_dv { position: fixed !important; }
+
+#div_sidebar_table {
+  display: none;
+}
+
+#selectCPU input {
+	width: 95%; margin: 0 auto 5px auto;
+}
+
+@media print {
+	#portamento_container {
+		display: none;
+	}
+	
+	#sb_restore {
+		display: none;
+	}
+}
+
+.autocomplete-suggestions { color: #416b73; border: 1px solid #999; background: #E8E8E8; overflow: hidden; font-family: Arial, Helvetica, sans-serif;}
+		.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: auto; }
+		.autocomplete-selected { background: #3875D7; }
+		.autocomplete-suggestions strong { font-weight: bold;  }
