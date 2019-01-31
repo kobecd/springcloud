@@ -17,7 +17,7 @@ public interface PlanService {
      */
     boolean sandMail(long id);
 
-    void sandMailV2(long id);
+    void voidSandMailV2(long id);
 
     Future sandMailV3(long l);
 

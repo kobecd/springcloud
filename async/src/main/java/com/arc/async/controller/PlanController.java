@@ -32,10 +32,14 @@ public class PlanController {
     @GetMapping("/v2")
     public Object v2() {
         long start = System.currentTimeMillis();
-        log.debug("测试2");
-        planService.sandMailV2(22L);
+        log.debug("------------------------------");
+        log.debug("send----测试2");
+        log.debug("------------------------------");
+        planService.voidSandMailV2(22L);
         return System.currentTimeMillis() - start;
     }
+
+
     @GetMapping("/v3")
     public Object v3() throws ExecutionException, InterruptedException {
         long start = System.currentTimeMillis();

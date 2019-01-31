@@ -29,8 +29,8 @@ public class PlanServiceImpl implements PlanService {
 
     @Override
     @Async
-    public void sandMailV2(long id) {
-        String url = "http://127.0.0.1:9001/test/v1?id=12";
+    public void voidSandMailV2(long id) {
+        String url = "http://127.0.0.1:9001/mail/v1?id=12";
         String back = get(url);
         log.debug("#######################");
         log.debug("{}", back);
@@ -70,6 +70,7 @@ public class PlanServiceImpl implements PlanService {
      * @return
      */
     public static String get(String url) {
+        log.debug("--- url={}",url);
         if (StringUtils.isEmpty(url)) {
             return null;
         }
