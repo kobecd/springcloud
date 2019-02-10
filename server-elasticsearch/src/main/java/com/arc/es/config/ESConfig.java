@@ -76,7 +76,7 @@ public class ESConfig implements FactoryBean<RestClient>, InitializingBean, Disp
             nodes[i] = node;
         }
         RestClientBuilder builder = RestClient.builder(nodes);
-        restHighLevelClient = new RestClient(builder);
+//        restHighLevelClient = new RestClient(builder);
     }
 }
 //https://www.cnblogs.com/guozp/archive/2018/04/02/8686904.html 版本问题

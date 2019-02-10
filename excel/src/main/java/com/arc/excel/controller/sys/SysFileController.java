@@ -3,7 +3,7 @@ package com.arc.excel.controller.sys;
 import com.arc.excel.model.entries.sys.SysFile;
 import com.arc.excel.model.vo.ResponseVo;
 import com.arc.excel.service.sys.SysFileService;
-import com.arc.excel.utils.FileWriteUtil;
+import com.arc.excel.utils.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -40,7 +40,7 @@ public class SysFileController {
         try {
 
             String targetDir = "C:\\Users\\X\\Desktop\\upload\\";
-            String targetFileName = FileWriteUtil.getTargetFileName(file.getOriginalFilename());
+            String targetFileName = FileUtil.getTargetFileName(file.getOriginalFilename());
             targetFileName = targetDir + targetFileName;
             log.debug("带上路径的目标文件 targetFileName={}", targetFileName);
             toDiskPath = writeToDisk(file.getInputStream(), targetFileName);
@@ -52,7 +52,7 @@ public class SysFileController {
         if (toDiskPath != null) {
             SysFile sysFile = new SysFile();
             String fileName = toDiskPath.substring(toDiskPath.lastIndexOf(File.separator) + 1);
-            String fileSuffix = toDiskPath.substring(toDiskPath.lastIndexOf(FileWriteUtil.EXTENSION_SEPARATOR) + 1);
+            String fileSuffix = toDiskPath.substring(toDiskPath.lastIndexOf(FileUtil.EXTENSION_SEPARATOR) + 1);
             System.out.println("fileName-------->" + fileName);
             System.out.println("fileSuffix-------->" + fileSuffix);
             sysFile.setName(fileName);
