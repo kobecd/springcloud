@@ -21,6 +21,14 @@
     </parent>
 
 
+    <!--modules-->
+    <modules>
+        <module>common</module>
+        <module>sso</module>
+        <module>ms</module>
+    </modules>
+
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -149,15 +157,6 @@
         </resources>
     </build>
 
-
-    <!--modules-->
-    <modules>
-        <module>common</module>
-        <module>sso</module>
-        <module>cache</module>
-        <module>quartz</module>
-        <module>ms</module>
-    </modules>
 
 
 </project>
