@@ -1,7 +1,7 @@
 package com.arc.mail.controller;
 
+import com.arc.mail.model.User;
 import lombok.extern.slf4j.Slf4j;
-import model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

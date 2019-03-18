@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuwx.myorigin.dao.SysQuartzJobMapper">
+    <resultMap id="BaseResultMap" type="com.xuwx.myorigin.domain.SysQuartzJob">
+        <id column="job_id" property="jobId"/>
+        <result column="job_name" property="jobName"/>
+        <result column="job_group" property="jobGroup"/>
+        <result column="job_status" property="jobStatus"/>
+        <result column="audit_status" property="auditStatus"/>
+        <result column="cron_expression" property="cronExpression"/>
+        <result column="quartz_class" property="quartzClass"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <sql id="base_where">
+
+    </sql>
+
+    <insert id="save">
+      insert into	`sys_quartz_job` (job_id,job_name, job_group, job_status, audit_status, cron_expression, quartz_class, description)
+      values (#{jobId},#{jobName}, #{jobGroup}, #{jobStatus}, #{auditStatus}, #{cronExpression}, #{quartzClass},#{description})
+    </insert>
+    <update id="update">
+        update `sys_quartz_job`
+        set   job_name = #{jobName},
+              job_group = #{jobGroup},
+              job_status = #{jobStatus},
+              audit_status = #{auditStatus},
+              cron_expression = #{cronExpression},
+              quartz_class = #{quartzClass},
+              description = #{description},
+         where job_id = #{jobId}
+    </update>
+    <delete id="delete">
+        delete from	`sys_quartz_job` where job_id = #{jobId}
+    </delete>
+    <select id="get" resultMap="BaseResultMap">
+      select  job_id,job_name, job_group, job_status, audit_status, cron_expression, quartz_class, description
+      from 	`sys_quartz_job` where job_id = #{jobId}
+    </select>
+    <select id="findList" resultMap="BaseResultMap">
+        select job_id,job_name, job_group, job_status, audit_status, cron_expression, quartz_class, description
+        from `sys_quartz_job`
+    </select>
+    <select id="findUsedLegallyJobList" resultMap="BaseResultMap">
+        select job_id,job_name, job_group, job_status, audit_status, cron_expression, quartz_class, description
+        from `sys_quartz_job` where job_status = 1 and audit_status = 1
+    </select>
+    <select id="findDeleteJobList" resultMap="BaseResultMap">
+        select job_id,job_name, job_group, job_status, audit_status, cron_expression, quartz_class, description
+        from `sys_quartz_job` where job_status = 0
+    </select>
+    <select id="queryForList" resultMap="BaseResultMap">
+        select id,username, password, headPortrait, phoneNumber, userType, userCode, isActive, email, createDate, deleteDate, updateDate, createBy, deleteBy, updateBy
+        from 	`user`
+        <include refid="base_where"/>
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="queryForCount" resultType="int">
+        SELECT count(id) FROM 	`user`
+        <include refid="base_where"/>
+    </select>
+
+</mapper>

@@ -1,0 +1,37 @@
+server:
+  port: 8001
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 123456
+    key-store-type: PKCS12
+    key-alias: tomcat
+
+
+
+spring:
+  application:
+    name: test
+  profiles:
+    active: dev
+    #这里指定激活那个配置的空间
+
+#配置日志
+#  这里日志用xml去配置
+logback:
+  dir: ./log
+
+
+
+########################################################
+#          不同环境         Environment for Localhost  注意：数据配置在这里
+########################################################
+---
+spring:
+  profiles: dev
+
+########################################################
+#          不同环境         Environment for Localhost  注意：数据配置在这里
+########################################################
+---
+spring:
+  profiles: test

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>定时任务管理界面</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="apple-touch-icon" th:href="@{/bootstrap/img/icon/myFavicon.ico}" href="../static/bootstrap/img/icon/myFavicon.ico">
+    <link rel="icon" th:href="@{/bootstrap/img/icon/myFavicon.ico}" href="../static/bootstrap/img/icon/myFavicon.ico">
+    <link th:href="@{/bootstrap/css/bootstrap.css}" href="../static/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap-theme.css}" href="../static/bootstrap/css/bootstrap-theme.css" rel="stylesheet"/>
+    <script th:src="@{/bootstrap/js/jquery-3.3.1.min.js}" src="../static/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.js}" src="../static/bootstrap/js/bootstrap.js"></script>
+    <script th:src="@{/bootstrap/js/plugins/jquery-validation/jquery.validate.js}"
+            src="../static/bootstrap/js/plugins/jquery-validation/jquery.validate.js"></script>
+    <script th:src="@{/bootstrap/js/plugins/jquery-validation/localization/messages_zh.js}"
+            src="../static/bootstrap/js/plugins/jquery-validation/localization/messages_zh.js"></script>
+    <script th:src="@{/bootstrap/js/jquery-bootstrap.js}" src="../static/bootstrap/js/jquery-bootstrap.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="panel-primary">
+                <div class="panel-heading text-center">
+                    <span class="panel-title">全部定时任务配置信息</span>
+                </div>
+                <div class="panel-body">
+                    <table class="table-bordered" style="width: 100%">
+                        <tr style="height: 40px; background-color: cornflowerblue">
+                            <th class="text-center">定时任务ID</th>
+                            <th class="text-center">定时任务名称</th>
+                            <th class="text-center">定时任务分组</th>
+                            <th class="text-center">定时任务状态</th>
+                            <th class="text-center">定时任务审核状态</th>
+                            <th class="text-center">定时任务时间表达式</th>
+                            <th class="text-center">定时任务处理类</th>
+                            <th class="text-center">定时任务描述信息</th>
+                        </tr>
+                        <tr th:each="job:${jobs}" class="text-center" style="height: 40px">
+                            <td><span th:text="*{job.jobId}"></span></td>
+                            <td><span th:text="*{job.jobName}"></span></td>
+                            <td><span th:text="*{job.jobGroup}"></span></td>
+                            <td><span th:text="*{job.jobStatus==0?'禁用':'启用'}"></span></td>
+                            <td><span th:text="*{job.auditStatus}"></span></td>
+                            <td><span th:text="*{job.cronExpression}"></span></td>
+                            <!--<td><span th:text="*{#dates.format(user.createDate, 'yyyy-MM-dd hh:mm:ss')}"></span></td>-->
+                            <td><span th:text="*{job.quartzClass}"></span></td>
+                            <td><span th:text="*{job.description}"></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="panel-footer text-left">
+                    <span class="panel-title">根据系统配置</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

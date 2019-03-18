@@ -23,7 +23,7 @@
 
     <!--modules-->
     <modules>
-        <module>common</module>
+        <!--<module>common</module>-->
         <module>sso</module>
         <module>ms</module>
     </modules>
@@ -61,11 +61,13 @@
     <dependencyManagement>
 
         <dependencies>
+<!--
             <dependency>
                 <groupId>com.del</groupId>
                 <artifactId>api-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
+-->
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>

@@ -60,12 +60,14 @@
             <scope>test</scope>
         </dependency>
 
+<!--
         <dependency>
             <groupId>com.arc</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <!--<scope>compile</scope>-->
+            &lt;!&ndash;<scope>compile</scope>&ndash;&gt;
         </dependency>
+-->
 
     </dependencies>
 
