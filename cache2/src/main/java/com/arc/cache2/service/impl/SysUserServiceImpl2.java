@@ -16,7 +16,8 @@ import java.util.List;
 /**
  * @author 叶超
  * @since 2019/3/19 15:02
- */@Slf4j
+ */
+@Slf4j
 @Service(value = "sysUserServiceImpl2")
 @CacheConfig(keyGenerator = RedisCachingConfiguration.KEY_GENERATOR_NAME)
 public class SysUserServiceImpl2 implements SysUserService {
@@ -24,7 +25,7 @@ public class SysUserServiceImpl2 implements SysUserService {
     @Resource
     private SysUserMapper userMapper;
 
-     @Override
+    @Override
     public Long save(SysUser SysUser) {
         return null;
     }

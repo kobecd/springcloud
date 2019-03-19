@@ -85,7 +85,7 @@ public class RedisCachingConfiguration extends CachingConfigurerSupport {
 
     public interface CacheNames {
 
-        String CACHE_SYSTEM = "SYSTEM";//ms-system:list
+        String CACHE_SYSTEM = "SYSTEM";
 
         String CACHE_BUSINESS = "BUSINESS";
 

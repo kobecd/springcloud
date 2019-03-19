@@ -13,18 +13,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.cache.interceptor.SimpleCacheErrorHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
+import java.time.Duration;
 
 
 /**
@@ -34,8 +39,7 @@ import java.lang.reflect.Method;
  * @since 2019/03/19
  */
 @Configuration
-//@EnableCaching
-//@EnableConfigurationProperties(CacheProperties.class)
+//@EnableCaching //在启动类上配置的
 public class CacheManagerConfig extends CachingConfigurerSupport {
 
     @Value("${spring.application.name}")
@@ -43,18 +47,32 @@ public class CacheManagerConfig extends CachingConfigurerSupport {
 
     public static final String KEY_GENERATOR_NAME = "keyGenerator";
 
-    //todo CacheManager注入问题
+    //todo CacheManager 1.X到2.X 构造函数变化了
 //    @Bean
 //    public CacheManager cacheManager(RedisTemplate<String, String> redisTemplate) {
-//        RedisCacheManager manager = new RedisCacheManager(redisTemplate);
-//        return manager;
+//        RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
+//        cacheManager.setDefaultExpiration(60);
+//        Map<String, Long> expiresMap = new HashMap<>();
+//        expiresMap.put("Product", 5L);
+//        cacheManager.setExpires(expiresMap);
+//        return cacheManager;
 //    }
+//
 
     @Bean
-    public RedisTemplate<Object, Object> redisTemplate1(RedisConnectionFactory connectionFactory) {
+    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+        // 设置缓存有效期
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(10));
+        return RedisCacheManager
+                .builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
+                .cacheDefaults(redisCacheConfiguration).build();
+    }
+
+
+    @Bean
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
-
         //使用 Jackson2JsonRedisSerializer 来序列化和反序列化redis的value值
         Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
 
@@ -66,7 +84,6 @@ public class CacheManagerConfig extends CachingConfigurerSupport {
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         serializer.setObjectMapper(mapper);
-
 
         //使用 StringRedisSerializer 来序列化和反序列化redis的key值
         template.setKeySerializer(new StringRedisSerializer());
@@ -102,12 +119,12 @@ public class CacheManagerConfig extends CachingConfigurerSupport {
                     // 参数值
                     for (Object p : params) {
                         sb.append(AT).append(p);
-//todo 该进，是基本数据类型的则直接凭借，否则序列化为json后拼接
-//                if (BeanHelper.isSimpleValueType(p.getClass())) {
-//                    sb.append(object);
-//                } else {
-//                    sb.append(JsonHelper.toJson(p).hashCode());
-//                }
+                        //todo 该进，是基本数据类型的则直接拼接，否则序列化为json后拼接
+                        //                if (BeanHelper.isSimpleValueType(p.getClass())) {
+                        //                    sb.append(object);
+                        //                } else {
+                        //                    sb.append(JsonHelper.toJson(p).hashCode());
+                        //                }
                     }
                 } else {
                     sb.append(NO_PARAM_KEY);
@@ -120,14 +137,13 @@ public class CacheManagerConfig extends CachingConfigurerSupport {
 
     public interface CacheNames {
 
-        String CACHE_SYSTEM = "SYSTEM";//csp-ms-system:list
+        String CACHE_SYSTEM = "SYSTEM";
 
         String CACHE_BUSINESS = "BUSINESS";
 
         String CACHE_CUSTOM = "CUSTOM";
 
         String CACHE_ORDER = "ORDER";
-
 
     }
 
