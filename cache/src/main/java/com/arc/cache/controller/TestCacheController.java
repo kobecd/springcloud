@@ -1,7 +1,7 @@
-package com.arc.cache.controller;
+package com.arc.cache2.controller;
 
-import com.arc.cache.model.domain.SysUser;
-import com.arc.cache.service.SysUserService;
+import com.arc.cache2.model.domain.SysUser;
+import com.arc.cache2.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

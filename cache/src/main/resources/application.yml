@@ -8,7 +8,7 @@ spring:
     name: cache
 
 mybatis:
-  type-aliases-package: com.arc.cache.model
+  type-aliases-package: com.arc.cache2.model
   mapper-locations: classpath:mapper/*.xml
 
 

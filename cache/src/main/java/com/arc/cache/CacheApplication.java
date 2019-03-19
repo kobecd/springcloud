@@ -13,7 +13,7 @@ import org.springframework.cache.annotation.EnableCaching;
 //    @EnableCaching    启用缓存配置 在配置类上有效
 @EnableCaching
 @SpringBootApplication
-@MapperScan("com.arc.cache.mapper")
+@MapperScan("com.arc.cache2.mapper")
 public class CacheApplication {
 
     public static void main(String[] args) {

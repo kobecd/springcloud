@@ -1,9 +1,9 @@
-package com.arc.cache.service.impl;
+package com.arc.cache2.service.impl;
 
-import com.arc.cache.mapper.SysUserMapper;
-import com.arc.cache.model.domain.SysUser;
-import com.arc.cache.model.request.SysUserRequest;
-import com.arc.cache.service.SysUserService;
+import com.arc.cache2.mapper.SysUserMapper;
+import com.arc.cache2.model.domain.SysUser;
+import com.arc.cache2.model.request.SysUserRequest;
+import com.arc.cache2.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -89,9 +89,20 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     //2 表示第一个参数
-    @Cacheable(value = "users", key = "#p0")
+//    @Cacheable(value = "users", key = "#p0")//有坑！！！
+//    报错信息：java.lang.IllegalArgumentException: Null key returned for cache operation (maybe you are using named params on classes without debug info......
+    //--------------------------------
+    //原因分析：上述代自定义了Key，因此Key generator不起效，它会用SpEL来把 name 这个参数作为Key。这是官网教程的例子，为什么会行不通呢？再反复斟酌官网教程，终于明白它说什么了，就是如果编译没选debug模式，编译出来的class文件是没有参数名的信息的，那么反射机制来获取这个参数的值，就找不到参数名字！只能用 #a0或者#p0来指代第一个参数，依此类推。（If for some reason the names are not available (e.g. no debug information), the argument names are also available under the #a<#arg> where #arg stands for the argument index (starting from 0).）
+    //正确的万能写法，这里把 user_ 作为 key的前缀，传参 name作为后缀。
+    //@Cacheable(cachnames="user", key="'user_'.concat(#a0)")
+    //public User findByName(String name);
+    //关于原因分析：参考了大神的博客，https://www.jianshu.com/p/6196dd5870c7.
+    //链接：https://www.jianshu.com/p/7223f5c0dd26 来源：简书
+    //--------------------------------
+    @Cacheable(value = "users", key = "'user_'.concat(#p0)")
     @Override
     public SysUser testCacheKey1(SysUser user, Long id, String name) {
+
         log.debug("##########################");
         SysUser sysUser = sysUserMapper.get(user.getId());
         log.debug("##########################");
@@ -141,7 +152,7 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
 
-    //Cannot convert com.arc.cache.service.impl.SysUserServiceImpl to String. Register a Converter or override toString().
+    //Cannot convert com.arc.cache2.service.impl.SysUserServiceImpl to String. Register a Converter or override toString().
     //3 当前被调用的对象  #root.target
     @Cacheable(value = "users", key = "target")
     @Override
