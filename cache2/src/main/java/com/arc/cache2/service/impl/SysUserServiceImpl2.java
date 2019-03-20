@@ -26,7 +26,7 @@ public class SysUserServiceImpl2 implements SysUserService {
     private SysUserMapper userMapper;
 
     @Override
-    public Long save(SysUser SysUser) {
+    public Long save(SysUser user) {
         return null;
     }
 
@@ -36,7 +36,7 @@ public class SysUserServiceImpl2 implements SysUserService {
     }
 
     @Override
-    public int update(SysUser SysUser) {
+    public int update(SysUser user) {
         return 0;
     }
 

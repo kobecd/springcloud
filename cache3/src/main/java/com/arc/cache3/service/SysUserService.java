@@ -15,11 +15,11 @@ import java.util.List;
  */
 public interface SysUserService {
 
-    Long save(SysUser SysUser);
+    Long save(SysUser user);
 
     int delete(Long id);
 
-    int update(SysUser SysUser);
+    int update(SysUser user);
 
     SysUser get(Long id);
 
