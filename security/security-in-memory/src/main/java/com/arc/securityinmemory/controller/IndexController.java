@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * druid 监控配置
+ * 首页
  */
 @RestController
 public class IndexController {
