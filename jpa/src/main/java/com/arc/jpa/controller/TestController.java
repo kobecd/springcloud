@@ -1,7 +1,6 @@
 package com.arc.jpa.controller;
 
-import com.arc.jpa.model.domain.SysUser;
-import com.arc.jpa.repository.SysUserRepository;
+import com.arc.jpa.service.TestService;
 import com.arc.model.vo.ResponseVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @Autowired
-    private SysUserRepository userRepository;
+    private TestService testService;
+//    userRepository;
 
 
     @GetMapping("/{id}")
     public ResponseVo test1(@PathVariable Long id) {
         try {
-            return ResponseVo.success(get(id));
+            return ResponseVo.success(testService.get(id));
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -38,14 +38,5 @@ public class TestController {
     }
 
 
-    public SysUser get(Long id) {
-//        Optional<SysUser> byId = userRepository.findById(id);
-
-//        ResponseEntity<S> error = userRepository.findOne(id).map(g -> ResponseEntity.ok(g)).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body("ERROR"));
-
-
-        return userRepository.findById(id).get();//orElseThrow(EntityNotFoundException::new);
-//        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-    }
 
 }
