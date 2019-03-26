@@ -1,4 +1,4 @@
-package com.arc.poi.controller.test;
+package com.arc.test.test.optional;
 
 import java.util.Optional;
 
@@ -14,3 +14,11 @@ public class OptionalTest {
 
 }
 
+
+class User {
+
+    public static boolean isNameValid(String s) {
+        return false;
+    }
+
+}
