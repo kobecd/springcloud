@@ -41,36 +41,6 @@ public class FileController {
 
 
     /**
-     * 文件下载，或者说叫预览，总之就是文件传给用户
-     *
-     * @param code
-     * @param response
-     */
-    @GetMapping("/{code}")
-    public void fileDownload(@PathVariable("code") String code, HttpServletResponse response) {
-        //根据文件id信息检索文件条目
-        //获得文件所在路径
-        //读取文件并返回
-
-        //获取文件在数据库中记录的信息条目
-        SysFile sysFile = fileService.getByCode(code);
-
-        try (InputStream inputStream = new FileInputStream(new File(sysFile.getUrl()));
-             OutputStream outputStream = response.getOutputStream();) {
-            if (FileUtil.isImage(sysFile.getSuffix())) {
-                response.setContentType("image/jpg");
-            } else {
-                response.setContentType("application/octet-stream");
-                response.addHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(sysFile.getName(), "UTF-8"));
-            }
-            IOUtils.copy(inputStream, outputStream);
-            outputStream.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * 临时目录，注意你电脑上是否有该目录
      */
     @Value("${web.upload.file.path:/data/upload}")
@@ -111,6 +81,36 @@ public class FileController {
 //            file.transferTo(new File("C:\\Users\\X\\Desktop\\upload\\1"));
         return ResponseVo.failure();
 
+    }
+
+    /**
+     * 文件下载，或者说叫预览，总之就是文件传给用户
+     *
+     * @param code
+     * @param response
+     */
+    @GetMapping("/{code}")
+    public void fileDownload(@PathVariable("code") String code, HttpServletResponse response) {
+        //根据文件id信息检索文件条目
+        //获得文件所在路径
+        //读取文件并返回
+
+        //获取文件在数据库中记录的信息条目
+        SysFile sysFile = fileService.getByCode(code);
+
+        try (InputStream inputStream = new FileInputStream(new File(sysFile.getUrl()));
+             OutputStream outputStream = response.getOutputStream();) {
+            if (FileUtil.isImage(sysFile.getSuffix())) {
+                response.setContentType("image/jpg");
+            } else {
+                response.setContentType("application/octet-stream");
+                response.addHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(sysFile.getName(), "UTF-8"));
+            }
+            IOUtils.copy(inputStream, outputStream);
+            outputStream.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

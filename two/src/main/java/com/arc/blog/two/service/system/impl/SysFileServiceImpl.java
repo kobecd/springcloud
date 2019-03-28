@@ -98,7 +98,7 @@ public class SysFileServiceImpl implements SysFileService {
             }
 
             //getAbsolutePath()  方法去除了干扰   ./   ../
-            String writeFile = outFile.getAbsolutePath() + "\\" + FileUtil.getTargetFileName(file.getOriginalFilename());
+            String writeFile = outFile.getAbsolutePath() + File.separator + FileUtil.getTargetFileName(file.getOriginalFilename());
             String toDiskPath = null;
             try {
                 toDiskPath = FileUtil.writeToDisk(file.getInputStream(), writeFile);

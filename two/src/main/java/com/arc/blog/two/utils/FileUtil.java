@@ -402,8 +402,6 @@ public class FileUtil {
             if (!outFile.exists()) {
                 boolean mkParentDirs = outFile.getParentFile().mkdirs();
                 log.debug("父级文件夹{}，创建是否成功：{}", outFile.getParent(), mkParentDirs);
-                boolean newFile = outFile.createNewFile();
-                log.debug("文件写入文件夹{}，是否成功：{}", outFile.getParent(), newFile);
             }
             outputStream = new FileOutputStream(outFile);
             Assert.notNull(inputStream, "No InputStream specified");
