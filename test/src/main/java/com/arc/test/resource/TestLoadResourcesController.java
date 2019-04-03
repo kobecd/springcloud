@@ -73,7 +73,17 @@ public class TestLoadResourcesController {
         is.read(b);
         System.out.println(new String(b).trim());
     }
+
+    public void getResource() {
+        //查找指定资源的URL，其中res.txt仍然开始的bin目录下
+        URL fileURL = this.getClass().getResource("/resource/res.txt");
+        System.out.println(fileURL.getFile());
+
+    }
 }
+
+
+//----------------------下面是测试中有问题的方法
 
 /**
  * 方案一：我们往常进行文件的加载的时候 用到的都是  FileInputStream进行 文件的加载比如下面一个例子 ：
