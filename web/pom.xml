@@ -12,4 +12,24 @@
     <version>0.0.1.RELEASE</version>
     <packaging>pom</packaging>
 
+    <!-- 模块说明：这里声明多个子模块 -->
+    <!--<modules>-->
+        <!--<module>website-https</module>-->
+        <!--<module>web-wechat</module>-->
+        <!--<module>web-food</module>-->
+        <!--<module>web-static</module>-->
+    <!--</modules>-->
+<!--
+
+    <dependencies>
+        &lt;!&ndash;core&ndash;&gt;
+        <dependency>
+            <groupId>com.arc</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
+    </dependencies>
+-->
+
+
+
 </project>

@@ -3,12 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
     <groupId>com.arc</groupId>
     <artifactId>ray</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-
 
     <name>ray</name>
     <description>ray Spring Boot</description>
@@ -23,9 +21,9 @@
 
     <!--modules-->
     <modules>
-        <!--<module>common</module>-->
-        <module>sso</module>
-        <module>ms</module>
+        <module>common</module>
+        <!--<module>sso</module>-->
+        <!--<module>ms</module>-->
     </modules>
 
 
@@ -61,18 +59,6 @@
     <dependencyManagement>
 
         <dependencies>
-<!--
-            <dependency>
-                <groupId>com.del</groupId>
-                <artifactId>api-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
--->
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-            </dependency>
 
 
             <dependency>
@@ -81,50 +67,71 @@
                 <version>${feign-httpclient.version}</version>
             </dependency>
 
-
+            <!--core-->
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <scope>test</scope>
+                <groupId>com.arc</groupId>
+                <artifactId>core</artifactId>
+                <!--<version>${project.version}</version>-->
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.49</version>
             </dependency>
 
 
+            <!-- https://mvnrepository.com/artifact/org.json/json -->
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>20180130</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.8.1</version>
+            </dependency>
+
+            <!-- swagger RESTful API 文档 -->
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <!--此外还需要一个依赖组件：-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.6.6</version>
+            </dependency>
+
+            <!--阿里巴巴的druid-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.0.15</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.6</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
-
-    <!--test-->
-    <dependencies>
-        <!--
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-test</artifactId>
-                <scope>test</scope>
-            </dependency>
-
-                <dependency>
-                            <groupId>org.springframework</groupId>
-                            <artifactId>spring-test</artifactId>
-                            &lt;!&ndash;<version>5.0.6.RELEASE</version>&ndash;&gt;
-                            <scope>test</scope>
-                        </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
-            </dependency>
-
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-test</artifactId>
-                    &lt;!&ndash;<version>2.0.2.RELEASE</version>&ndash;&gt;
-                    <scope>test</scope>
-            </dependency>
-            -->
-
-
-    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -159,6 +166,31 @@
         </resources>
     </build>
 
+    <!--<build>-->
+    <!--<plugins>-->
+    <!--多模块打包：只需在启动类所在模块的POM文件：指定打包插件 -->
+    <!--该插件主要用途：构建可执行的JAR -->
+    <!--<plugin>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--</plugin>-->
 
+    <!--sonar 扫描插件-->
+    <!--            <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.2</version>
+                </plugin>-->
+
+    <!--</plugins>-->
+    <!--</build>-->
+
+    <!-- 模块说明：这里声明多个子模块 -->
+    <!--<modules>-->
+    <!--<module>common</module>-->
+    <!--<module>server</module>-->
+    <!--<module>server-db</module>-->
+    <!--<module>web</module>-->
+    <!--</modules>-->
 
 </project>

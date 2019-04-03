@@ -77,7 +77,7 @@ public class TestSysUserByJpaController {
         return testService.queryByQuery(user);
     }
 
-    @GetMapping("/query/2/{str}")
+    @GetMapping("/query/v1/{str}")
     public Object get(@PathVariable String str) {
         SysUser user = new SysUser();
         user.setNickname(str);
@@ -88,7 +88,7 @@ public class TestSysUserByJpaController {
     }
 
     @GetMapping("/test/v1")
-    public Object query(@RequestParam String name, @RequestParam String avatar) {
+    public Object testV1(@RequestParam String name, @RequestParam String avatar) {
         SysUser user = new SysUser();
         if (name != null && !"".equals(name)) {
             user.setNickname(name);
@@ -96,18 +96,21 @@ public class TestSysUserByJpaController {
         if (avatar != null && !"".equals(avatar)) {
             user.setAvatar(avatar);
         }
-        return  testService.findByCondition(user);
+        return testService.findByCondition(user);
     }
-//    @GetMapping("/test")
-//    public Object query(@RequestParam String name, @RequestParam String avatar) {
-//        SysUser user = new SysUser();
-//        if (name != null && !"".equals(name)) {
-//            user.setNickname(name);
-//        }
-//        if (avatar != null && !"".equals(avatar)) {
-//            user.setAvatar(avatar);
-//        }
+
+    @GetMapping("/test/v2")
+    public Object testV2(@RequestParam String name, @RequestParam String avatar) {
+        SysUser user = new SysUser();
+        if (name != null && !"".equals(name)) {
+            user.setNickname(name);
+        }
+        if (avatar != null && !"".equals(avatar)) {
+            user.setAvatar(avatar);
+        }
 //        Object byQuery = testService.query(user);
+//        log.debug("结果={}",byQuery);
 //        return byQuery;
-//    }
+        return null;
+    }
 }
