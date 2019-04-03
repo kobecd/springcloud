@@ -5,13 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 /**
- * @description:
- * @author: yechao
- * @date: 2019/1/10 15:04
+ * @author yechao
+ * @date 2019/1/10 15:04
  */
 public interface ProjectRequirementRepository extends JpaRepository<ProjectRequirement, Long> {
-//
-
 
     /**
      * 应用例子

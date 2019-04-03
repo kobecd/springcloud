@@ -1,6 +1,8 @@
 package com.arc.jpa.service;
 
 import com.arc.jpa.model.domain.SysUser;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * @author 叶超
@@ -9,4 +11,9 @@ import com.arc.jpa.model.domain.SysUser;
 public interface TestService {
 
     SysUser get(Long id);
+
+    Object queryByQuery(SysUser user);
+
+      Page<SysUser> queryPage(SysUser model, Pageable pageable) ;
+
 }
