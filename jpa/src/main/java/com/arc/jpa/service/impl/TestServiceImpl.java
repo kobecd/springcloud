@@ -236,26 +236,26 @@ public class TestServiceImpl implements TestService {
 //        }
 
 
-    public List<InvoiceInfo> findByCondition(InvoiceListVo vo){
-        List<InvoiceInfo> resultList = null;
-        Specification querySpecifi = new Specification<InvoiceInfo>() {
+    public List<SysUser > findByCondition(SysUser user){
+        List<SysUser> resultList = null;
+        Specification querySpecifi= new Specification<SysUser>() {
             @Override
-            public Predicate toPredicate(Root<InvoiceInfo> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+            public Predicate toPredicate(Root<SysUser> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
 
                 List<Predicate> predicates = new ArrayList<>();
-                if(!vo.getPhone().equals("0")){
-                    predicates.add(criteriaBuilder.equal(root.get("phone"), vo.getPhone()));
+                if(!user.getAvatar().equals("0")){
+                    predicates.add(criteriaBuilder.equal(root.get("avatar"), user.getAvatar()));
                 }
-                if(0 != vo.getTitleType()){
-                    predicates.add(criteriaBuilder.equal(root.get("titleType"), vo.getTitleType()));
+                if(0 != user.getStatus()){
+                    predicates.add(criteriaBuilder.equal(root.get("titleType"), user.getStatus()));
                 }
-                if(null != vo.getInvoiceTitle()){
-                    predicates.add(criteriaBuilder.equal(root.get("invoiceTitle"), "%"+vo.getInvoiceTitle()+"%"));
+                if(null != user.getNickname()){
+                    predicates.add(criteriaBuilder.equal(root.get("nickname"), "%"+user.getNickname()+"%"));
                 }
                 return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
             }
         };
-        resultList =  this.invoiceInfoRepository.findAll(querySpecifi);
+        resultList =  this.userRepository.findAll(querySpecifi);
         return resultList;
     }
 

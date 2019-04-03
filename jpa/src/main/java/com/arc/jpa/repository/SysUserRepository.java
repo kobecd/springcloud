@@ -43,4 +43,5 @@ public interface SysUserRepository extends JpaRepository<SysUser, Long>/*, JpaSp
 
     Page<SysUser> findAll(Specification<SysUser> example, Pageable pageable);
 
+    List<SysUser> findAll(Specification querySpecifi);
 }

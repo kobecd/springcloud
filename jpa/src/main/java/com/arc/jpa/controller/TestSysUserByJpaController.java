@@ -20,10 +20,11 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/user")
-public class SysUserController {
+public class TestSysUserByJpaController {
 
     @Autowired
     private SysUserRepository userRepository;
+
     @Autowired
     private TestService testService;
 
@@ -86,6 +87,17 @@ public class SysUserController {
         return byQuery;
     }
 
+    @GetMapping("/test/v1")
+    public Object query(@RequestParam String name, @RequestParam String avatar) {
+        SysUser user = new SysUser();
+        if (name != null && !"".equals(name)) {
+            user.setNickname(name);
+        }
+        if (avatar != null && !"".equals(avatar)) {
+            user.setAvatar(avatar);
+        }
+        return  testService.findByCondition(user);
+    }
 //    @GetMapping("/test")
 //    public Object query(@RequestParam String name, @RequestParam String avatar) {
 //        SysUser user = new SysUser();
