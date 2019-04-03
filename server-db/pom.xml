@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 项目说明：这里作为聚合工程的父工程 -->
+    <name>server-db</name>
+    <description>SpringBoot server-db 块构建示例</description>
+    <packaging>pom</packaging>
+
+    <groupId>com.arc</groupId>
+    <artifactId>server-db</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- 继承说明：这里继承SpringBoot提供的父工程 -->
+    <parent>
+        <groupId>com.arc</groupId>
+        <artifactId>arc</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+
+    <dependencies>
+        <!--core-->
+        <dependency>
+            <groupId>com.arc</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- 模块说明：这里声明多个子模块 -->
+    <modules>
+        <module>jpa-tool</module>
+        <module>jpa-tool2</module>
+        <module>mybatis-tool</module>
+    </modules>
+</project>
