@@ -56,9 +56,10 @@ public class ResponseVo<T> implements Serializable {
 
 
     //success方法
-    public static <T> ResponseVo<T> success(   ) {
+    public static <T> ResponseVo<T> success() {
         return new ResponseVo<T>(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMsg(), Boolean.TRUE, null);
     }
+
     public static <T> ResponseVo<T> success(T data) {
         return new ResponseVo<T>(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMsg(), Boolean.TRUE, data);
     }

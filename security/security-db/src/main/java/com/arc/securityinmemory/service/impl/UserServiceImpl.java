@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
         SysUser dbUser = getByUsername(username);
         //@todo MD5或者其他加密手段
 //        if (dbUser != null && dbUser.getPassword() != null && dbUser.getPassword().equals(password)) {
-            result = true;
+        result = true;
 //        }
         return result;
     }

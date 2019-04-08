@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         var vm = null;
-        window.onload=function() {
+        window.onload = function () {
             vm = new Vue({
                 el: '#my',
                 data: {
@@ -23,12 +23,12 @@
                     //     return this.b+this.age;
                     // }
                 },
-                computed:{
-                    addToA(){
-                        return this.a+this.age;
+                computed: {
+                    addToA() {
+                        return this.a + this.age;
                     },
-                    addToB(){
-                        return this.b+this.age;
+                    addToB() {
+                        return this.b + this.age;
                     }
                 }
             })
