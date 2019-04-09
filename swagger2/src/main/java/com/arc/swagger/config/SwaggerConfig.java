@@ -1,4 +1,4 @@
-package com.arc.swagger3.config;
+package com.arc.swagger.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +18,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-public class Swagger2 implements WebMvcConfigurer {
+public class SwaggerConfig implements WebMvcConfigurer {
 
     @Bean
     //可以注入多个doket，也就是多个版本的api，可以在看到有三个版本groupName不能是重复的，v1和v2是ant风格匹配，配置文件
     public Docket createRestApi() {
-        String scanPackage = "com.arc.swagger2.controller";
+        String scanPackage = "com.arc.swagger.controller";
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()//select()函数返回一个ApiSelectorBuilder实例用来控制哪些接口暴露给Swagger来展现，本例采用指定扫描的包路径来定义，Swagger会扫描该包下所有Controller定义的API，并产生文档内容（除了被@ApiIgnore指定的请求）。
@@ -41,7 +41,7 @@ public class Swagger2 implements WebMvcConfigurer {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("项目标题：Springboot 2.1 集成 swagger2")
+                .title("项目标题：Springboot 2.1 集成 swagger")
                 .description("项目代码托管在github.")
                 .termsOfServiceUrl("https://github.com/lamymay/ray.git")
                 .version("0.0.1-SNAPSHOT")

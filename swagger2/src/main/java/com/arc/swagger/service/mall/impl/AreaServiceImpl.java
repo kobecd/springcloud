@@ -1,7 +1,7 @@
-package com.arc.swagger3.service.mall.impl;
+package com.arc.swagger.service.mall.impl;
 
-import com.arc.swagger3.service.AreaService;
-import com.arc.swagger3.model.entries.Area;
+import com.arc.swagger.service.AreaService;
+import com.arc.swagger.model.entries.Area;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
-package com.arc.swagger3.service;
+package com.arc.swagger.service;
 
 
-import com.arc.swagger3.model.entries.Area;
+import com.arc.swagger.model.entries.Area;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.arc.swagger3.model.vo;
+package com.arc.swagger.model.vo;
 
 
 

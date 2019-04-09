@@ -1,4 +1,4 @@
-package com.arc.swagger3;
+package com.arc.swagger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,10 +13,10 @@ import java.util.Date;
  */
 @SpringBootApplication
 @RestController
-public class Swagger2Application {
+public class SwaggerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Swagger2Application.class, args);
+        SpringApplication.run(SwaggerApplication.class, args);
     }
 
 

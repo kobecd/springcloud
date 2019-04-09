@@ -1,4 +1,4 @@
-package com.arc.swagger3.model.entries;
+package com.arc.swagger.model.entries;
 
 
 import lombok.Getter;

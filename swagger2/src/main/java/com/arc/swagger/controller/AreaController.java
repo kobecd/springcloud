@@ -1,7 +1,7 @@
-package com.arc.swagger3.controller;
+package com.arc.swagger.controller;
 
-import com.arc.swagger3.service.AreaService;
-import com.arc.swagger3.model.vo.ResponseVo;
+import com.arc.swagger.service.AreaService;
+import com.arc.swagger.model.vo.ResponseVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +17,7 @@ import java.util.List;
  * @author yeChao
  * @date 2018/12/27
  */
-@Api(value = "系统地区信息的接口")
+@Api(tags = "系统地区信息的接口" )
 @RestController
 @RequestMapping("/area")
 public class AreaController {
