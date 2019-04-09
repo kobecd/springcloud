@@ -1,4 +1,4 @@
-package com.arc.model.domain.wechat;
+package com.arc.wechat.wechat;
 
 import lombok.NoArgsConstructor;
 import lombok.ToString;

@@ -1,14 +1,14 @@
-package com.arc.wechat.web;
+package com.arc.wechat.controller.web;
 
-import com.arc.model.domain.wechat.WeChatDTO;
-import com.arc.model.domain.wechat.WeChatScanQRCodeRecord;
+import com.arc.wechat.wechat.WeChatDTO;
+import com.arc.wechat.wechat.WeChatScanQRCodeRecord;
 import com.arc.wechat.service.WeChatScanQRCodeRecordService;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +27,11 @@ import java.util.List;
  * @author yechao
  * @date 20180706
  */
-@Slf4j
 @Controller
 @RequestMapping("/ds")
 public class ForExcel {
 
+    private static final Logger log = LoggerFactory.getLogger(ForExcel.class);
 
     @Autowired
     private WeChatScanQRCodeRecordService weChatScanQRCodeRecordService;
@@ -105,13 +105,13 @@ public class ForExcel {
                 sheet = workbook.createSheet("sheet标题名" + sheetNumber);
                 createTitle(workbook, sheet);
                 int rowNumber = 1;            //创建sheet内的多行数据
-                for (WeChatScanQRCodeRecord qrCodeRecord : records) {
-                    Row row = sheet.createRow(rowNumber);
-                    row.createCell(0).setCellValue(qrCodeRecord.getCodeNickName() == null ? "" : qrCodeRecord.getCodeNickName());
-                    row.createCell(1).setCellValue(qrCodeRecord.getOpenId());
-                    row.createCell(2).setCellValue(qrCodeRecord.getCreateTime() == null ? "" : formatter.format(qrCodeRecord.getCreateTime()));
-                    rowNumber++;//新增数据行，并且设置单元格数据
-                }
+//                for (WeChatScanQRCodeRecord qrCodeRecord : records) {
+//                    Row row = sheet.createRow(rowNumber);
+//                    row.createCell(0).setCellValue(qrCodeRecord.getCodeNickName() == null ? "" : qrCodeRecord.getCodeNickName());
+//                    row.createCell(1).setCellValue(qrCodeRecord.getOpenId());
+//                    row.createCell(2).setCellValue(qrCodeRecord.getCreateTime() == null ? "" : formatter.format(qrCodeRecord.getCreateTime()));
+//                    rowNumber++;//新增数据行，并且设置单元格数据
+//                }
             }
         }
         log.info("Export excel execute  time: " + (System.currentTimeMillis() - startTime) + "ms");

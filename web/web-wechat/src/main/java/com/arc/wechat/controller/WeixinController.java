@@ -2,7 +2,8 @@ package com.arc.wechat.controller;
 
 import com.arc.wechat.utils.ValidationUtil;
 import com.arc.wechat.utils.WeixinUtil;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,10 +17,9 @@ import java.util.Date;
 
 //用于校验token的controller----以及--获取用户信息，图林交互等
 @Controller
-@Slf4j//注解在类上；为类提供一个 属性名为log 的 log4j 日志对象
-//@Log4j
+//@Slf4j//注解在类上；为类提供一个 属性名为log 的 log4j 日志对象
 public class WeixinController {
-//    private static final Logger logger = LoggerFactory.getLogger(WeixinController.class);
+    private static final Logger log = LoggerFactory.getLogger(WeixinController.class);
 
     //注入
 //    @Autowired

@@ -1,7 +1,9 @@
-package com.arc.model.domain.wechat;
+package com.arc.wechat.wechat;
 
-import com.arc.model.vo.BaseModel;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
@@ -18,7 +20,7 @@ import java.util.Date;
 @Slf4j
 @ToString
 @NoArgsConstructor
-public class WeChatScanQRCodeRecord extends BaseModel {
+public class WeChatScanQRCodeRecord  {
 
     private int id;
 

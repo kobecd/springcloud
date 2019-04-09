@@ -1,4 +1,4 @@
-package com.arc.model.domain.wechat;
+package com.arc.wechat.wechat;
 
 /**
  * 普通按钮（子按钮）

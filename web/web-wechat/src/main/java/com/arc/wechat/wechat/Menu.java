@@ -1,4 +1,4 @@
-package com.arc.model.domain.wechat;
+package com.arc.wechat.wechat;
 
 /**
  * 微信菜单的封装

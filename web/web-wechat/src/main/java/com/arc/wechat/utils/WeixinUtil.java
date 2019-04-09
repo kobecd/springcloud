@@ -3,10 +3,10 @@ package com.arc.wechat.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.arc.model.domain.wechat.Button;
-import com.arc.model.domain.wechat.CommonButton;
-import com.arc.model.domain.wechat.ComplexButton;
-import com.arc.model.domain.wechat.Menu;
+import com.arc.wechat.wechat.Button;
+import com.arc.wechat.wechat.CommonButton;
+import com.arc.wechat.wechat.ComplexButton;
+import com.arc.wechat.wechat.Menu;
 
 import java.math.BigDecimal;
 import java.text.DateFormat;

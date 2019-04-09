@@ -1,10 +1,11 @@
 package com.arc.wechat.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
 import org.apache.poi.hssf.usermodel.HSSFPatriarch;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 
 import javax.imageio.ImageIO;
@@ -18,9 +19,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-@Slf4j
 public class ForFileController {
 
+    private static final Logger log = LoggerFactory.getLogger(ForFileController.class);
 
     public static void main(String[] args) {
 

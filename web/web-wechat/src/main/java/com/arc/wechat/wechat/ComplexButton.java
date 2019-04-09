@@ -1,4 +1,4 @@
-package com.arc.model.domain.wechat;
+package com.arc.wechat.wechat;
 /**
  * 复杂按钮（父按钮）
  *对父菜单项的定义：包含有二级菜单项的一级菜单。

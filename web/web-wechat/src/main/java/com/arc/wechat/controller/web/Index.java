@@ -1,10 +1,7 @@
-package com.arc.wechat.web;
+package com.arc.wechat.controller.web;
 
-import com.arc.model.domain.common.Area;
-import com.arc.model.domain.common.User;
 import com.arc.wechat.mapper.one.UserMapper;
 import com.arc.wechat.mapper.two.AreaMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,7 +17,6 @@ import java.util.Map;
  * @author yechao
  * @date 20180706
  */
-@Slf4j
 @Controller
 @RequestMapping("/ds")
 public class Index {
@@ -50,19 +45,10 @@ public class Index {
         logger.error("日志输出 error");
 
 
-        Map<String, Object> result = new HashMap<>();
-        User user = userMapper.get(1L);
-        Area area = areaMapper.get("000000");
-
-        result.put("user", user);
-        result.put("area", area);
-        return result;
+        return null;
     }
 
 
-    public static void main(String[] args) {
-        System.out.println(2953156 - 6822690);
-    }
 
 
 }
