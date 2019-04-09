@@ -8,13 +8,9 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-
     @Override
     public User get(Long id) {
-        User user = new User();
-        user.setUsername("测试获取用户");
-        return user;
+        return null;
     }
 
     @Override
@@ -34,7 +30,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> list() {
-
         return null;
     }
 }

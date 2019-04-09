@@ -1,15 +1,12 @@
-package model;
+package com.arc.client.website.model;
 
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 //user表对应的实体
 @ToString
 @Setter
 @Getter
-public class User extends BaseModel {
+public class User     {
     private static final long serialVersionUID = 1L;
 
     private Long id;                             //数据库中的id

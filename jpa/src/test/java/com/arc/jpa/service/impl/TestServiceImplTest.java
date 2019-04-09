@@ -57,4 +57,28 @@ public class TestServiceImplTest {
         System.out.println(testService);
         log.debug("######################");
     }
+
+    @Test
+    public void get1() {
+    }
+
+    @Test
+    public void queryByQuery() {
+    }
+
+    @Test
+    public void queryPage() {
+    }
+
+    @Test
+    public void queryPage2() {
+    }
+
+    @Test
+    public void findByCondition() {
+        log.debug("######################");
+        log.debug("TestService={}", testService);
+        System.out.println(testService);
+        log.debug("######################");
+    }
 }

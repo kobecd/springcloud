@@ -235,27 +235,27 @@ public class TestServiceImpl implements TestService {
 //            return query.where(predicates.toArray(new Predicate[predicates.size()])).getRestriction();
 //        }
 
-
-    public List<SysUser > findByCondition(SysUser user){
+    @Override
+    public List<SysUser> findByCondition(SysUser user) {
         List<SysUser> resultList = null;
-        Specification querySpecifi= new Specification<SysUser>() {
+        Specification querySpecifi = new Specification<SysUser>() {
             @Override
             public Predicate toPredicate(Root<SysUser> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
 
                 List<Predicate> predicates = new ArrayList<>();
-                if(!user.getAvatar().equals("0")){
+                if (!user.getAvatar().equals("0")) {
                     predicates.add(criteriaBuilder.equal(root.get("avatar"), user.getAvatar()));
                 }
-                if(0 != user.getStatus()){
+                if (0 != user.getStatus()) {
                     predicates.add(criteriaBuilder.equal(root.get("titleType"), user.getStatus()));
                 }
-                if(null != user.getNickname()){
-                    predicates.add(criteriaBuilder.equal(root.get("nickname"), "%"+user.getNickname()+"%"));
+                if (null != user.getNickname()) {
+                    predicates.add(criteriaBuilder.equal(root.get("nickname"), "%" + user.getNickname() + "%"));
                 }
                 return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
             }
         };
-        resultList =  this.userRepository.findAll(querySpecifi);
+        resultList = this.userRepository.findAll(querySpecifi);
         return resultList;
     }
 

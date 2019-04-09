@@ -90,8 +90,6 @@ public class SwaggerController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public String putUser(@PathVariable Long id, @RequestBody User user) {
         User u = userService.get(id);
-        u.setUsername(user.getUsername());
-        u.setPassword(user.getPassword());
         userService.save(u);
         return "/hello";
     }
@@ -141,8 +139,6 @@ public class SwaggerController {
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String get() {
         User user = new User();
-        user.setUsername("AAAA");
-
         return "403";
     }
 
