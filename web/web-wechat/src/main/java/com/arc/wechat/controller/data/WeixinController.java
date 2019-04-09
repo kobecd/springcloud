@@ -1,4 +1,4 @@
-package com.arc.wechat.controller;
+package com.arc.wechat.controller.data;
 
 import com.arc.wechat.utils.ValidationUtil;
 import com.arc.wechat.utils.WeixinUtil;

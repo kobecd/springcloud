@@ -1,4 +1,4 @@
-package com.arc.wechat.controller;
+package com.arc.wechat.controller.data;
 
 
 import javax.servlet.ServletException;
