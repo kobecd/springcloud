@@ -3,34 +3,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.del</groupId>
+    <groupId>com.arc</groupId>
     <artifactId>server-eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>server-eureka</name>
-    <description>server-eureka for Spring Boot</description>
+    <description>server-eureka</description>
 
 
-        <parent>
-            <groupId>com.arc</groupId>
-            <artifactId>server</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <relativePath>../pom.xml</relativePath>
-        </parent>
-
-<!--    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.3.RELEASE</version>
-        <relativePath/>
-    </parent>-->
-
-
-    <dependencies>
-        <!--用于测试的，本例可省略-->
-
-    </dependencies>
-
+    <parent>
+        <groupId>com.arc</groupId>
+        <artifactId>server</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
 </project>

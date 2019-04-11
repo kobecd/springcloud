@@ -4,6 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
+    <!-- 项目说明：这里作为聚合工程的父工程 -->
+    <groupId>com.arc</groupId>
+    <artifactId>server</artifactId>
+    <name>server</name>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <description>SpringBoot server 块构建示例</description>
+    <packaging>pom</packaging>
+
+    <!-- 模块说明：这里声明多个子模块 -->
+    <modules>
+        <module>server-eureka</module>
+        <module>server-zuul</module>
+    </modules>
+
+
     <!-- 继承说明：这里继承SpringBoot提供的父工程 -->
     <!--    <parent>
             <groupId>com.arc</groupId>
@@ -18,21 +35,6 @@
         <version>2.1.3.RELEASE</version>
         <relativePath/>
     </parent>
-
-    <!-- 项目说明：这里作为聚合工程的父工程 -->
-    <name>server</name>
-    <description>SpringBoot server 块构建示例</description>
-    <packaging>pom</packaging>
-
-    <groupId>com.arc</groupId>
-    <artifactId>server</artifactId>
-
-
-    <!-- 模块说明：这里声明多个子模块 -->
-    <modules>
-        <module>server-eureka</module>
-        <module>server-zuul</module>
-    </modules>
 
     <!--
         <dependencies>
@@ -72,13 +74,4 @@
         </dependencies>
 
     -->
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>
