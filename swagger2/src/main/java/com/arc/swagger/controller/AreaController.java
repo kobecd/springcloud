@@ -17,7 +17,7 @@ import java.util.List;
  * @author yeChao
  * @date 2018/12/27
  */
-@Api(tags = "系统地区信息的接口" )
+@Api(tags = "系统地区信息的接口")
 @RestController
 @RequestMapping("/area")
 public class AreaController {
@@ -26,11 +26,33 @@ public class AreaController {
     private AreaService areaService;
 
     @ApiOperation(value = "根据code查询地区码", notes = "根据code查询地区码")
-    @ApiImplicitParam(name = "code", value = "6位地区码", required = true)
-    @GetMapping("/get")
+    @ApiImplicitParam(name = "code", value = "6位地区码", required = true, dataType = "String")
+    @GetMapping("/get/string")
     public ResponseVo get(String code) {
         return ResponseVo.success(areaService.get(code));
     }
+
+    //name：参数名，对应方法中单独的参数名称
+    //value：参数中文说明
+    //required：是否必填
+    //paramType：参数类型，取值为path, query, body, header, form
+    //dataType：参数数据类型
+    //defaultValue：默认值
+    @ApiOperation(value = "dataType=int")
+    @ApiImplicitParam(
+            name = "number",
+            value = "6位地区码",
+            required = false,
+            dataType = "String",
+            paramType = "path",
+            defaultValue = "100"
+
+    )
+    @GetMapping("/get/int/defaultValue/{number}")
+    public ResponseVo getIntDefaultValue(@PathVariable(required = false) Integer number) {
+        return ResponseVo.success(number);
+    }
+
 
     @ApiOperation(value = "查询树形结构地区码", notes = "根节点为请求参数中root的地区对象，子节点从children中可以获得，该方法将递归到最后一层")
     @ApiImplicitParam(name = "root", value = "树形根节点6位地区码", required = false)
