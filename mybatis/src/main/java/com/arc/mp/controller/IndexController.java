@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class IndexController {
 
 
-    @GetMapping(value = "/index")
+    @GetMapping(value = "/{id}")
     public String user(@PathVariable Long id) {
         return "index";
     }

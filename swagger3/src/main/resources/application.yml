@@ -9,7 +9,7 @@ swagger:
   print-init: true
   enabled: true
   docket:
-    base-package:  com.arc.swagger3.controller
+    base-package:  com.arc.mp.controller
 
 #  title: ms-API
 #  description: API文档
