@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 /**
  * 测试跳转以及数据返回用
  *
@@ -26,6 +28,13 @@ public class TestController {
     public Object treeByProjectId(@PathVariable Long projectId) {
         return cardService.treeByProjectId(projectId);
     }
+
+
+    @GetMapping("/tree")
+    public Object tree() {
+        return LocalDateTime.now();
+    }
+
 
 
 }
