@@ -10,10 +10,12 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
     <!--<property name="logback.appname" value="app"/>-->
     <!--application.yml 传递参数，不能使用logback 自带的<property>标签 -->
     <springProperty scope="context" name="appName" source="spring.application.name"/>
-    <springProperty scope="context" name="logDir" source="logback.dir"/>
+    <!--<springProperty scope="context" name="appHome" source="logback.dir"/>-->
+    <!--<property name="appHome" value="./log"/>-->
+    <property name="appHome" value="./server/target/log"/>
 
-    <contextName>${appName}日志：)</contextName>
-    <!--<contextName>logback-demo</contextName>-->
+    <contextName>${appName}日志 :)</contextName>
+
     <!--输出到控制台 ConsoleAppender-->
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
         <!--展示格式 layout-->
@@ -31,7 +33,6 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
             <!--<pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %m%n</pattern>-->
             <!--<pattern>%d -1 %msg%n</pattern>-->
         </layout>
-
     </appender>
 
 
@@ -54,22 +55,35 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
             如果同时有<SystemFile>和<FileNamePattern>，那么当天日志是<SystemFile>，明天会自动把今天
             的日志改名为今天的日期。即，<SystemFile> 的日志都是当天的。
         -->
-        <File>${logDir}/${appName}%d.log</File>
-        <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-            <FileNamePattern>${logDir}/${appName}.%d{yyyy-MM-dd}.log</FileNamePattern>
-            <!--只保留最近90天的日志-->
-            <maxHistory>90</maxHistory>
-            <!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志-->
-            <!--<totalSizeCap>1GB</totalSizeCap>-->
-        </rollingPolicy>
+        <File>
+            <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
+                <!--<fileNamePattern>./logs/ms-custom.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+                <FileNamePattern>${appHome}\${appName}%d{yyyyMMdd}.log</FileNamePattern>
+                <!--只保留最近90天的日志 例如：参数未3 则保留的文件是前三天的加上今天的即4天的-->
+                <maxHistory>3</maxHistory>
+                <!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志-->
+                <!--<totalSizeCap>1GB</totalSizeCap>-->
+            </rollingPolicy>
+        </File>
+        <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
+        <!--<Pattern>%-5level %date{dd/MM/yy HH:mm:ss} [%thread] %logger{20} - %X{state} - %X{identity}%n%msg%n%n-->
+        <!--</Pattern>-->
+        <!--</layout>-->
+
         <!--日志输出编码格式化-->
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} %msg%n</pattern>
+            <!--<pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>-->
         </encoder>
     </appender>
+
+
+
+
+
 
 
     <!--指定最基础的日志输出级别-->
@@ -78,142 +92,25 @@ debug:当此属性设置为true时，将打印出logback内部日志信息，实
         <appender-ref ref="consoleLog"/>
     </root>
 
-    <!--<root level="#logback.loglevel#">-->
-    <!--<appender-ref ref="consoleLog"/>-->
-    <!--</root>-->
-
 
     <!--logback.LogbackDemo：类的全路径  范围有重叠的话，范围小的（更具体的），有效-->
-    <logger name="com.arc.swagger3" level="DEBUG" additivity="false"/>
-
-
-    <!--<logger name="com.car.app" level="#logback.loglevel#"/>-->
-
-    <!--不知道这个是做什么的， 感觉是配置的-->
-    <!--<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">-->
-    <!--<resetJUL>true</resetJUL>-->
-    <!--</contextListener>-->
+    <logger name="com.arc.excel" additivity="false" level="DEBUG"/>
 
 
     <!-- 测试环境+开发环境. 多个使用逗号隔开. -->
     <!--根据 application.yml增加环境选择的配置active: dev
     active 的环境，自动采用上面配置的springProfile的 logger 日志-->
     <springProfile name="test,dev">
-        <logger name="com.arc.mp.controller" level="DEBUG" additivity="false">
+        <logger name="com.arc" level="DEBUG" additivity="false">
             <appender-ref ref="consoleLog"/>
+            <appender-ref ref="fileLog"/>
         </logger>
     </springProfile>
 
-    <!-- 生产环境. -->
     <springProfile name="prod">
-        <logger name="com.arc.mp.controller" level="INFO" additivity="false">
+        <logger name="com.arc" level="INFO" additivity="false">
             <appender-ref ref="consoleLog"/>
         </logger>
     </springProfile>
-
 
 </configuration>
-
-
-        <!--<appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--&lt;!&ndash;如果只是想要 Error 级别的日志，那么需要过滤一下，默认是 info 级别的，ThresholdFilter&ndash;&gt;-->
-        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
-        <!--<level>Error</level>-->
-        <!--</filter>-->
-        <!--&lt;!&ndash;日志名称，如果没有File 属性，那么只会使用FileNamePattern的文件路径规则-->
-        <!--如果同时有<SystemFile>和<FileNamePattern>，那么当天日志是<SystemFile>，明天会自动把今天-->
-        <!--的日志改名为今天的日期。即，<SystemFile> 的日志都是当天的。-->
-        <!--&ndash;&gt;-->
-        <!--<SystemFile>${logback.logdir}/error1.${logback.appname}.log</SystemFile>-->
-        <!--&lt;!&ndash;滚动策略，按照时间滚动 TimeBasedRollingPolicy&ndash;&gt;-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-        <!--&lt;!&ndash;文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间&ndash;&gt;-->
-        <!--<FileNamePattern>${logback.logdir}/error1.${logback.appname}.%d{yyyy-MM-dd}.log</FileNamePattern>-->
-        <!--&lt;!&ndash;只保留最近90天的日志&ndash;&gt;-->
-        <!--<maxHistory>90</maxHistory>-->
-        <!--&lt;!&ndash;用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志&ndash;&gt;-->
-        <!--&lt;!&ndash;<totalSizeCap>1GB</totalSizeCap>&ndash;&gt;-->
-        <!--</rollingPolicy>-->
-        <!--&lt;!&ndash;日志输出编码格式化&ndash;&gt;-->
-        <!--<encoder>-->
-        <!--<charset>UTF-8</charset>-->
-        <!--<pattern>%d [%thread] %-5level %logger{36} %line - %msg%n</pattern>-->
-        <!--</encoder>-->
-        <!--</appender>-->
-
-
-        <!--根节点<configuration>有5个子节点-->
-        <!--环境 区分 springProfile-->
-        <!--<springProfile name="dev,local">-->
-        <!--<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
-        <!--<encoder charset="UTF-8">-->
-        <!--<pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %m%n</pattern>-->
-        <!--</encoder>-->
-        <!--</appender>-->
-        <!--</springProfile>-->
-
-        <!--<springProfile name="test,prod">-->
-        <!--<appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-        <!--<fileNamePattern>./logs/web-manage.%d{yyyy-MM-dd}.log</fileNamePattern>-->
-        <!--<maxHistory>30</maxHistory>-->
-        <!--</rollingPolicy>-->
-        <!--<encoder>-->
-        <!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} %msg%n</pattern>-->
-        <!--</encoder>-->
-        <!--</appender>-->
-        <!--</springProfile>-->
-
-        <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
-        <!--<logger name="org.apache" level="WARN" />-->
-        <!--<logger name="org.springframework.amqp" level="INFO" />-->
-        <!--<logger name="org.springframework.scheduling" level="INFO" />-->
-        <!--<logger name="com.netflix.discovery" level="INFO" />-->
-        <!--<logger name="org.mongodb.driver" level="INFO" />-->
-
-        <!--<springProfile name="dev,local">-->
-        <!--<logger name="org.springframework" level="DEBUG" />-->
-        <!--<root level="DEBUG">-->
-        <!--<appender-ref ref="STDOUT" />-->
-        <!--</root>-->
-        <!--</springProfile>-->
-
-        <!--<springProfile name="test">-->
-        <!--<logger name="org.springframework" level="DEBUG" />-->
-
-        <!--</springProfile>-->
-
-        <!--
-            <logger name="io.github.jhipster" level="DEBUG"/>
-
-            <logger name="javax.activation" level="WARN"/>
-            <logger name="javax.mail" level="WARN"/>
-            <logger name="javax.xml.bind" level="WARN"/>
-            <logger name="ch.qos.logback" level="WARN"/>
-            <logger name="com.codahale.metrics" level="WARN"/>
-            <logger name="com.netflix" level="WARN"/>
-            <logger name="com.netflix.discovery" level="INFO"/>
-            <logger name="com.ryantenney" level="WARN"/>
-            <logger name="com.sun" level="WARN"/>
-            <logger name="com.zaxxer" level="WARN"/>
-            <logger name="io.undertow" level="WARN"/>
-            <logger name="io.undertow.websockets.jsr" level="ERROR"/>
-            <logger name="org.apache" level="WARN"/>
-            <logger name="org.apache.catalina.startup.DigesterFactory" level="OFF"/>
-            <logger name="org.bson" level="WARN"/>
-            <logger name="org.hibernate.validator" level="WARN"/>
-            <logger name="org.hibernate" level="WARN"/>
-            <logger name="org.hibernate.ejb.HibernatePersistence" level="OFF"/>
-            <logger name="org.springframework" level="WARN"/>
-            <logger name="org.springframework.web" level="WARN"/>
-            <logger name="org.springframework.security" level="WARN"/>
-            <logger name="org.springframework.cache" level="WARN"/>
-            <logger name="org.thymeleaf" level="WARN"/>
-            <logger name="org.xnio" level="WARN"/>
-            <logger name="springfox" level="WARN"/>
-            <logger name="sun.rmi" level="WARN"/>
-            <logger name="liquibase" level="WARN"/>
-            <logger name="LiquibaseSchemaResolver" level="INFO"/>
-            <logger name="sun.net.www" level="INFO"/>
-            <logger name="sun.rmi.transport" level="WARN"/>
-        -->

@@ -1,7 +1,7 @@
 package com.arc.security.db.controller;
 
 
-import com.arc.security.db.model.domain.sys.SysUser;
+import com.arc.security.db.model.domain.sys.User;
 import com.arc.security.db.model.vo.ResponseVo;
 import com.arc.security.db.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @Controller
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class UserController {
      * @return
      */
     @PostMapping(value = "")
-    public ResponseVo save(@RequestBody SysUser user) {
+    public ResponseVo save(@RequestBody User user) {
         log.debug("新建用户，参数 user={}, ", user.toString());
         return ResponseVo.success(userService.save(user));
 //        return ResponseVo.success(user);
@@ -71,7 +71,7 @@ public class UserController {
      */
 //    @PutMapping("/")
     @PostMapping("/update")
-    public ResponseVo update(@RequestBody SysUser user) {
+    public ResponseVo update(@RequestBody User user) {
         log.debug("更新用户,参数user={}, ", user.toString());
         return ResponseVo.success(userService.update(user));
     }
@@ -94,7 +94,7 @@ public class UserController {
      * @return
      */
     //@todo page 分页插件
-    @GetMapping(value = "")
+    @GetMapping(value = "/")
     public ResponseVo list() {
         log.debug("获取用户列表，无参数！");
         return ResponseVo.success(userService.list());

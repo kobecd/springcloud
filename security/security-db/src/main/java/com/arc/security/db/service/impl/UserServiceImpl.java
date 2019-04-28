@@ -1,9 +1,10 @@
 package com.arc.security.db.service.impl;
 
-import com.arc.security.db.model.domain.sys.SysUser;
+import com.arc.security.db.model.domain.sys.User;
 
-import com.arc.security.db.mapper.SysUserMapper;
+import com.arc.security.db.mapper.UserMapper;
 import com.arc.security.db.service.UserService;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,12 +21,12 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Resource
-    private SysUserMapper sysUserMapper;
+    private UserMapper sysUserMapper;
 
 
     @Override
 
-    public Long save(SysUser user) {
+    public Long save(User user) {
         return sysUserMapper.save(user) == 1 ? user.getId() : null;
     }
 
@@ -35,40 +36,37 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int update(SysUser user) {
+    public int update(User user) {
 //        return sysUserMapper.update(user);
         Integer update = sysUserMapper.update(user);
-        System.out.println("#############################");
+        System.out.println(("#############################"));
         System.out.println(update);
-        System.out.println(update);
-        System.out.println(update);
-        System.out.println(update);
-        System.out.println(update);
-        System.out.println("#############################");
+        System.out.println(("#############################"));
         return update;
     }
 
 
     @Override
-    public SysUser get(Long id) {
+    public User get(Long id) {
         return sysUserMapper.get(id);
     }
 
 
     @Override
-    public List<SysUser> list() {
-        return sysUserMapper.list();
+    public List<User> list() {
+        Wrapper<User> wapper = null;
+        return sysUserMapper.selectList(wapper);
     }
 
     @Override
-    public SysUser getByUsername(String username) {
+    public User getByUsername(String username) {
         return sysUserMapper.getByUsername(username);
     }
 
     @Override
     public Boolean login(String username, String password) {
         Boolean result = false;
-        SysUser dbUser = getByUsername(username);
+        User dbUser = getByUsername(username);
         //@todo MD5或者其他加密手段
 //        if (dbUser != null && dbUser.getPassword() != null && dbUser.getPassword().equals(password)) {
         result = true;

@@ -9,23 +9,24 @@ import lombok.Setter;
 import java.util.Date;
 
 /**
- * @author: yechao
- * @date: 2019/01/23 11:28
- * @description: 用户相关的服务
+ * 用户相关的服务
+ *
+ * @author yechao
+ * @since 2019/01/23 11:28
  */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SysUser extends BaseModel {
+public class User extends BaseModel {
 
     private static final long serialVersionUID = 1L;
 
     private Long id;// 自增id
 
-    private String nickname;// 用户昵称
+    private String username;// 用户名
 
-    private String avatar;// 头像
+    private String password;//密码
 
     private Integer status = 0;// 账号状态(0：正常 1:暂停)
 

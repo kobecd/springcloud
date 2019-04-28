@@ -1,7 +1,7 @@
 package com.arc.security.db.service;
 
 
-import com.arc.security.db.model.domain.sys.SysUser;
+import com.arc.security.db.model.domain.sys.User;
 
 import java.util.List;
 
@@ -14,17 +14,17 @@ import java.util.List;
  */
 public interface UserService {
 
-    Long save(SysUser SysUser);
+    Long save(User User);
 
     int delete(Long id);
 
-    int update(SysUser SysUser);
+    int update(User User);
 
-    SysUser get(Long id);
+    User get(Long id);
 
-    List<SysUser> list();
+    List<User> list();
 
-    SysUser getByUsername(String username);
+    User getByUsername(String username);
 
     /**
      * 登陆
