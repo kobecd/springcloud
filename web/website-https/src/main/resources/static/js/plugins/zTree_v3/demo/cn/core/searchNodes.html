@@ -110,8 +110,8 @@
             }
         }
 
-        function getFontCss(treeId, treeNode) {
-            return (!!treeNode.highlight) ? {color: "#A60000", "font-weight": "bold"} : {
+        function getFontCss(treeId, node) {
+            return (!!node.highlight) ? {color: "#A60000", "font-weight": "bold"} : {
                 color: "#333",
                 "font-weight": "normal"
             };
@@ -176,7 +176,7 @@
                     <li>不需要对 setting 进行特殊设置</li>
                 </ul>
             </li>
-            <li class="title"><h2>3、treeNode 节点数据说明</h2>
+            <li class="title"><h2>3、node 节点数据说明</h2>
                 <ul class="list">
                     <li class="highlight_red">请注意各个方法使用时保证传入查找的参数类型与设定要查找的属性的类型一致</li>
                 </ul>

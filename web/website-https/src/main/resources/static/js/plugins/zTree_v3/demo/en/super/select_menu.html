@@ -48,13 +48,13 @@
             {id: 64, pId: 6, name: "Sanming"}
         ];
 
-        function beforeClick(treeId, treeNode) {
-            var check = (treeNode && !treeNode.isParent);
+        function beforeClick(treeId, node) {
+            var check = (node && !node.isParent);
             if (!check) alert("Do not select province...");
             return check;
         }
 
-        function onClick(e, treeId, treeNode) {
+        function onClick(e, treeId, node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
                 nodes = zTree.getSelectedNodes(),
                 v = "";

@@ -47,13 +47,13 @@
             return childNodes;
         }
 
-        function beforeRemove(treeId, treeNode) {
+        function beforeRemove(treeId, node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-            zTree.selectNode(treeNode);
-            return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+            zTree.selectNode(node);
+            return confirm("确认删除 节点 -- " + node.name + " 吗？");
         }
 
-        function beforeRename(treeId, treeNode, newName) {
+        function beforeRename(treeId, node, newName) {
             if (newName.length == 0) {
                 setTimeout(function () {
                     var zTree = $.fn.zTree.getZTreeObj("treeDemo");
@@ -67,22 +67,22 @@
 
         var newCount = 1;
 
-        function addHoverDom(treeId, treeNode) {
-            var sObj = $("#" + treeNode.tId + "_span");
-            if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
-            var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+        function addHoverDom(treeId, node) {
+            var sObj = $("#" + node.tId + "_span");
+            if (node.editNameFlag || $("#addBtn_" + node.tId).length > 0) return;
+            var addStr = "<span class='button add' id='addBtn_" + node.tId
                 + "' title='add node' onfocus='this.blur();'></span>";
             sObj.after(addStr);
-            var btn = $("#addBtn_" + treeNode.tId);
+            var btn = $("#addBtn_" + node.tId);
             if (btn) btn.bind("click", function () {
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                zTree.addNodes(treeNode, {id: (100 + newCount), pId: treeNode.id, name: "new node" + (newCount++)});
+                zTree.addNodes(node, {id: (100 + newCount), pId: node.id, name: "new node" + (newCount++)});
                 return false;
             });
         };
 
-        function removeHoverDom(treeId, treeNode) {
-            $("#addBtn_" + treeNode.tId).unbind().remove();
+        function removeHoverDom(treeId, node) {
+            $("#addBtn_" + node.tId).unbind().remove();
         };
 
         $(document).ready(function () {
@@ -123,7 +123,7 @@
                     <li class="highlight_red">2)、使用 异步加载功能，请参考 "异步加载 节点数据" Demo 中关于 setting 的配置要求</li>
                 </ul>
             </li>
-            <li class="title"><h2>3、treeNode 节点数据说明</h2>
+            <li class="title"><h2>3、node 节点数据说明</h2>
                 <ul class="list">
                     <li>两种模式共存，对数据无特殊要求，请分别参考 "异步加载 节点数据" & "拖拽 节点 基本控制" & "基本 增 / 删 / 改 节点" 中的相关说明</li>
                 </ul>

@@ -52,12 +52,12 @@
             }
         ];
 
-        function OnRightClick(event, treeId, treeNode) {
-            if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
+        function OnRightClick(event, treeId, node) {
+            if (!node && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
                 zTree.cancelSelectedNode();
                 showRMenu("root", event.clientX, event.clientY);
-            } else if (treeNode && !treeNode.noR) {
-                zTree.selectNode(treeNode);
+            } else if (node && !node.noR) {
+                zTree.selectNode(node);
                 showRMenu("node", event.clientX, event.clientY);
             }
         }

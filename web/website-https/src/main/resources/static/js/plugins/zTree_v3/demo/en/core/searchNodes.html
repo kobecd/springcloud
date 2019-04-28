@@ -110,8 +110,8 @@
             }
         }
 
-        function getFontCss(treeId, treeNode) {
-            return (!!treeNode.highlight) ? {color: "#A60000", "font-weight": "bold"} : {
+        function getFontCss(treeId, node) {
+            return (!!node.highlight) ? {color: "#A60000", "font-weight": "bold"} : {
                 color: "#333",
                 "font-weight": "normal"
             };
@@ -177,7 +177,7 @@
                     <li>Do not need to set the setting.</li>
                 </ul>
             </li>
-            <li class="title"><h2>3, Explanation of treeNode</h2>
+            <li class="title"><h2>3, Explanation of node</h2>
                 <ul class="list">
                     <li class="highlight_red">Note: Please ensure that the incoming value type is the same as type of
                         attribute.

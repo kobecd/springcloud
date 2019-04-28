@@ -43,18 +43,18 @@
         var log, className = "dark",
             startTime = 0, endTime = 0, perCount = 100, perTime = 100;
 
-        function getUrl(treeId, treeNode) {
-            var curCount = (treeNode.children) ? treeNode.children.length : 0;
-            var getCount = (curCount + perCount) > treeNode.count ? (treeNode.count - curCount) : perCount;
-            var param = "id=" + treeNode.id + "_" + (treeNode.times++) + "&count=" + getCount;
+        function getUrl(treeId, node) {
+            var curCount = (node.children) ? node.children.length : 0;
+            var getCount = (curCount + perCount) > node.count ? (node.count - curCount) : perCount;
+            var param = "id=" + node.id + "_" + (node.times++) + "&count=" + getCount;
             return "../asyncData/getNodesForBigData.php?" + param;
         }
 
-        function beforeExpand(treeId, treeNode) {
-            if (!treeNode.isAjaxing) {
+        function beforeExpand(treeId, node) {
+            if (!node.isAjaxing) {
                 startTime = new Date();
-                treeNode.times = 1;
-                ajaxGetNodes(treeNode, "refresh");
+                node.times = 1;
+                ajaxGetNodes(node, "refresh");
                 return true;
             } else {
                 alert("zTree 正在下载数据中，请稍后展开节点。。。");
@@ -62,42 +62,42 @@
             }
         }
 
-        function onAsyncSuccess(event, treeId, treeNode, msg) {
+        function onAsyncSuccess(event, treeId, node, msg) {
             if (!msg || msg.length == 0) {
                 return;
             }
             var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
-                totalCount = treeNode.count;
-            if (treeNode.children.length < totalCount) {
+                totalCount = node.count;
+            if (node.children.length < totalCount) {
                 setTimeout(function () {
-                    ajaxGetNodes(treeNode);
+                    ajaxGetNodes(node);
                 }, perTime);
             } else {
-                treeNode.icon = "";
-                zTree.updateNode(treeNode);
-                zTree.selectNode(treeNode.children[0]);
+                node.icon = "";
+                zTree.updateNode(node);
+                zTree.selectNode(node.children[0]);
                 endTime = new Date();
                 var usedTime = (endTime.getTime() - startTime.getTime()) / 1000;
                 className = (className === "dark" ? "" : "dark");
-                showLog("[ " + getTime() + " ]&nbsp;&nbsp;treeNode:" + treeNode.name);
-                showLog("加载完毕，共进行 " + (treeNode.times - 1) + " 次异步加载, 耗时：" + usedTime + " 秒");
+                showLog("[ " + getTime() + " ]&nbsp;&nbsp;node:" + node.name);
+                showLog("加载完毕，共进行 " + (node.times - 1) + " 次异步加载, 耗时：" + usedTime + " 秒");
             }
         }
 
-        function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+        function onAsyncError(event, treeId, node, XMLHttpRequest, textStatus, errorThrown) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
             alert("异步获取数据出现异常。");
-            treeNode.icon = "";
-            zTree.updateNode(treeNode);
+            node.icon = "";
+            zTree.updateNode(node);
         }
 
-        function ajaxGetNodes(treeNode, reloadType) {
+        function ajaxGetNodes(node, reloadType) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
             if (reloadType == "refresh") {
-                treeNode.icon = "../../../css/zTreeStyle/img/loading.gif";
-                zTree.updateNode(treeNode);
+                node.icon = "../../../css/zTreeStyle/img/loading.gif";
+                zTree.updateNode(node);
             }
-            zTree.reAsyncChildNodes(treeNode, reloadType, true);
+            zTree.reAsyncChildNodes(node, reloadType, true);
         }
 
         function showLog(str) {
@@ -155,7 +155,7 @@
                     <li>其他不需要进行特殊的配置，根据自己的需求自行设置</li>
                 </ul>
             </li>
-            <li class="title"><h2>3、treeNode 节点数据说明</h2>
+            <li class="title"><h2>3、node 节点数据说明</h2>
                 <ul class="list">
                     <li>对 节点数据 没有特殊要求，用户可以根据自己的需求添加自定义属性</li>
                 </ul>

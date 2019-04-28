@@ -288,7 +288,7 @@ You can initialize the viewer with a date. By default it's now, so you can speci
 
 Number. Default: undefined
 
-zIndex value is being automatically calculated based on the DOM tree, where we seek the highest value. To skip this process you can set the value manually.
+zIndex value is being automatically calculated based on the DOM dataServiceImpl, where we seek the highest value. To skip this process you can set the value manually.
 
 ### onRender
 

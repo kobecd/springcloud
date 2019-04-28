@@ -211,10 +211,10 @@ INSERT INTO `role` VALUES ('1', '超级管理员', 'ADMIN', '1', '2016-10-11 00:
 INSERT INTO `role` VALUES ('2', '普通用户', 'USER', '1', '2016-10-11 00:00:00', '1', '2016-10-11 00:00:00', '1');
 
 -- ----------------------------
--- Table structure for tree
+-- Table structure for dataServiceImpl
 -- ----------------------------
-DROP TABLE IF EXISTS `tree`;
-CREATE TABLE `tree` (
+DROP TABLE IF EXISTS `dataServiceImpl`;
+CREATE TABLE `dataServiceImpl` (
   `id` int(11) NOT NULL,
   `p_id` int(11) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
@@ -229,13 +229,13 @@ CREATE TABLE `tree` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of tree
+-- Records of dataServiceImpl
 -- ----------------------------
-INSERT INTO `tree` VALUES ('1', null, '湖北省', '', '\0', null, null, null, null, null);
-INSERT INTO `tree` VALUES ('2', null, '湖南', '\0', '\0', null, null, null, null, null);
-INSERT INTO `tree` VALUES ('3', '1', '武汉市', '', null, null, null, null, null, null);
-INSERT INTO `tree` VALUES ('4', '1', '十堰市', '\0', null, null, null, null, null, null);
-INSERT INTO `tree` VALUES ('5', '2', '长沙市', '\0', null, null, null, null, null, null);
+INSERT INTO `dataServiceImpl` VALUES ('1', null, '湖北省', '', '\0', null, null, null, null, null);
+INSERT INTO `dataServiceImpl` VALUES ('2', null, '湖南', '\0', '\0', null, null, null, null, null);
+INSERT INTO `dataServiceImpl` VALUES ('3', '1', '武汉市', '', null, null, null, null, null, null);
+INSERT INTO `dataServiceImpl` VALUES ('4', '1', '十堰市', '\0', null, null, null, null, null, null);
+INSERT INTO `dataServiceImpl` VALUES ('5', '2', '长沙市', '\0', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for User

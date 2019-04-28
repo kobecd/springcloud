@@ -47,13 +47,13 @@
                 }
             },
             callback: {
-                beforeClick: function (treeId, treeNode) {
-                    var zTree = $.fn.zTree.getZTreeObj("tree");
-                    if (treeNode.isParent) {
-                        zTree.expandNode(treeNode);
+                beforeClick: function (treeId, node) {
+                    var zTree = $.fn.zTree.getZTreeObj("dataServiceImpl");
+                    if (node.isParent) {
+                        zTree.expandNode(node);
                         return false;
                     } else {
-                        demoIframe.attr("src", treeNode.systemFile + ".html");
+                        demoIframe.attr("src", node.systemFile + ".html");
                         return true;
                     }
                 }
@@ -130,11 +130,11 @@
         ];
 
         $(document).ready(function () {
-            var t = $("#tree");
+            var t = $("#dataServiceImpl");
             t = $.fn.zTree.init(t, setting, zNodes);
             demoIframe = $("#testIframe");
             demoIframe.bind("load", loadReady);
-            var zTree = $.fn.zTree.getZTreeObj("tree");
+            var zTree = $.fn.zTree.getZTreeObj("dataServiceImpl");
             zTree.selectNode(zTree.getNodeByParam("id", 101));
 
         });
@@ -156,7 +156,7 @@
 <TABLE border=0 height=600px align=left>
     <TR>
         <TD width=260px align=left valign=top style="BORDER-RIGHT: #999999 1px dashed">
-            <ul id="tree" class="ztree" style="width:260px; overflow:auto;"></ul>
+            <ul id="dataServiceImpl" class="ztree" style="width:260px; overflow:auto;"></ul>
         </TD>
         <TD width=770px align=left valign=top>
             <IFRAME ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO width=100% height=600px

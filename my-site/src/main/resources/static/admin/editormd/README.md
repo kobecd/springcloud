@@ -91,8 +91,8 @@ javascript:
 
 Using modular script loader :
 
-- [Using Require.js](https://github.com/pandao/editor.md/tree/master/examples/use-requirejs.html)
-- [Using Sea.js](https://github.com/pandao/editor.md/tree/master/examples/use-seajs.html)
+- [Using Require.js](https://github.com/pandao/editor.md/dataServiceImpl/master/examples/use-requirejs.html)
+- [Using Sea.js](https://github.com/pandao/editor.md/dataServiceImpl/master/examples/use-seajs.html)
 
 #### Dependents
 

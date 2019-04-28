@@ -36,7 +36,7 @@
     return (node.level == 2 && node.name.indexOf("test")>-1);
 }
 ......
-var treeObj = $.fn.zTree.getZTreeObj("tree");
+var treeObj = $.fn.zTree.getZTreeObj("dataServiceImpl");
 var node = treeObj.getNodesByFilter(filter, true); // 仅查找一个节点
 var nodes = treeObj.getNodesByFilter(filter); // 查找节点集合
 </code></pre>

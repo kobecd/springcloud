@@ -36,14 +36,14 @@
             }
         };
 
-        function onAsyncSuccess(event, treeId, treeNode, msg) {
-            cancelHalf(treeNode);
+        function onAsyncSuccess(event, treeId, node, msg) {
+            cancelHalf(node);
         }
 
-        function cancelHalf(treeNode) {
+        function cancelHalf(node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-            treeNode.halfCheck = false;
-            zTree.updateNode(treeNode);
+            node.halfCheck = false;
+            zTree.updateNode(node);
         }
 
         var zNodes = [
@@ -70,7 +70,7 @@
         <ul class="info">
             <li class="title"><h2>1, Explanation of Demo</h2>
                 <ul class="list">
-                    <li>This demo implements the check operation of the dynamic tree</li>
+                    <li>This demo implements the check operation of the dynamic dataServiceImpl</li>
                     <li class="highlight_red">1). After loaded child nodes, the parent node's 'halfCheck' attribute will
                         be invalid immediately.
                     </li>
@@ -89,9 +89,9 @@
                     </li>
                 </ul>
             </li>
-            <li class="title"><h2>3, Explanation of treeNode</h2>
+            <li class="title"><h2>3, Explanation of node</h2>
                 <ul class="list">
-                    <li class="highlight_red">1), Please set treeNode.halfCheck attribute, before zTree initialize. See
+                    <li class="highlight_red">1), Please set node.halfCheck attribute, before zTree initialize. See
                         the API documentation for more related contents.
                     </li>
                     <li>2), By the way, please see the 'Radio Operation' Demo.</li>

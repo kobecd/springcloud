@@ -1,6 +1,6 @@
 <div class="apiDetail">
     <div>
-        <h2><span>Function(treeNode, addFlag, isSilent)</span><span class="path">zTreeObj.</span>selectNode</h2>
+        <h2><span>Function(node, addFlag, isSilent)</span><span class="path">zTreeObj.</span>selectNode</h2>
         <h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.core</span> 核心 js ]</span></h3>
         <div class="desc">
             <p></p>
@@ -12,7 +12,7 @@
         </div>
         <h3>Function 参数说明</h3>
         <div class="desc">
-            <h4><b>treeNode</b><span>JSON</span></h4>
+            <h4><b>node</b><span>JSON</span></h4>
             <p>需要被选中的节点数据</p>
             <p class="highlight_red">请务必保证此节点数据对象 是 zTree 内部的数据对象</p>
             <h4 class="topLine"><b>addFlag</b><span>Boolean</span></h4>
@@ -28,7 +28,7 @@
         </div>
         <h3>function 举例</h3>
         <h4>1. 单独选中根节点中第一个节点</h4>
-        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
+        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("dataServiceImpl");
 var nodes = treeObj.getNodes();
 if (nodes.length>0) {
 	treeObj.selectNode(nodes[0]);

@@ -15,12 +15,12 @@
     </resultMap>
 
     <insert id="insert">
-        insert into `tree` (id,p_id, `name`, `open`, checked, icon, icon_open, icon_close, url, systemFile )
+        insert into `dataServiceImpl` (id,p_id, `name`, `open`, checked, icon, icon_open, icon_close, url, systemFile )
         values (#{id},#{pId}, #{name}, #{open}, #{checked}, #{icon}, #{iconOpen}, #{iconClose}, #{url}, #{systemFile} )
     </insert>
 
     <insert id="batchSave">
-        insert into `tree` (id,p_id, `name`, `open`, checked, icon, icon_open, icon_close, url, systemFile )
+        insert into `dataServiceImpl` (id,p_id, `name`, `open`, checked, icon, icon_open, icon_close, url, systemFile )
         values
         <foreach collection="list" item="item" index="index" separator=",">
             (#{item.id},#{item.pId},#{item.name},#{item.open} ,#{item.checked} ,#{item.icon}
@@ -30,18 +30,18 @@
 
     <select id="selectAll" resultMap="BaseResultMap">
         select id, p_id, `name`, `open`, checked, icon, icon_open, icon_close, url, systemFile
-        from tree
+        from dataServiceImpl
     </select>
 
     <delete id="deleteById">
-        DELETE FROM tree WHERE id=#{id}
+        DELETE FROM dataServiceImpl WHERE id=#{id}
     </delete>
     <delete id="deleteAll">
-        DELETE FROM tree
+        DELETE FROM dataServiceImpl
     </delete>
 
     <update id="update">
-        UPDATE tree SET
+        UPDATE dataServiceImpl SET
         id=#{id},
         p_id=#{pId},
         `name`=#{name},

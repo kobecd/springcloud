@@ -122,8 +122,8 @@
             return true;
         }
 
-        function beforeDragOpen(treeId, treeNode) {
-            autoExpandNode = treeNode;
+        function beforeDragOpen(treeId, node) {
+            autoExpandNode = node;
             return true;
         }
 
@@ -145,10 +145,10 @@
             showLog("target: " + (targetNode ? targetNode.name : "root") + "  -- is " + (isCopy == null ? "cancel" : isCopy ? "copy" : "move"))
         }
 
-        function onExpand(event, treeId, treeNode) {
-            if (treeNode === autoExpandNode) {
+        function onExpand(event, treeId, node) {
+            if (node === autoExpandNode) {
                 className = (className === "dark" ? "" : "dark");
-                showLog("[ " + getTime() + " onExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
+                showLog("[ " + getTime() + " onExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
             }
         }
 
@@ -214,7 +214,7 @@
                     <li>Same as 'Normal Drag Node Operation'</li>
                 </ul>
             </li>
-            <li class="title"><h2>3, Explanation of treeNode</h2>
+            <li class="title"><h2>3, Explanation of node</h2>
                 <ul class="list">
                     <li>Same as 'Normal Drag Node Operation'</li>
                 </ul>

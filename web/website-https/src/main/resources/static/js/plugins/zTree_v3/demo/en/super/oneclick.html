@@ -45,9 +45,9 @@
             {id: 134, pId: 13, name: "Leaf Node 1-3-4"}
         ];
 
-        function onClick(e, treeId, treeNode) {
+        function onClick(e, treeId, node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-            zTree.expandNode(treeNode);
+            zTree.expandNode(node);
         }
 
         $(document).ready(function () {

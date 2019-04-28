@@ -39,72 +39,72 @@
         ];
         var curPage = 0;
 
-        function getUrl(treeId, treeNode) {
-            var param = "id=" + treeNode.id + "_" + treeNode.page + "&count=" + treeNode.pageSize,
-                aObj = $("#" + treeNode.tId + "_a");
-            aObj.attr("title", "当前第 " + treeNode.page + " 页 / 共 " + treeNode.maxPage + " 页")
+        function getUrl(treeId, node) {
+            var param = "id=" + node.id + "_" + node.page + "&count=" + node.pageSize,
+                aObj = $("#" + node.tId + "_a");
+            aObj.attr("title", "当前第 " + node.page + " 页 / 共 " + node.maxPage + " 页")
             return "../asyncData/getNodesForBigData.php?" + param;
         }
 
-        function goPage(treeNode, page) {
-            treeNode.page = page;
-            if (treeNode.page < 1) treeNode.page = 1;
-            if (treeNode.page > treeNode.maxPage) treeNode.page = treeNode.maxPage;
-            if (curPage == treeNode.page) return;
-            curPage = treeNode.page;
+        function goPage(node, page) {
+            node.page = page;
+            if (node.page < 1) node.page = 1;
+            if (node.page > node.maxPage) node.page = node.maxPage;
+            if (curPage == node.page) return;
+            curPage = node.page;
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-            zTree.reAsyncChildNodes(treeNode, "refresh");
+            zTree.reAsyncChildNodes(node, "refresh");
         }
 
-        function beforeExpand(treeId, treeNode) {
-            if (treeNode.page == 0) treeNode.page = 1;
-            return !treeNode.isAjaxing;
+        function beforeExpand(treeId, node) {
+            if (node.page == 0) node.page = 1;
+            return !node.isAjaxing;
         }
 
-        function onAsyncSuccess(event, treeId, treeNode, msg) {
+        function onAsyncSuccess(event, treeId, node, msg) {
 
         }
 
-        function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+        function onAsyncError(event, treeId, node, XMLHttpRequest, textStatus, errorThrown) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
             alert("异步获取数据出现异常。");
-            treeNode.icon = "";
-            zTree.updateNode(treeNode);
+            node.icon = "";
+            zTree.updateNode(node);
         }
 
-        function addDiyDom(treeId, treeNode) {
-            if (treeNode.level > 0) return;
-            var aObj = $("#" + treeNode.tId + "_a");
-            if ($("#addBtn_" + treeNode.id).length > 0) return;
-            var addStr = "<span class='button lastPage' id='lastBtn_" + treeNode.id
-                + "' title='last page' onfocus='this.blur();'></span><span class='button nextPage' id='nextBtn_" + treeNode.id
-                + "' title='next page' onfocus='this.blur();'></span><span class='button prevPage' id='prevBtn_" + treeNode.id
-                + "' title='prev page' onfocus='this.blur();'></span><span class='button firstPage' id='firstBtn_" + treeNode.id
+        function addDiyDom(treeId, node) {
+            if (node.level > 0) return;
+            var aObj = $("#" + node.tId + "_a");
+            if ($("#addBtn_" + node.id).length > 0) return;
+            var addStr = "<span class='button lastPage' id='lastBtn_" + node.id
+                + "' title='last page' onfocus='this.blur();'></span><span class='button nextPage' id='nextBtn_" + node.id
+                + "' title='next page' onfocus='this.blur();'></span><span class='button prevPage' id='prevBtn_" + node.id
+                + "' title='prev page' onfocus='this.blur();'></span><span class='button firstPage' id='firstBtn_" + node.id
                 + "' title='first page' onfocus='this.blur();'></span>";
             aObj.after(addStr);
-            var first = $("#firstBtn_" + treeNode.id);
-            var prev = $("#prevBtn_" + treeNode.id);
-            var next = $("#nextBtn_" + treeNode.id);
-            var last = $("#lastBtn_" + treeNode.id);
-            treeNode.maxPage = Math.round(treeNode.count / treeNode.pageSize - .5) + (treeNode.count % treeNode.pageSize == 0 ? 0 : 1);
+            var first = $("#firstBtn_" + node.id);
+            var prev = $("#prevBtn_" + node.id);
+            var next = $("#nextBtn_" + node.id);
+            var last = $("#lastBtn_" + node.id);
+            node.maxPage = Math.round(node.count / node.pageSize - .5) + (node.count % node.pageSize == 0 ? 0 : 1);
             first.bind("click", function () {
-                if (!treeNode.isAjaxing) {
-                    goPage(treeNode, 1);
+                if (!node.isAjaxing) {
+                    goPage(node, 1);
                 }
             });
             last.bind("click", function () {
-                if (!treeNode.isAjaxing) {
-                    goPage(treeNode, treeNode.maxPage);
+                if (!node.isAjaxing) {
+                    goPage(node, node.maxPage);
                 }
             });
             prev.bind("click", function () {
-                if (!treeNode.isAjaxing) {
-                    goPage(treeNode, treeNode.page - 1);
+                if (!node.isAjaxing) {
+                    goPage(node, node.page - 1);
                 }
             });
             next.bind("click", function () {
-                if (!treeNode.isAjaxing) {
-                    goPage(treeNode, treeNode.page + 1);
+                if (!node.isAjaxing) {
+                    goPage(node, node.page + 1);
                 }
             });
         };
@@ -179,7 +179,7 @@
                             <li>其他不需要进行特殊的配置，根据自己的需求自行设置</li>
                         </ul>
                     </li>
-                    <li class="title"><h2>3、treeNode 节点数据说明</h2>
+                    <li class="title"><h2>3、node 节点数据说明</h2>
                         <ul class="list">
                             <li>对 节点数据 没有特殊要求，用户可以根据自己的需求添加自定义属性</li>
                         </ul>

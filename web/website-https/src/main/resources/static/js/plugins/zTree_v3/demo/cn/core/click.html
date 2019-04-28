@@ -43,13 +43,13 @@
 
         var log, className = "dark";
 
-        function beforeClick(treeId, treeNode, clickFlag) {
+        function beforeClick(treeId, node, clickFlag) {
             className = (className === "dark" ? "" : "dark");
-            showLog("[ " + getTime() + " beforeClick ]&nbsp;&nbsp;" + treeNode.name);
-            return (treeNode.click != false);
+            showLog("[ " + getTime() + " beforeClick ]&nbsp;&nbsp;" + node.name);
+            return (node.click != false);
         }
 
-        function onClick(event, treeId, treeNode, clickFlag) {
+        function onClick(event, treeId, node, clickFlag) {
             showLog("[ " + getTime() + " onClick ]&nbsp;&nbsp;clickFlag = " + clickFlag + " (" + (clickFlag === 1 ? "普通选中" : (clickFlag === 0 ? "<b>取消选中</b>" : "<b>追加选中</b>")) + ")");
         }
 
@@ -102,7 +102,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="title"><h2>3、treeNode 节点数据说明</h2>
+            <li class="title"><h2>3、node 节点数据说明</h2>
                 <ul class="list">
                     <li>对 节点数据 没有特殊要求，用户可以根据自己的需求添加自定义属性</li>
                 </ul>

@@ -1,6 +1,9 @@
 package com.arc.mp.controller;
 
-import com.arc.mp.service.system.CardService;
+import com.arc.mp.model.domain.Card;
+import com.arc.mp.model.domain.Node;
+import com.arc.mp.service.CardService;
+import com.arc.mp.service.CardService2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 测试跳转以及数据返回用
@@ -26,15 +29,29 @@ public class TestController {
 
     @GetMapping("/tree/{projectId}")
     public Object treeByProjectId(@PathVariable Long projectId) {
-        return cardService.treeByProjectId(projectId);
+        long in = System.currentTimeMillis();
+        log.info("#################################");
+        List<Node> cards = cardService.treeByProjectId(projectId);
+        System.out.println(cards.size());
+        log.info("方法耗时={}ms", System.currentTimeMillis() - in);
+        log.info("#################################");
+        return cards;
     }
 
+
+    @Autowired
+    private CardService2 cardService2;
 
     @GetMapping("/tree")
     public Object tree() {
-        return LocalDateTime.now();
+        long in = System.currentTimeMillis();
+        log.info("#################################");
+        List<Card> cards = cardService2.treeByProjectId(1L);
+        System.out.println(cards.size());
+        log.info("方法耗时={}ms", System.currentTimeMillis() - in);
+        log.info("#################################");
+        return cards;
     }
-
 
 
 }

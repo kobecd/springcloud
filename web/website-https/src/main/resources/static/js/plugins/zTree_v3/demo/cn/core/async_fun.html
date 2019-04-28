@@ -38,8 +38,8 @@
             return childNodes;
         }
 
-        function beforeClick(treeId, treeNode) {
-            if (!treeNode.isParent) {
+        function beforeClick(treeId, node) {
+            if (!node.isParent) {
                 alert("请选择父节点");
                 return false;
             } else {
@@ -49,18 +49,18 @@
 
         var log, className = "dark";
 
-        function beforeAsync(treeId, treeNode) {
+        function beforeAsync(treeId, node) {
             className = (className === "dark" ? "" : "dark");
-            showLog("[ " + getTime() + " beforeAsync ]&nbsp;&nbsp;&nbsp;&nbsp;" + ((!!treeNode && !!treeNode.name) ? treeNode.name : "root"));
+            showLog("[ " + getTime() + " beforeAsync ]&nbsp;&nbsp;&nbsp;&nbsp;" + ((!!node && !!node.name) ? node.name : "root"));
             return true;
         }
 
-        function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
-            showLog("[ " + getTime() + " onAsyncError ]&nbsp;&nbsp;&nbsp;&nbsp;" + ((!!treeNode && !!treeNode.name) ? treeNode.name : "root"));
+        function onAsyncError(event, treeId, node, XMLHttpRequest, textStatus, errorThrown) {
+            showLog("[ " + getTime() + " onAsyncError ]&nbsp;&nbsp;&nbsp;&nbsp;" + ((!!node && !!node.name) ? node.name : "root"));
         }
 
-        function onAsyncSuccess(event, treeId, treeNode, msg) {
-            showLog("[ " + getTime() + " onAsyncSuccess ]&nbsp;&nbsp;&nbsp;&nbsp;" + ((!!treeNode && !!treeNode.name) ? treeNode.name : "root"));
+        function onAsyncSuccess(event, treeId, node, msg) {
+            showLog("[ " + getTime() + " onAsyncSuccess ]&nbsp;&nbsp;&nbsp;&nbsp;" + ((!!node && !!node.name) ? node.name : "root"));
         }
 
         function showLog(str) {
@@ -138,7 +138,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="title"><h2>3、treeNode 节点数据说明</h2>
+            <li class="title"><h2>3、node 节点数据说明</h2>
                 <ul class="list">
                     <li>同 "异步加载 节点数据" 中的说明</li>
                 </ul>

@@ -1,6 +1,6 @@
 <div class="apiDetail">
     <div>
-        <h2><span>Function(treeId, treeNode)</span><span class="path">setting.callback.</span>beforeExpand</h2>
+        <h2><span>Function(treeId, node)</span><span class="path">setting.callback.</span>beforeExpand</h2>
         <h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.core</span> 核心 js ]</span></h3>
         <div class="desc">
             <p></p>
@@ -13,7 +13,7 @@
         <div class="desc">
             <h4><b>treeId</b><span>String</span></h4>
             <p>对应 zTree 的 <b class="highlight_red">treeId</b>，便于用户操控</p>
-            <h4 class="topLine"><b>treeNode</b><span>JSON</span></h4>
+            <h4 class="topLine"><b>node</b><span>JSON</span></h4>
             <p>要展开的父节点 JSON 数据对象</p>
             <h4 class="topLine"><b>返回值</b><span>Boolean</span></h4>
             <p>返回值是 true / false</p>
@@ -21,7 +21,7 @@
         </div>
         <h3>setting & function 举例</h3>
         <h4>1. 禁止所有已折叠的父节点展开</h4>
-        <pre xmlns=""><code>function zTreeBeforeExpand(treeId, treeNode) {
+        <pre xmlns=""><code>function zTreeBeforeExpand(treeId, node) {
     return false;
 };
 var setting = {

@@ -1,6 +1,6 @@
 <div class="apiDetail">
     <div>
-        <h2><span>Function(treeId, treeNode, newName, isCancel)</span><span class="path">setting.callback.</span>beforeRename
+        <h2><span>Function(treeId, node, newName, isCancel)</span><span class="path">setting.callback.</span>beforeRename
         </h2>
         <h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.exedit</span> 扩展 js ]</span></h3>
         <div class="desc">
@@ -16,7 +16,7 @@
         <div class="desc">
             <h4><b>treeId</b><span>String</span></h4>
             <p>对应 zTree 的 <b class="highlight_red">treeId</b>，便于用户操控</p>
-            <h4 class="topLine"><b>treeNode</b><span>JSON</span></h4>
+            <h4 class="topLine"><b>node</b><span>JSON</span></h4>
             <p>将要更改名称的节点 JSON 数据对象</p>
             <h4 class="topLine"><b>newName</b><span>String</span></h4>
             <p>修改后的新名称</p>
@@ -33,7 +33,7 @@
         </div>
         <h3>setting & function 举例</h3>
         <h4>1. 禁止修改的名称的长度小于 5</h4>
-        <pre xmlns=""><code>function zTreeBeforeRename(treeId, treeNode, newName, isCancel) {
+        <pre xmlns=""><code>function zTreeBeforeRename(treeId, node, newName, isCancel) {
 	return newName.length > 5;
 }
 var setting = {

@@ -32,7 +32,7 @@
         SELECT <include refid="sqlAreaColumns" /> FROM sys_area area_ WHERE area_.area_code = #{code}
     </select>
 
-    <select id="tree" parameterType="string" resultMap="areaWithChildren">
+    <select id="dataServiceImpl" parameterType="string" resultMap="areaWithChildren">
         SELECT <include refid="sqlAreaColumns" /> FROM sys_area area_ WHERE area_.area_code = #{root}
     </select>
 

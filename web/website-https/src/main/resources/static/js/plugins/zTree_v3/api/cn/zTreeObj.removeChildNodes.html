@@ -22,7 +22,7 @@
         </div>
         <h3>function 举例</h3>
         <h4>1. 清空选中的第一个节点的子节点</h4>
-        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
+        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("dataServiceImpl");
 var nodes = treeObj.getSelectedNodes();
 if (nodes && nodes.length>0) {
 	treeObj.removeChildNodes(nodes[0]);

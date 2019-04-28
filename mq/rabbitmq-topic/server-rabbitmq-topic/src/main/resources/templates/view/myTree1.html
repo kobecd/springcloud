@@ -17,7 +17,7 @@
 <table border=0 height=600px align=left>
     <tr>
         <td width=260px align=left valign=top style="border-right: #999999 1px dashed">
-            <ul id="tree" class="ztree" style="width:260px; overflow:auto;"></ul>
+            <ul id="dataServiceImpl" class="ztree" style="width:260px; overflow:auto;"></ul>
         </td>
         <td width=770px align=left valign=top>
             <iframe id="testIframe" Name="testIframe" frameborder=0 scrolling=AUTO
@@ -71,7 +71,7 @@
       //  然后在通过ajax获取菜单以后，进行初始化
         $(document).ready(function(){
             $.ajax({
-                url:'tree.json',
+                url:'dataServiceImpl.json',
                 type: "get",
                 dataType: "json",
                 success:function(data){
@@ -103,15 +103,15 @@
             }
         },
         callback: {
-            beforeClick: function (treeId, treeNode) {
-                var zTree = $.fn.zTree.getZTreeObj("tree");
-                if (treeNode.isParent) {
-                    zTree.expandNode(treeNode);
+            beforeClick: function (treeId, node) {
+                var zTree = $.fn.zTree.getZTreeObj("dataServiceImpl");
+                if (node.isParent) {
+                    zTree.expandNode(node);
                     return false;
                 } else {
                     alert("点击节点事件");
                     console.log(this);
-//                    demoIframe.attr("src",treeNode.file + ".html");
+//                    demoIframe.attr("src",node.file + ".html");
                     return true;
                 }
             }
@@ -140,7 +140,7 @@
     ];
 
     $(document).ready(function () {
-        var t = $("#tree");
+        var t = $("#dataServiceImpl");
         t = $.fn.zTree.init(t, setting, zNodes);
 //        demoIframe = $("#testIframe");
 //        demoIframe.bind("load", loadReady);
@@ -163,7 +163,7 @@
     //-------第二个tree
     $(document).ready(function(){
         $.ajax({
-            url:'/tree/json',
+            url:'/dataServiceImpl/json',
             type: "get",
             dataType: "json",
             success:function(data){
@@ -177,10 +177,10 @@
     });
 
 
-/*    function onClick(e, treeId, treeNode) {
-        if (treeNode.isParent) //如果不是叶子结点，结束
+/*    function onClick(e, treeId, node) {
+        if (node.isParent) //如果不是叶子结点，结束
             return;
-        alert(treeNode.name); //获取当前结点上的相关属性数据，执行相关逻辑
+        alert(node.name); //获取当前结点上的相关属性数据，执行相关逻辑
     };*/
 </script>
 </body>

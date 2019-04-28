@@ -23,7 +23,7 @@
     <script type="text/javascript" src="jquery.treeview.js"></script>
 </head>
 <body>
-<ul id="tree" class="filetree" style="font-size:12px">
+<ul id="dataServiceImpl" class="filetree" style="font-size:12px">
     <li>
         <span class="folder">条目1</span>
         <ul>
@@ -43,7 +43,7 @@
 </ul>
 </body>
 <script type="text/javascript">
-    $("#tree").treeview();
+    $("#dataServiceImpl").treeview();
 </script>
 
 <script type="text/javascript">

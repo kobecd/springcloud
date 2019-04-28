@@ -51,23 +51,23 @@
 
         var curExpandNode = null;
 
-        function beforeExpand(treeId, treeNode) {
+        function beforeExpand(treeId, node) {
             var pNode = curExpandNode ? curExpandNode.getParentNode() : null;
-            var treeNodeP = treeNode.parentTId ? treeNode.getParentNode() : null;
+            var treeNodeP = node.parentTId ? node.getParentNode() : null;
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
             for (var i = 0, l = !treeNodeP ? 0 : treeNodeP.children.length; i < l; i++) {
-                if (treeNode !== treeNodeP.children[i]) {
+                if (node !== treeNodeP.children[i]) {
                     zTree.expandNode(treeNodeP.children[i], false);
                 }
             }
             while (pNode) {
-                if (pNode === treeNode) {
+                if (pNode === node) {
                     break;
                 }
                 pNode = pNode.getParentNode();
             }
             if (!pNode) {
-                singlePath(treeNode);
+                singlePath(node);
             }
 
         }
@@ -125,13 +125,13 @@
             curExpandNode = newNode;
         }
 
-        function onExpand(event, treeId, treeNode) {
-            curExpandNode = treeNode;
+        function onExpand(event, treeId, node) {
+            curExpandNode = node;
         }
 
-        function onClick(e, treeId, treeNode) {
+        function onClick(e, treeId, node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-            zTree.expandNode(treeNode, null, null, null, true);
+            zTree.expandNode(node, null, null, null, true);
         }
 
         $(document).ready(function () {
@@ -173,7 +173,7 @@
         <ul class="info">
             <li class="title"><h2>Explanation of implementation method</h2>
                 <ul class="list">
-                    <li>This Demo is the transformation from "Click to Expand Node" demo​​, tree only expand single
+                    <li>This Demo is the transformation from "Click to Expand Node" demo​​, dataServiceImpl only expand single
                         path.
                     </li>
                     <li class="highlight_red">Use 'setting.callback.beforeExpand / onExpand' callback function to

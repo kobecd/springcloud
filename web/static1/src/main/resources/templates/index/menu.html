@@ -15,7 +15,7 @@
 				}
 				return false;
 			}
-			
+
 			var nodes = [];
 			// get the top level nodes
 			for(var i=0; i<rows.length; i++){
@@ -51,10 +51,10 @@
 			}
 			return nodes;
 		}
-		
+
 		$(function(){
-			$('#tt').tree({
-				url:'tree.json',
+			$('#tt').dataServiceImpl({
+				url:'dataServiceImpl.json',
                 method:'get',
 				loadFilter: function(rows){
 					return convert(rows);
@@ -66,7 +66,7 @@
 						addNewTab(node.text, node.url)
 					}else{
 						//没有链接打开或关闭节点的触发器
-						$('#tt').tree("toggle",node.target);
+						$('#tt').dataServiceImpl("toggle",node.target);
 					}
 				}
 			});

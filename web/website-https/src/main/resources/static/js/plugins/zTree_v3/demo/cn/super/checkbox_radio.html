@@ -38,39 +38,39 @@
             {id: 33, pId: 3, name: "叶子节点 3-3"}
         ];
 
-        function addDiyDom(treeId, treeNode) {
-            var aObj = $("#" + treeNode.tId + IDMark_A);
-            if (treeNode.level == 0) {
-                var editStr = "<input type='checkbox' class='checkboxBtn' id='checkbox_" + treeNode.id + "' onfocus='this.blur();'></input>";
+        function addDiyDom(treeId, node) {
+            var aObj = $("#" + node.tId + IDMark_A);
+            if (node.level == 0) {
+                var editStr = "<input type='checkbox' class='checkboxBtn' id='checkbox_" + node.id + "' onfocus='this.blur();'></input>";
                 aObj.before(editStr);
-                var btn = $("#checkbox_" + treeNode.id);
+                var btn = $("#checkbox_" + node.id);
                 if (btn) btn.bind("change", function () {
-                    checkAccessories(treeNode, btn);
+                    checkAccessories(node, btn);
                 });
-            } else if (treeNode.level == 1) {
-                var editStr = "<input type='radio' class='radioBtn' id='radio_" + treeNode.id + "' name='radio_" + treeNode.getParentNode().id + "' onfocus='this.blur();'></input>";
+            } else if (node.level == 1) {
+                var editStr = "<input type='radio' class='radioBtn' id='radio_" + node.id + "' name='radio_" + node.getParentNode().id + "' onfocus='this.blur();'></input>";
                 aObj.before(editStr);
-                var btn = $("#radio_" + treeNode.id);
+                var btn = $("#radio_" + node.id);
                 if (btn) btn.bind("click", function () {
-                    checkBrand(treeNode, btn);
+                    checkBrand(node, btn);
                 });
             }
         }
 
-        function checkAccessories(treeNode, btn) {
-            var checkedRadio = getCheckedRadio("radio_" + treeNode.id);
+        function checkAccessories(node, btn) {
+            var checkedRadio = getCheckedRadio("radio_" + node.id);
             if (btn.attr("checked")) {
                 if (!checkedRadio) {
-                    $("#radio_" + treeNode.children[0].id).attr("checked", true);
+                    $("#radio_" + node.children[0].id).attr("checked", true);
                 }
             } else {
                 checkedRadio.attr("checked", false);
             }
         }
 
-        function checkBrand(treeNode, btn) {
+        function checkBrand(node, btn) {
             if (btn.attr("checked")) {
-                var pObj = $("#checkbox_" + treeNode.getParentNode().id);
+                var pObj = $("#checkbox_" + node.getParentNode().id);
                 if (!pObj.attr("checked")) {
                     pObj.attr("checked", true);
                 }

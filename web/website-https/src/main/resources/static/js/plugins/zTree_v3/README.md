@@ -14,10 +14,10 @@ zTree Demo : http://www.treejs.cn/v3/demo.php
 
 Introduction of zTree (简介)
 ============
-* zTree is a multi-functional "tree plug-ins." based on jQuery. The main advantages of zTree includes excellent performance, flexible configuration, and the combination of multiple functions.
+* zTree is a multi-functional "dataServiceImpl plug-ins." based on jQuery. The main advantages of zTree includes excellent performance, flexible configuration, and the combination of multiple functions.
 (zTree 是一个依靠 jQuery 实现的多功能 “树插件”。优异的性能、灵活的配置、多种功能的组合是 zTree 最大优点。)
 
-* zTree is a free tree plug-in and uses the MIT license. 
+* zTree is a free dataServiceImpl plug-in and uses the MIT license. 
 (zTree 是开源免费的软件, 使用 MIT 许可证)
 
 * The code of zTree v3.x has been seperated according to the various functions. You can only load the code you need. 

@@ -46,10 +46,10 @@
             {id: 33, pId: 3, name: "叶子节点 3-3"}
         ];
 
-        function fontCss(treeNode) {
-            var aObj = $("#" + treeNode.tId + "_a");
+        function fontCss(node) {
+            var aObj = $("#" + node.tId + "_a");
             aObj.removeClass("copy").removeClass("cut");
-            if (treeNode === curSrcNode) {
+            if (node === curSrcNode) {
                 if (curType == "copy") {
                     aObj.addClass(curType);
                 } else {
@@ -62,13 +62,13 @@
             return false;
         }
 
-        function beforeClick(treeId, treeNode) {
-            return !treeNode.isCur;
+        function beforeClick(treeId, node) {
+            return !node.isCur;
         }
 
         var curSrcNode, curType;
 
-        function setCurSrcNode(treeNode) {
+        function setCurSrcNode(node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
             if (curSrcNode) {
                 delete curSrcNode.isCur;
@@ -76,8 +76,8 @@
                 curSrcNode = null;
                 fontCss(tmpNode);
             }
-            curSrcNode = treeNode;
-            if (!treeNode) return;
+            curSrcNode = node;
+            if (!node) return;
 
             curSrcNode.isCur = true;
             zTree.cancelSelectedNode();
@@ -183,7 +183,7 @@
                     <li>同 "拖拽 节点 基本控制"</li>
                 </ul>
             </li>
-            <li class="title"><h2>3、treeNode 节点数据说明</h2>
+            <li class="title"><h2>3、node 节点数据说明</h2>
                 <ul class="list">
                     <li>同 "拖拽 节点 基本控制"</li>
                 </ul>

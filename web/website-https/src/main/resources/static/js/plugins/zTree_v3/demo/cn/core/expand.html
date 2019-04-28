@@ -56,8 +56,8 @@
 
         var log, className = "dark";
 
-        function beforeClick(treeId, treeNode) {
-            if (treeNode.isParent) {
+        function beforeClick(treeId, node) {
+            if (node.isParent) {
                 return true;
             } else {
                 alert("这个 Demo 是用来测试 展开 / 折叠 的...\n\n去点击父节点吧... ");
@@ -65,24 +65,24 @@
             }
         }
 
-        function beforeCollapse(treeId, treeNode) {
+        function beforeCollapse(treeId, node) {
             className = (className === "dark" ? "" : "dark");
-            showLog("[ " + getTime() + " beforeCollapse ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
-            return (treeNode.collapse !== false);
+            showLog("[ " + getTime() + " beforeCollapse ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
+            return (node.collapse !== false);
         }
 
-        function onCollapse(event, treeId, treeNode) {
-            showLog("[ " + getTime() + " onCollapse ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
+        function onCollapse(event, treeId, node) {
+            showLog("[ " + getTime() + " onCollapse ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
         }
 
-        function beforeExpand(treeId, treeNode) {
+        function beforeExpand(treeId, node) {
             className = (className === "dark" ? "" : "dark");
-            showLog("[ " + getTime() + " beforeExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
-            return (treeNode.expand !== false);
+            showLog("[ " + getTime() + " beforeExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
+            return (node.expand !== false);
         }
 
-        function onExpand(event, treeId, treeNode) {
-            showLog("[ " + getTime() + " onExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
+        function onExpand(event, treeId, node) {
+            showLog("[ " + getTime() + " onExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
         }
 
         function showLog(str) {
@@ -189,7 +189,7 @@
                     <li class="highlight_red">如果需要调整 展开 / 折叠 的动画效果， 详细请参见 API 文档中 setting.view.expandSpeed 的相关内容</li>
                 </ul>
             </li>
-            <li class="title"><h2>3、treeNode 节点数据说明</h2>
+            <li class="title"><h2>3、node 节点数据说明</h2>
                 <ul class="list">
                     <li>对 节点数据 没有特殊要求，用户可以根据自己的需求添加自定义属性</li>
                 </ul>

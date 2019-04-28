@@ -46,12 +46,12 @@
             curAsyncCount++;
         }
 
-        function onAsyncSuccess(event, treeId, treeNode, msg) {
+        function onAsyncSuccess(event, treeId, node, msg) {
             curAsyncCount--;
             if (curStatus == "expand") {
-                expandNodes(treeNode.children);
+                expandNodes(node.children);
             } else if (curStatus == "async") {
-                asyncNodes(treeNode.children);
+                asyncNodes(node.children);
             }
 
             if (curAsyncCount <= 0) {
@@ -63,12 +63,12 @@
             }
         }
 
-        function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
+        function onAsyncError(event, treeId, node, XMLHttpRequest, textStatus, errorThrown) {
             curAsyncCount--;
 
             if (curAsyncCount <= 0) {
                 curStatus = "";
-                if (treeNode != null) asyncForAll = true;
+                if (node != null) asyncForAll = true;
             }
         }
 

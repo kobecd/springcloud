@@ -18,13 +18,15 @@
         <relativePath/>
     </parent>
 
+<!--
 
-    <!--modules-->
+    &lt;!&ndash;modules&ndash;&gt;
     <modules>
         <module>common</module>
-        <!--<module>sso</module>-->
-        <!--<module>ms</module>-->
+        &lt;!&ndash;<module>sso</module>&ndash;&gt;
+        &lt;!&ndash;<module>ms</module>&ndash;&gt;
     </modules>
+-->
 
 
     <properties>

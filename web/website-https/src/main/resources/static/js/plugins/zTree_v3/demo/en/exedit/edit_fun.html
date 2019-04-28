@@ -57,22 +57,22 @@
             return false;
         }
 
-        function beforeRemove(treeId, treeNode) {
+        function beforeRemove(treeId, node) {
             className = (className === "dark" ? "" : "dark");
-            showLog("[ " + getTime() + " beforeRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
-            return confirm("Confirm delete node '" + treeNode.name + "' it?");
+            showLog("[ " + getTime() + " beforeRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + node.name);
+            return confirm("Confirm delete node '" + node.name + "' it?");
         }
 
-        function onRemove(e, treeId, treeNode) {
-            showLog("[ " + getTime() + " onRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+        function onRemove(e, treeId, node) {
+            showLog("[ " + getTime() + " onRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + node.name);
         }
 
-        function beforeRename(treeId, treeNode, newName) {
+        function beforeRename(treeId, node, newName) {
             if (newName.length == 0) {
                 alert("Node name can not be empty.");
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo");
                 setTimeout(function () {
-                    zTree.editName(treeNode)
+                    zTree.editName(node)
                 }, 10);
                 return false;
             }
@@ -102,24 +102,24 @@
             var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
                 isParent = e.data.isParent,
                 nodes = zTree.getSelectedNodes(),
-                treeNode = nodes[0];
-            if (treeNode) {
-                treeNode = zTree.addNodes(treeNode, {
+                node = nodes[0];
+            if (node) {
+                node = zTree.addNodes(node, {
                     id: (100 + newCount),
-                    pId: treeNode.id,
+                    pId: node.id,
                     isParent: isParent,
                     name: "new node" + (newCount++)
                 });
             } else {
-                treeNode = zTree.addNodes(null, {
+                node = zTree.addNodes(null, {
                     id: (100 + newCount),
                     pId: 0,
                     isParent: isParent,
                     name: "new node" + (newCount++)
                 });
             }
-            if (treeNode) {
-                zTree.editName(treeNode[0]);
+            if (node) {
+                zTree.editName(node[0]);
             } else {
                 alert("Leaf node is locked and can not add child node.");
             }
@@ -128,35 +128,35 @@
         function edit() {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
                 nodes = zTree.getSelectedNodes(),
-                treeNode = nodes[0];
+                node = nodes[0];
             if (nodes.length == 0) {
                 alert("Please select one node at first...");
                 return;
             }
-            zTree.editName(treeNode);
+            zTree.editName(node);
         };
 
         function remove(e) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
                 nodes = zTree.getSelectedNodes(),
-                treeNode = nodes[0];
+                node = nodes[0];
             if (nodes.length == 0) {
                 alert("Please select one node at first...");
                 return;
             }
             var callbackFlag = $("#callbackTrigger").attr("checked");
-            zTree.removeNode(treeNode, callbackFlag);
+            zTree.removeNode(node, callbackFlag);
         };
 
         function clearChildren(e) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
                 nodes = zTree.getSelectedNodes(),
-                treeNode = nodes[0];
+                node = nodes[0];
             if (nodes.length == 0 || !nodes[0].isParent) {
                 alert("Please select one parent node at first...");
                 return;
             }
-            zTree.removeChildNodes(treeNode);
+            zTree.removeChildNodes(node);
         };
 
         $(document).ready(function () {
@@ -221,7 +221,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="title"><h2>3, Explanation of treeNode</h2>
+            <li class="title"><h2>3, Explanation of node</h2>
                 <ul class="list">
                     <li>Same as 'Basic Edit Nodes'</li>
                 </ul>

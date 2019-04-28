@@ -50,7 +50,7 @@
             {id: 223, pId: 22, name: "叶子节点223", title: ""}
         ];
 
-        function onCheck(e, treeId, treeNode) {
+        function onCheck(e, treeId, node) {
             count();
         }
 
@@ -137,9 +137,9 @@
                     <li>使用隐藏功能，无需设置任何参数</li>
                 </ul>
             </li>
-            <li class="title"><h2>2、treeNode 节点数据说明</h2>
+            <li class="title"><h2>2、node 节点数据说明</h2>
                 <ul class="list">
-                    <li class="highlight_red">初始化时，设置 treeNode.isHidden = true; 可以让节点隐藏</li>
+                    <li class="highlight_red">初始化时，设置 node.isHidden = true; 可以让节点隐藏</li>
                     <li><p>隐藏、显示节点，看看树的变化：<br/><br/>
                         试试看：[ <a id="hideNodesBtn" href="#" onclick="return false;">隐藏选中的节点</a> ]
                         &nbsp;&nbsp;&nbsp;&nbsp;[ <a id="showNodesBtn" href="#" onclick="return false;">显示全部被隐藏的节点</a> ]<br/><br/>

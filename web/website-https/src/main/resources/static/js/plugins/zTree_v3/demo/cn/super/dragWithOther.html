@@ -67,14 +67,14 @@
                     alert(MoveTest.errorMsg);
                 }
             },
-            dom2Tree: function (e, treeId, treeNode) {
+            dom2Tree: function (e, treeId, node) {
                 var target = MoveTest.curTarget, tmpTarget = MoveTest.curTmpTarget;
                 if (!target) return;
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo"), parentNode;
-                if (treeNode != null && treeNode.isParent && "dom_" + treeNode.id == target.parent().attr("id")) {
-                    parentNode = treeNode;
-                } else if (treeNode != null && !treeNode.isParent && "dom_" + treeNode.getParentNode().id == target.parent().attr("id")) {
-                    parentNode = treeNode.getParentNode();
+                if (node != null && node.isParent && "dom_" + node.id == target.parent().attr("id")) {
+                    parentNode = node;
+                } else if (node != null && !node.isParent && "dom_" + node.getParentNode().id == target.parent().attr("id")) {
+                    parentNode = node.getParentNode();
                 }
 
                 if (tmpTarget) tmpTarget.remove();

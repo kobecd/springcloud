@@ -70,8 +70,8 @@
 
         var log, className = "dark";
 
-        function beforeClick(treeId, treeNode) {
-            if (treeNode.isParent) {
+        function beforeClick(treeId, node) {
+            if (node.isParent) {
                 return true;
             } else {
                 alert("This Demo is used to test the parent node expand / collapse...\n\nGo to click parent node... ");
@@ -79,24 +79,24 @@
             }
         }
 
-        function beforeCollapse(treeId, treeNode) {
+        function beforeCollapse(treeId, node) {
             className = (className === "dark" ? "" : "dark");
-            showLog("[ " + getTime() + " beforeCollapse ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
-            return (treeNode.collapse !== false);
+            showLog("[ " + getTime() + " beforeCollapse ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
+            return (node.collapse !== false);
         }
 
-        function onCollapse(event, treeId, treeNode) {
-            showLog("[ " + getTime() + " onCollapse ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
+        function onCollapse(event, treeId, node) {
+            showLog("[ " + getTime() + " onCollapse ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
         }
 
-        function beforeExpand(treeId, treeNode) {
+        function beforeExpand(treeId, node) {
             className = (className === "dark" ? "" : "dark");
-            showLog("[ " + getTime() + " beforeExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
-            return (treeNode.expand !== false);
+            showLog("[ " + getTime() + " beforeExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
+            return (node.expand !== false);
         }
 
-        function onExpand(event, treeId, treeNode) {
-            showLog("[ " + getTime() + " onExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
+        function onExpand(event, treeId, node) {
+            showLog("[ " + getTime() + " onExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
         }
 
         function showLog(str) {
@@ -213,7 +213,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="title"><h2>3, Explanation of treeNode</h2>
+            <li class="title"><h2>3, Explanation of node</h2>
                 <ul class="list">
                     <li>No special requirements on the node data, the user can add custom attributes.</li>
                 </ul>

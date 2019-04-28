@@ -47,13 +47,13 @@
             return childNodes;
         }
 
-        function beforeRemove(treeId, treeNode) {
+        function beforeRemove(treeId, node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-            zTree.selectNode(treeNode);
-            return confirm("Confirm delete node '" + treeNode.name + "' it?");
+            zTree.selectNode(node);
+            return confirm("Confirm delete node '" + node.name + "' it?");
         }
 
-        function beforeRename(treeId, treeNode, newName) {
+        function beforeRename(treeId, node, newName) {
             if (newName.length == 0) {
                 setTimeout(function () {
                     var zTree = $.fn.zTree.getZTreeObj("treeDemo");
@@ -67,22 +67,22 @@
 
         var newCount = 1;
 
-        function addHoverDom(treeId, treeNode) {
-            var sObj = $("#" + treeNode.tId + "_span");
-            if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
-            var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+        function addHoverDom(treeId, node) {
+            var sObj = $("#" + node.tId + "_span");
+            if (node.editNameFlag || $("#addBtn_" + node.tId).length > 0) return;
+            var addStr = "<span class='button add' id='addBtn_" + node.tId
                 + "' title='add node' onfocus='this.blur();'></span>";
             sObj.after(addStr);
-            var btn = $("#addBtn_" + treeNode.tId);
+            var btn = $("#addBtn_" + node.tId);
             if (btn) btn.bind("click", function () {
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                zTree.addNodes(treeNode, {id: (100 + newCount), pId: treeNode.id, name: "new node" + (newCount++)});
+                zTree.addNodes(node, {id: (100 + newCount), pId: node.id, name: "new node" + (newCount++)});
                 return false;
             });
         };
 
-        function removeHoverDom(treeId, treeNode) {
-            $("#addBtn_" + treeNode.tId).unbind().remove();
+        function removeHoverDom(treeId, node) {
+            $("#addBtn_" + node.tId).unbind().remove();
         };
 
         $(document).ready(function () {
@@ -110,13 +110,13 @@
     </div>
     <div class="right">
         <ul class="info">
-            <li class="title"><h2>1, Explanation of editing dynamic tree</h2>
+            <li class="title"><h2>1, Explanation of editing dynamic dataServiceImpl</h2>
                 <ul class="list">
                     <li>1) This Demo is based on the "Advanced Edit Nodes" to modify, and open to drag and drop
                         functionality, can be compared with that demo.
                     </li>
                     <li>2) At the same time set the editing mode and dynamic mode can be achieved editing dynamic
-                        tree.
+                        dataServiceImpl.
                     </li>
                     <li class="highlight_red">3) zTree improved editing capabilities in dynamic mode, if the parent node
                         hasn‘t loaded the child nodes, it will first load the child nodes before it add child node.
@@ -133,7 +133,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="title"><h2>3, Explanation of treeNode</h2>
+            <li class="title"><h2>3, Explanation of node</h2>
                 <ul class="list">
                     <li>No special requirements on the node data, please refer to "Dynamic Tree with Ajax" & "Normal
                         Drag Node Operation" & "Basic Edit Nodes" demo of the instructions

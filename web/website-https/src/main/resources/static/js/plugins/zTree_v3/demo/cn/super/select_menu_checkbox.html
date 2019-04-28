@@ -52,13 +52,13 @@
             {id: 64, pId: 6, name: "三明"}
         ];
 
-        function beforeClick(treeId, treeNode) {
+        function beforeClick(treeId, node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-            zTree.checkNode(treeNode, !treeNode.checked, null, true);
+            zTree.checkNode(node, !node.checked, null, true);
             return false;
         }
 
-        function onCheck(e, treeId, treeNode) {
+        function onCheck(e, treeId, node) {
             var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
                 nodes = zTree.getCheckedNodes(true),
                 v = "";

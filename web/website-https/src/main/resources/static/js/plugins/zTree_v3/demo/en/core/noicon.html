@@ -54,8 +54,8 @@
             {id: 3, pId: 0, name: "pNode 3 - no child", isParent: true}
         ];
 
-        function showIconForTree(treeId, treeNode) {
-            return !treeNode.isParent;
+        function showIconForTree(treeId, node) {
+            return !node.isParent;
         };
 
         $(document).ready(function () {
@@ -83,7 +83,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="title"><h2>2, Explanation of treeNode</h2>
+            <li class="title"><h2>2, Explanation of node</h2>
                 <ul class="list">
                     <li>TreeNode data does not require special settings. If you need some node display icon, and some
                         nodes are not displayed, you can add special attributes to the node data for identification.

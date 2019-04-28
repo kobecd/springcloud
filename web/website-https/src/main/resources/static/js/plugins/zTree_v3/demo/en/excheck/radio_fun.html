@@ -52,14 +52,14 @@
 
         var code, log, className = "dark";
 
-        function beforeCheck(treeId, treeNode) {
+        function beforeCheck(treeId, node) {
             className = (className === "dark" ? "" : "dark");
-            showLog("[ " + getTime() + " beforeCheck ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
-            return (treeNode.doCheck !== false);
+            showLog("[ " + getTime() + " beforeCheck ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
+            return (node.doCheck !== false);
         }
 
-        function onCheck(e, treeId, treeNode) {
-            showLog("[ " + getTime() + " onCheck ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
+        function onCheck(e, treeId, node) {
+            showLog("[ " + getTime() + " onCheck ]&nbsp;&nbsp;&nbsp;&nbsp;" + node.name);
         }
 
         function showLog(str) {
@@ -150,7 +150,7 @@
                     <li>Same as 'Radio Operation'</li>
                 </ul>
             </li>
-            <li class="title"><h2>3, Explanation of treeNode</h2>
+            <li class="title"><h2>3, Explanation of node</h2>
                 <ul class="list">
                     <li>Same as 'Radio Operation'</li>
                 </ul>

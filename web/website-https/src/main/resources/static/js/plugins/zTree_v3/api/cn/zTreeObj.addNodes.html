@@ -23,7 +23,7 @@
             <p>此参数可忽略</p>
             <p class="highlight_red">v3.5.19+</p>
             <h4 class="topLine"><b>newNodes</b><span>JSON / Array(JSON)</span></h4>
-            <p>需要增加的节点数据 JSON 对象集合，数据只需要满足 zTree 的节点数据必需的属性即可，详细请参考“treeNode 节点数据详解”</p>
+            <p>需要增加的节点数据 JSON 对象集合，数据只需要满足 zTree 的节点数据必需的属性即可，详细请参考“node 节点数据详解”</p>
             <p class="highlight_red">1、v3.x 支持单独添加一个节点，即如果只新增一个节点，不用必须包在数组中</p>
             <p class="highlight_red">2、使用简单数据模式，请参考 setting.data.simpleData 内的属性说明</p>
             <h4 class="topLine"><b>isSilent</b><span>Boolean</span></h4>
@@ -35,13 +35,13 @@
             <p class="highlight_red">请务必记住：返回值中的数据对象 是 newNodes 被 clone 后的，所以绝对不相等！</p>
         </div>
         <h3>function 举例</h3>
-        <h4>1. 对于 id = "tree" 的 zTree 增加 1 个根节点</h4>
-        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
+        <h4>1. 对于 id = "dataServiceImpl" 的 zTree 增加 1 个根节点</h4>
+        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("dataServiceImpl");
 var newNode = {name:"newNode1"};
 newNode = treeObj.addNodes(null, newNode);
 </code></pre>
-        <h4>2. 对于 id = "tree" 的 zTree 增加 3 个根节点</h4>
-        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
+        <h4>2. 对于 id = "dataServiceImpl" 的 zTree 增加 3 个根节点</h4>
+        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("dataServiceImpl");
 var newNodes = [{name:"newNode1"}, {name:"newNode2"}, {name:"newNode3"}];
 newNodes = treeObj.addNodes(null, newNodes);
 </code></pre>

@@ -9,20 +9,20 @@
                 <p>禁用 或 解禁 某个节点的 checkbox / radio <span class="highlight_red">[setting.check.enable = true 时有效]</span>
                 </p>
                 <p class="highlight_red">1、节点的 checkbox / radio 被禁用后，无法勾选或取消勾选，但能够影响父节点的半选状态</p>
-                <p class="highlight_red">2、请不要直接修改已加载节点的 treeNode.chkDisabled 属性。</p>
+                <p class="highlight_red">2、请不要直接修改已加载节点的 node.chkDisabled 属性。</p>
                 <p class="highlight_red">3、请通过 zTree 对象执行此方法。</p>
             </div>
         </div>
         <h3>Function 参数说明</h3>
         <div class="desc">
-            <h4><b>treeNode</b><span>JSON</span></h4>
+            <h4><b>node</b><span>JSON</span></h4>
             <p>需要禁用 或 解禁 checkbox / radio 的节点数据</p>
             <p class="highlight_red">请务必保证此节点数据对象 是 zTree 内部的数据对象</p>
             <h4 class="topLine"><b>disabled</b><span>Boolean</span></h4>
             <p>disabled = true 表示禁用 checkbox / radio</p>
             <p>disabled = false 表示解禁 checkbox / radio</p>
             <p class="highlight_red">省略此参数，等同于 disabled = false </p>
-            <p class="highlight_red">不影响 treeNode.nochecked = true 的节点。</p>
+            <p class="highlight_red">不影响 node.nochecked = true 的节点。</p>
             <h4 class="topLine"><b>inheritParent</b><span>Boolean</span></h4>
             <p>inheritParent = true 表示全部父节点进行同样的操作</p>
             <p>inheritParent = false 表示不影响父节点</p>
@@ -36,7 +36,7 @@
         </div>
         <h3>function 举例</h3>
         <h4>1. 禁用当前选中的节点的 checkbox / radio</h4>
-        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
+        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("dataServiceImpl");
 var nodes = treeObj.getSelectedNodes();
 for (var i=0, l=nodes.length; i < l; i++) {
 	treeObj.setChkDisabled(nodes[i], true);

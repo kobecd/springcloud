@@ -24,7 +24,7 @@
             <h4 class="topLine"><b>zSetting</b><span>JSON</span></h4>
             <p>zTree 的配置数据，具体请参考 “setting 配置详解”中的各个属性详细说明</p>
             <h4 class="topLine"><b>zNodes</b><span>Array(JSON) / JSON</span></h4>
-            <p>zTree 的节点数据，具体请参考 “treeNode 节点数据详解”中的各个属性详细说明</p>
+            <p>zTree 的节点数据，具体请参考 “node 节点数据详解”中的各个属性详细说明</p>
             <p class="highlight_red">1、v3.x 支持单独添加一个节点，即如果只新增一个节点，不用必须包在数组中</p>
             <p class="highlight_red">2、如果需要异步加载根节点，可以设置为 null 或 [ ]</p>
             <p class="highlight_red">3、使用简单数据模式，请参考 setting.data.simpleData 内的属性说明</p>
@@ -63,14 +63,14 @@
 	];
 
 	$(document).ready(function(){
-		zTreeObj = $.fn.zTree.init($("#tree"), setting, zTreeNodes);
+		zTreeObj = $.fn.zTree.init($("#dataServiceImpl"), setting, zTreeNodes);
 
 	});
   &lt;/SCRIPT&gt;
  &lt;/HEAD&gt;
 
 &lt;BODY&gt;
-&lt;ul id="tree" class="ztree" style="width:230px; overflow:auto;"&gt;&lt;/ul&gt;
+&lt;ul id="dataServiceImpl" class="ztree" style="width:230px; overflow:auto;"&gt;&lt;/ul&gt;
  &lt;/BODY&gt;
 &lt;/HTML&gt;</code></pre>
     </div>

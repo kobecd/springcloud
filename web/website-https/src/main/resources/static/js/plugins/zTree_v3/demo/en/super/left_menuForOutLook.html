@@ -44,23 +44,23 @@
             {id: 32, pId: 3, name: "Photos"}
         ];
 
-        function addDiyDom(treeId, treeNode) {
+        function addDiyDom(treeId, node) {
             var spaceWidth = 5;
-            var switchObj = $("#" + treeNode.tId + "_switch"),
-                icoObj = $("#" + treeNode.tId + "_ico");
+            var switchObj = $("#" + node.tId + "_switch"),
+                icoObj = $("#" + node.tId + "_ico");
             switchObj.remove();
             icoObj.before(switchObj);
 
-            if (treeNode.level > 1) {
-                var spaceStr = "<span style='display: inline-block;width:" + (spaceWidth * treeNode.level) + "px'></span>";
+            if (node.level > 1) {
+                var spaceStr = "<span style='display: inline-block;width:" + (spaceWidth * node.level) + "px'></span>";
                 switchObj.before(spaceStr);
             }
         }
 
-        function beforeClick(treeId, treeNode) {
-            if (treeNode.level == 0) {
+        function beforeClick(treeId, node) {
+            if (node.level == 0) {
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                zTree.expandNode(treeNode);
+                zTree.expandNode(node);
                 return false;
             }
             return true;

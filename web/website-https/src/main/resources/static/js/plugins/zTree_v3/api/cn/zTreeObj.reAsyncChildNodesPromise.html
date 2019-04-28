@@ -30,11 +30,11 @@
         </div>
         <h3>function 举例</h3>
         <h4>1. 重新异步加载 zTree </h4>
-        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
+        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("dataServiceImpl");
 treeObj.reAsyncChildNodes(null, "refresh");
 </code></pre>
         <h4>2. 重新异步加载当前选中的第一个节点</h4>
-        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
+        <pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("dataServiceImpl");
 var nodes = treeObj.getSelectedNodes();
 if (nodes.length>0) {
 	treeObj.reAsyncChildNodes(nodes[0], "refresh");

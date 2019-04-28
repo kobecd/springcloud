@@ -21,7 +21,7 @@
    * [修改] isParent / isHidden 允许自定义属性名称 setting.data.key.isParent / isHidden
 
 *2017.12.28* v3.5.31
-   * [修改] 初始化节点数据的规则，支持 treeNode { name: "Node2", children: []}, 情况下自动设置为 isParent = true
+   * [修改] 初始化节点数据的规则，支持 node { name: "Node2", children: []}, 情况下自动设置为 isParent = true
 
 *2017.11.11* v3.5.30
    * [修改] scrollIntoViewIfNeeded 方法对 IE7 的兼容
@@ -37,7 +37,7 @@
    * [修改] scrollIntoViewIfNeeded 方法对 IE8 的兼容
 
 *2016.12.27* v3.5.27
-   * [修改] addNodes 方法设置 index 参数后，导致 treeNode.isLastNode 错误
+   * [修改] addNodes 方法设置 index 参数后，导致 node.isLastNode 错误
 
 *2016.11.03* v3.5.26
    * [修改] 使用 scrollIntoViewIfNeeded 替代 scrollIntoView，兼容各种浏览器
@@ -57,7 +57,7 @@
 
 *2016.04.01* v3.5.23
    * [修改] selectNode 方法 增加 isSilent 参数，可以禁止 选中节点时，自动滚动到视图
-   
+
 *2016.03.01* v3.5.22
    * [修改] metro Demo 的样式错误
    * [修改] 增加 <a> 的 padding 后， 导致 setting.edit.drag.inner 无效
@@ -76,8 +76,8 @@
 
 *2015.10.26* v3.5.19.1
    * [修改] addNodes 新方法 导致 拖拽节点时报错
-   * [增加] treeNode.getIndex 方法，可以快速获取 节点在 子节点中的位置
-   * [增加] treeNode.getPath 方法，可以快速获取 节点的所有父节点
+   * [增加] node.getIndex 方法，可以快速获取 节点在 子节点中的位置
+   * [增加] node.getPath 方法，可以快速获取 节点的所有父节点
 
 *2015.10.22* v3.5.19
    * [修改] addNodes 方法支持直接添加新节点到任意位置 addNodes(parentNode, index, newNodes, isSilent)
@@ -187,7 +187,7 @@
    * [修改] core核心文件内 _eventProxy 方法中获取 tId 的方法，提高 DOM 的灵活性
    * [修改] 初始化时 多层父节点的 checkbox 半选状态计算错误的 bug
    * [修改] 同时选中父、子节点后，利用 getSelectedNodes 获取选中节点并利用 removeNode 删除时报错的 bug
-   * [修改] treeNode.chkDisabled / nocheck 属性，支持字符串格式的 "false"/"true"
+   * [修改] node.chkDisabled / nocheck 属性，支持字符串格式的 "false"/"true"
    * [修改] 异步加载模式下无法利用 server 返回 xml 并且 在 dataFilter 中继续处理的 bug
    * [修改] title 只允许设置为 string 类型值的问题。 修正后允许设置为 number 类型的值
    * [修改] zId 计数规则 & Cache 保存，减少 IE9 的 bug 造成的内存泄漏
@@ -208,7 +208,7 @@
    * [修改] 完善 API 中 beforeDrop / onDrop 的关于 treeId 的说明
 
 *2012.05.13* v3.2
-   * [增加] setting.data.key.url 允许修改 treeNode.url 属性
+   * [增加] setting.data.key.url 允许修改 node.url 属性
    * [增加] getNodesByFilter(filter, isSingle) 方法
    * [增加] "与其他 DOM 拖拽互动" 的 Demo (http://www.treejs.cn/v3/demo.php#_511)
    * [增加] "异步加载模式下全部展开" 的 Demo (http://www.treejs.cn/v3/demo.php#_512)
@@ -245,13 +245,13 @@
 *2012.01.10* v3.0
    * [增加] setting.check.autoCheckTrigger 默认值 false，可以设置联动选中时是否触发事件回调函数
    * [增加] setting.callback.beforeEditName 回调函数，以保证用户可以捕获点击编辑按钮的事件
-   * [增加] treeNode.chkDisabled 属性，显示 checkbox 但是用户无法修改 checkbox 状态，并且该 checkbox 会影响父节点的 checkbox 的半选状态
+   * [增加] node.chkDisabled 属性，显示 checkbox 但是用户无法修改 checkbox 状态，并且该 checkbox 会影响父节点的 checkbox 的半选状态
    * [增加] setting.check.nocheckInherit 属性，用户设置子节点继承 nocheck 属性，用于批量初始化节点，不适用于已经显示的节点
    * [增加] setting.edit.drag.autoExpandTrigger 默认值 false，可以设置自动展开、折叠操作时是否触发事件回调函数
    * [增加] setting.view.nameIsHTML 默认值 false，允许用户对 name 设置 DOM 对象
-   * [增加] treeNode.click 属性的说明文档
+   * [增加] node.click 属性的说明文档
    * [增加] treeObj.setChkDisabled 方法用于设置 checkbox / radio disabled 状态
-   * [增加] treeNode.halfCheck 属性，用于强制设定节点的半选状态
+   * [增加] node.halfCheck 属性，用于强制设定节点的半选状态
 
    * [修改] 异步加载 & 编辑功能 共存时，拖拽节点 或 增加节点 导致 ie 上报错的 bug （apply 方法引起）
    * [修改] zTreeStyle 样式冲突
@@ -272,8 +272,8 @@
    * [修改] FireFox 下多棵树拖拽异常的 bug
    * [修改] exedit 中调用 excheck库的方法时没有进行容错处理，导致如果只加入 exedit 而没有 excheck的时候，会出现 js 错误
    * [修改] 显示 checkbox 的 zTree 在编辑模式下，移动节点不会更新父节点半选状态的 bug
-   * [修改] treeNode.childs --> children; treeObject.removeChilds --> removeChildNodes; setting.data.key.childs --> children（英文不好惹的祸！抱歉了！）
-   * [修改] onRemove 回调中得到的 treeNode 还可以查找 preNode、nextNode 的bug。 修正后，getPreNode 和 getNextNode 都返回 null； 为了便于查找父节点，getParentNode 仍保留
+   * [修改] node.childs --> children; treeObject.removeChilds --> removeChildNodes; setting.data.key.childs --> children（英文不好惹的祸！抱歉了！）
+   * [修改] onRemove 回调中得到的 node 还可以查找 preNode、nextNode 的bug。 修正后，getPreNode 和 getNextNode 都返回 null； 为了便于查找父节点，getParentNode 仍保留
    * [修改] 简单数据模式下，如果 id 与 pId 的值相同会导致该节点无法正常加载的 bug
    * [修改] 移动或删除中间节点会导致最后一个节点连接线图标变小的 bug
 
@@ -286,6 +286,6 @@
    * [增加] IE6 自动取消动画展开、折叠的功能
    * [修正] 异步加载 & 编辑模式 能够更完美的共存
    * [修正] setting 配置更加合理，并且增加了若干项配置参数
-   * [修正] treeNode 节点数据的属性更加合理，并且增加了一些方法
+   * [修正] node 节点数据的属性更加合理，并且增加了一些方法
    * [修正] 拖拽操作更加灵活方便，更容易制定自己的规则
    * [修正] 其他若干修改，详细对比请参考 url：[http://www.treejs.cn/v3/faq.php#_101 zTree v3.0 常见问题]
