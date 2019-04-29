@@ -2,7 +2,6 @@ package com.arc.mp;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -43,12 +42,12 @@ public class MybatisPlusApplication {
      * </p>
      */
     public static void main(String[] args) {
-//        SpringApplication.run(MybatisPlusApplication.class, args);
-        SpringApplication app = new SpringApplication(MybatisPlusApplication.class);
-        app.setBannerMode(Banner.Mode.OFF);
-        app.run(args);
-        log.info("PortalApplication is success!");
-        System.err.println("sample started. http://localhost:8080/user/test");
+        SpringApplication.run(MybatisPlusApplication.class, args);
+//        SpringApplication app = new SpringApplication(MybatisPlusApplication.class);
+//        app.setBannerMode(Banner.Mode.OFF);
+//        app.run(args);
+//        log.info("PortalApplication is success!");
+//        System.err.println("sample started. http://localhost:8080/user/test");
     }
 
 
