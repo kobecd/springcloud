@@ -1,0 +1,35 @@
+server:
+  port: 8001
+
+spring:
+    application:
+      name: mp-official
+    profiles:
+      active: test
+
+########################################################
+#          不同环境         Environment for Localhost  注意：数据配置在这里
+########################################################
+---
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+    url: jdbc:h2:mem:test
+    username: root
+    password: test
+########################################################
+#          不同环境         Environment for Localhost  注意：数据配置在这里
+########################################################
+---
+spring:
+  profiles: test
+  datasource:
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+    url: jdbc:h2:mem:test
+    username: root
+    password: test

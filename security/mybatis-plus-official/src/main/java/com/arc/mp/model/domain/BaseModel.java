@@ -1,4 +1,4 @@
-package com.arc.security.db.model.domain;
+package com.arc.mp.model.domain;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,7 @@
-package com.arc.security.db.service;
+package com.arc.mp.service;
 
 
-import com.arc.security.db.model.domain.sys.User;
+import com.arc.mp.model.domain.User;
 
 import java.util.List;
 

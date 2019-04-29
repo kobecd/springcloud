@@ -1,4 +1,4 @@
-package com.arc.security.db.controller;
+package com.arc.mp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
