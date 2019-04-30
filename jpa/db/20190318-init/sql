@@ -28,13 +28,11 @@ INSERT INTO `t_sys_user` VALUES (9, '山鸡', '8', 0, '2018-03-22 21:25:55', NUL
 
 ------------------
 # 不用的表，这里是做测试的，建表sql，表是：t_requirement
-
 CREATE TABLE `t_requirement` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增id',
 
   `accepted_span` varchar(255) DEFAULT NULL COMMENT '可接受的时间跨度',
   `accepted_input` varchar(255) DEFAULT NULL COMMENT '可接受的投入',
-
 
   `actual_issue_time` varchar(255) DEFAULT NULL COMMENT '实际规模/级别',
   `actual_scale` varchar(255) DEFAULT NULL COMMENT '实际规模/级别',

@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description:
  * @author: yechao
  * @date: 2019/1/10 15:12
  */
 @Slf4j
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class TestSysUserByJpaController {
 
     @Autowired
