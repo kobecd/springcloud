@@ -44,24 +44,28 @@ public class UserSecurity implements UserDetails {
         return this.user.getUsername();
     }
 
+    //帐户未过期
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
+    //是帐户非锁定
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
+    //是凭据未过期
     @Override
     public boolean isCredentialsNonExpired() {
         return false;
     }
 
+    //已启用
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
 
