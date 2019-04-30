@@ -29,4 +29,12 @@ public class Role {
 
     @Column(name = "update_date")
     private Date updateDate;
+
+    public Role(String name, int state) {
+        this.name = name;
+        this.state = state;
+    }
+
+    public Role() {
+    }
 }

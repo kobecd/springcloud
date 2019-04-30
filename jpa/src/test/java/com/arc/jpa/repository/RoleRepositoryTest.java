@@ -2,12 +2,15 @@ package com.arc.jpa.repository;
 
 import com.arc.jpa.model.domain.Role;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -18,10 +21,27 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
+@Transactional //支持事物，@SpringBootTest 事物默认自动回滚
+@Rollback // 事务自动回滚，不自动回滚@Rollback(false)
 public class RoleRepositoryTest {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Test
+    public void testSave() {
+        Role role = new Role("admin", 1);
+        Role save = roleRepository.save(role);
+        System.out.println(save);
+        Assert.assertNotNull(save);
+    }
+
+    @Test
+    public void testDelete() {
+
+        roleRepository.deleteById(60L);
+
+    }
 
     @Test
     public void testList() {
