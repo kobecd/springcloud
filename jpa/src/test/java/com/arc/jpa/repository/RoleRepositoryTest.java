@@ -25,6 +25,17 @@ import java.util.List;
 @Rollback // 事务自动回滚，不自动回滚@Rollback(false)
 public class RoleRepositoryTest {
 
+    //Transactional
+    //Spring has defined its own Transactional annotation to make Spring bean methods transactional, years ago.
+    //
+    //Java EE 7 has finally done the same thing and now allows CDI bean methods to be transactional, in addition to EJB methods. So since Java EE 7, it also defines its own Transactional annotation (it obviously can't reuse the Spring one).
+    //
+    //In a Java EE 7 application, you'll use the Java EE annotation.
+    //
+    //In a Spring application, you'll use the Spring annotation.
+    //
+    //Their use is the same: informing the container (Java EE or Spring) that a method is transactional.
+
     @Autowired
     private RoleRepository roleRepository;
 
