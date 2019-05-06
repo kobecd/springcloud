@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/cache2")
+@RequestMapping("/users/")
 public class TestCacheController2 {
 
     @Autowired

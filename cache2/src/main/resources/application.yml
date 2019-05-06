@@ -1,19 +1,13 @@
-server:
-  port: 7002
-
-
-
 
 mybatis:
   type-aliases-package: com.arc.cache2.model
   mapper-locations: classpath:mapper/*.xml
 
-
 spring:
   profiles:
-    active: local
+    active: dev
   application:
-    name: cache
+    name: cache2
 
 
 ########################################################
@@ -22,6 +16,25 @@ spring:
 ---
 spring:
   profiles: dev
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 15
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useAffectedRows=true&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: admin
+    hikari:
+      max-lifetime: 1765000
+      maximum-pool-size: 15
+
+server:
+  port: 7002
+  servlet:
+    context-path: /cache/v2/
 
 ########################################################
 #          Environment for Localhost
@@ -44,17 +57,21 @@ spring:
       max-lifetime: 1765000
       maximum-pool-size: 15
 
+server:
+  port: 7002
+  servlet:
+    context-path: /cache/v2/
 
 ########################################################
 #          Environment for Testing
 ########################################################
 ---
 spring:
-  profiles: test
+    profiles: test
 
-########################################################
-#          Environment for Production
-########################################################
+    ########################################################
+    #          Environment for Production
+    ########################################################
 ---
 spring:
   profiles: prod
