@@ -14,9 +14,6 @@ mybatis-plus:
 #          不同环境         Environment for Localhost  注意：数据配置在这里
 ########################################################
 ---
-server:
-  port: 8001
-
 spring:
   servlet:
     multipart:
@@ -39,7 +36,8 @@ spring:
     password:
     database: 1
 
-
+server:
+  port: 8002
 ########################################################
 #          不同环境         Environment for Localhost  注意：数据配置在这里
 ########################################################
