@@ -1,6 +1,6 @@
 spring:
   application:
-    name: security3
+    name: mysql
   profiles:
     active: dev
 
