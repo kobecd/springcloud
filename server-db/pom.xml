@@ -37,9 +37,9 @@
     </dependencies>
 
     <!-- 模块说明：这里声明多个子模块 -->
-    <modules>
+  <!--  <modules>
         <module>jpa-tool</module>
         <module>jpa-tool2</module>
         <module>mybatis-tool</module>
-    </modules>
+    </modules>-->
 </project>
