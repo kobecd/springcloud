@@ -1,9 +1,6 @@
 package com.arc.jpa.model.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +13,7 @@ import java.util.Date;
  * @author: yechao
  * @date: 2019/1/22 14:52
  */
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "t_sys_user")
 public class SysUser extends BaseModel {
@@ -36,8 +30,8 @@ public class SysUser extends BaseModel {
     @Column(name = "avatar")
     private String avatar;// 头像
 
-    @Column(name = "status")
-    private Integer status = 0;// 账号状态(0：正常 1:暂停)
+    @Column(name = "state")
+    private Integer state ;// 账号状态(0：正常 1:暂停)
 
     @Column(name = "create_date")
     private Date createDate;// 创建时间

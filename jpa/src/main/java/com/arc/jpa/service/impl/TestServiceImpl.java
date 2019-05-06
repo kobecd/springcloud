@@ -237,19 +237,21 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public List<SysUser> findByCondition(SysUser user) {
+        System.out.println("#######################################");
+        System.out.println(user);
+        System.out.println("#######################################");
         List<SysUser> resultList = null;
         Specification querySpecifi = new Specification<SysUser>() {
             @Override
             public Predicate toPredicate(Root<SysUser> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-
                 List<Predicate> predicates = new ArrayList<>();
-                if (!user.getAvatar().equals("0")) {
+                if ( user.getState()!=null) {
+                    predicates.add(criteriaBuilder.equal(root.get("state"), user.getState()));
+                }
+                if (user.getAvatar() != null && !"".equals(user.getAvatar().trim())) {
                     predicates.add(criteriaBuilder.equal(root.get("avatar"), user.getAvatar()));
                 }
-                if (0 != user.getStatus()) {
-                    predicates.add(criteriaBuilder.equal(root.get("titleType"), user.getStatus()));
-                }
-                if (null != user.getNickname()) {
+                if (null != user.getNickname() && !"".equals(user.getNickname().trim())) {
                     predicates.add(criteriaBuilder.equal(root.get("nickname"), "%" + user.getNickname() + "%"));
                 }
                 return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));

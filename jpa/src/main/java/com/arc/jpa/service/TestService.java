@@ -16,7 +16,7 @@ public interface TestService {
 
     Object queryByQuery(SysUser user);
 
-      Page<SysUser> queryPage(SysUser model, Pageable pageable) ;
+    Page<SysUser> queryPage(SysUser model, Pageable pageable);
 
     List<SysUser> findByCondition(SysUser user);
 }

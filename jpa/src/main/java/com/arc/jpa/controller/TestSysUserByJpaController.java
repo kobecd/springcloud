@@ -32,24 +32,14 @@ public class TestSysUserByJpaController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/test/1")
-    public Object test1() {
-        ArrayList<Long> ids = new ArrayList<>();
-        ArrayList<String> avatars = new ArrayList<>();
-        ids.add(1L);
-        ids.add(2L);
-        ids.add(3L);
-        ids.add(4L);
-        ids.add(9L);
-        avatars.add("8");
-        avatars.add("7");
-        List<SysUser> allByIdInAndAndAvatarIn = userRepository.findAllByIdInAndAndAvatarIn(ids, avatars);
-        log.debug("结果={}", allByIdInAndAndAvatarIn.size());
-        return allByIdInAndAndAvatarIn;
+    //测试条件查询IN
+    @PostMapping("/test/v1/query/in")
+    public Object testQueryIn(@RequestBody List<Long> ids) {
+        return userRepository.findAllByIdIn(ids);
     }
 
-    @GetMapping("/test/2")
-    public Object test2() {
+    @GetMapping("/test/v1/query/in/state")
+    public Object test2(@RequestParam Integer state) {
         ArrayList<Long> ids = new ArrayList<>();
         ArrayList<String> avatars = new ArrayList<>();
         ids.add(1L);
@@ -59,7 +49,7 @@ public class TestSysUserByJpaController {
         ids.add(9L);
         avatars.add("8");
         avatars.add("7");
-        List<SysUser> allByIdInAndAndAvatarIn = userRepository.findAllByIdInAndAndAvatarInAndStatus(ids, avatars, 0);
+        List<SysUser> allByIdInAndAndAvatarIn = userRepository.findAllByIdInAndAndAvatarInAndState(ids, avatars, state);
         log.debug("结果={}", allByIdInAndAndAvatarIn.size());
         return allByIdInAndAndAvatarIn;
     }
@@ -86,30 +76,11 @@ public class TestSysUserByJpaController {
         return byQuery;
     }
 
-    @GetMapping("/test/v1")
-    public Object testV1(@RequestParam String name, @RequestParam String avatar) {
-        SysUser user = new SysUser();
-        if (name != null && !"".equals(name)) {
-            user.setNickname(name);
-        }
-        if (avatar != null && !"".equals(avatar)) {
-            user.setAvatar(avatar);
-        }
+
+    //测试多条件动态查询
+    @PostMapping("/test/v1/query")
+    public Object testV1(@RequestBody SysUser user) {
         return testService.findByCondition(user);
     }
 
-    @GetMapping("/test/v2")
-    public Object testV2(@RequestParam String name, @RequestParam String avatar) {
-        SysUser user = new SysUser();
-        if (name != null && !"".equals(name)) {
-            user.setNickname(name);
-        }
-        if (avatar != null && !"".equals(avatar)) {
-            user.setAvatar(avatar);
-        }
-//        Object byQuery = testService.query(user);
-//        log.debug("结果={}",byQuery);
-//        return byQuery;
-        return null;
-    }
 }

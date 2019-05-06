@@ -7,21 +7,19 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Repository层中为了支持这样的查询，
  * sysUserRepository需要继承JpaRepository（基本查询），
  * JpaSpecificationExecutor（分页），这个接口是不需要再去实现的，到了Repository层就行，再对此进行扩充（比Mybatis简单多了）。
+ *
  * @author: yechao
  * @date: 2019/1/10 15:04
  */
-public interface SysUserRepository extends JpaRepository<SysUser, Long>/*, JpaSpecificationExecutor<SysUser>*/ {
+//public interface SysUserRepository extends JpaRepository<SysUser, Long>, JpaSpecificationExecutor<SysUser> {
+public interface SysUserRepository extends JpaRepository<SysUser, Long> {
 
-    //public interface sysUserRepository extends JpaRepository<SysCaptchaEntity, String>, JpaSpecificationExecutor<SysCaptchaEntity> {
-    //
-    //}
     /**
      * 双in 查询测试
      *
@@ -29,19 +27,21 @@ public interface SysUserRepository extends JpaRepository<SysUser, Long>/*, JpaSp
      * @param avatars
      * @return
      */
-    List<SysUser> findAllByIdInAndAndAvatarIn(@Param("id") ArrayList<Long> ids, @Param("avatar") ArrayList<String> avatars);
+    List<SysUser> findAllByIdInAndAvatarIn(@Param("id") List<Long> ids, @Param("avatar") List<String> avatars);
+
+    List<SysUser> findAllByIdIn(@Param("id") List<Long> ids);
 
     /**
      * 测试多条件查询  包含in 和 普条字段
      *
      * @param ids
      * @param avatars
-     * @param status
+     * @param state
      * @return
      */
-    List<SysUser> findAllByIdInAndAndAvatarInAndStatus(@Param("id") ArrayList<Long> ids, @Param("avatar") ArrayList<String> avatars, @Param("status") Integer status);
+    List<SysUser> findAllByIdInAndAndAvatarInAndState(@Param("id") List<Long> ids, @Param("avatar") List<String> avatars, @Param("state") Integer state);
 
     Page<SysUser> findAll(Specification<SysUser> example, Pageable pageable);
 
     List<SysUser> findAll(Specification querySpecifi);
-}
+    }
