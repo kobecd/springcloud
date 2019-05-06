@@ -1,5 +1,6 @@
 #最顶级父项目为ray
-##[下面都是一些独立子项目，如果找不到一个叫com.arc.core的依赖请clone一下这个项目](ttps://github.com/lamymay/arc-common)
+
+[下面都是一些独立子项目，如果找不到一个叫com.arc.core的依赖请clone一下这个项目](ttps://github.com/lamymay/arc-common)
 
 
 
