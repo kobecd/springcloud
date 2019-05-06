@@ -96,18 +96,6 @@ public class UserController {
         return userService.list();
     }
 
-    /**
-     * 测试登陆 @todo 待删除
-     *
-     * @param username
-     * @param password
-     * @return
-     */
-    @GetMapping(value = "/login")
-    public Object get(@RequestParam String username, @RequestParam String password) {
-        log.debug("login,获取单个用户,参数 username={},password={}", username, password);
-        return userService.login(username, password);
-    }
 
 }
 

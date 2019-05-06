@@ -14,25 +14,14 @@ import java.util.List;
  */
 public interface UserService {
 
-    Long save(User User);
+    Long save(User user);
 
     int delete(Long id);
 
-    int update(User User);
+    int update(User user);
 
     User get(Long id);
 
     List<User> list();
-
-    User getByUsername(String username);
-
-    /**
-     * 登陆
-     *
-     * @param username
-     * @param password
-     * @return
-     */
-    Boolean login(String username, String password);
 
 }

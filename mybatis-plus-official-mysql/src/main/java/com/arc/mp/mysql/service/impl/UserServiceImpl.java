@@ -21,19 +21,15 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Long save(User User) {
-        return null;
+    public Long save(User user) {
+        return userMapper.insert(user)==1? user.getId():null;
     }
 
     @Override
     public int delete(Long id) {
-        return 0;
+        return userMapper.deleteById(id);
     }
 
-    @Override
-    public int update(User User) {
-        return 0;
-    }
 
     @Override
     public User get(Long id) {
@@ -46,70 +42,16 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
-    @Override
-    public User getByUsername(String username) {
-        return null;
-    }
-
-    @Override
-    public Boolean login(String username, String password) {
-        return null;
-    }
-
-
-    /*
-
-    @Override
-
-    public Long save(User user) {
-        return sysUserMapper.save(user) == 1 ? user.getId() : null;
-    }
-
-    @Override
-    public int delete(Long id) {
-        return sysUserMapper.delete(id);
-    }
 
     @Override
     public int update(User user) {
-//        return sysUserMapper.update(user);
-        Integer update = sysUserMapper.update(user);
-        System.out.println(("#############################"));
-        System.out.println(update);
-        System.out.println(("#############################"));
+        Integer update = userMapper.update(user);
         return update;
     }
 
 
-    @Override
-    public User get(Long id) {
-        return sysUserMapper.get(id);
-    }
 
 
-    @Override
-    public List<User> list() {
-        List<User> users = sysUserMapper.list();
-        System.out.println(users);
-        return users;
-    }
-
-    @Override
-    public User getByUsername(String username) {
-        return sysUserMapper.getByUsername(username);
-    }
-
-    @Override
-    public Boolean login(String username, String password) {
-        Boolean result = false;
-        User dbUser = getByUsername(username);
-        //@todo MD5或者其他加密手段
-//        if (dbUser != null && dbUser.getPassword() != null && dbUser.getPassword().equals(password)) {
-        result = true;
-//        }
-        return result;
-    }
-*/
 
 
 //    /**
@@ -123,10 +65,5 @@ public class UserServiceImpl implements UserService {
 //        return pageInfo;
 //    }
 //
-//    @Override
-//    public boolean saveOrUpdateBatch(Collection<User> entityList) {
-//        return super.saveOrUpdateBatch(entityList);
-//    }
-
 
 }
