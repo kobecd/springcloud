@@ -1,5 +1,5 @@
 #最顶级父项目为ray
-
+##[下面都是一些独立子项目，如果找不到一个叫com.arc.core的依赖请clone一下这个项目](ttps://github.com/lamymay/arc-common)
 
 
 
@@ -9,7 +9,9 @@
 环境说明
 ---
 1. 基于 Java 8
-2. 数据库 MongoDB、Redis
+2. 数据库 MongoDB、Redis、MySQL、h2
+
+
 
 特点
 ---
@@ -23,11 +25,13 @@
 
 
 
+#学习Spring
+https://www.fangzhipeng.com/
 
 
 
 --------------
-参考资料：
+Spring cloud参考资料：
 
 [Spring Boot 2.0 迁移指南](https://www.oschina.net/translate/spring-boot-2-0-migration-guide)
 -----
