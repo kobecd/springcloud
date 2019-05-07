@@ -26,7 +26,7 @@ public class User extends BaseModel {
     private Long id;// 主键ID
     private String username;// 账号密码
     private String password;// 密码
-    private Integer status;// 账号状态状态，status, condition, mode, position, state of affairs, fettle
+    private Integer state;// 账号状态状态，status, condition, mode, position, state of affairs, fettle
     private Date createDate;// 创建时间
     private Date updateDate;// 更新时间
 

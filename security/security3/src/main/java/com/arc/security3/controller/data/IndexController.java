@@ -1,23 +1,28 @@
-package com.arc.security3.controller;
+package com.arc.security3.controller.data;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: yechao
  * @date: 2019/1/2 23:24
  * @description:
  */
-@Controller
+@Slf4j
+@RestController
+@RequestMapping("/test")
 public class IndexController {
 
 
     @GetMapping(value = "/{id}")
-    public String user(@PathVariable Long id) {
-        return "index";
+    public Object user(@PathVariable Long id) {
+        log.debug("参数id={}", id);
+        log.debug("参数id={}", id);
+        log.debug("参数id={}", id);
+        log.debug("参数id={}", id);
+        log.debug("参数id={}", id);
+        return id;
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})

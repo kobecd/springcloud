@@ -1,0 +1,12 @@
+server:
+  port: 80
+
+
+# 默认情况每次启动后在控制台中会生成一个密码，账号为“user”
+# Using generated security password: b815bb0b-32fe-4100-b02f-1161a469b023
+#spring:
+#  security:
+#    user:
+#      name: root
+#      password: admin
+#
