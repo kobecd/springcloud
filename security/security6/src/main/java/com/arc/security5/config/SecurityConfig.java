@@ -1,4 +1,4 @@
-package com.arc.security3.config;
+package com.arc.security5.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -16,17 +16,32 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * 用自己定义的页面*1 来向服务器的一个自定义的url *2 登录
+     * 是否需要身份认证
+     * 是否是HTML引发的请求？返回HTML，还是JSON
+     *
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
+                .loginPage("/testLogin")//*1
+                .loginProcessingUrl("/login/form/v1")//*2
                 .and()
                 .authorizeRequests()
+                .antMatchers("/testLogin").permitAll()
                 .anyRequest()
-                .authenticated();
+                .authenticated()
+                .and()
+                .csrf()
+                .disable();
 
     }
 
+    //密码加密解密
     @Bean(name = "passwordEncoder")
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
