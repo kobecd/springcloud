@@ -1,4 +1,5 @@
-package com.arc.security3.domain.sys;
+package com.arc.test.reflect.t;
+
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -12,7 +13,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        Class<Person> dtoClass = Person.class;
+        Class<Role> dtoClass = Role.class;
         Field[] fields = dtoClass.getDeclaredFields();
         for (Field field : fields) {
             judgeFieldType(field);
