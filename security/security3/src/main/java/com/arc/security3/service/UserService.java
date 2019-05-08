@@ -1,7 +1,7 @@
 package com.arc.security3.service;
 
 
-import com.arc.security3.domain.sys.User;
+import com.arc.security3.domain.sys.SysUser;
 
 import java.util.List;
 
@@ -14,17 +14,17 @@ import java.util.List;
  */
 public interface UserService {
 
-    Long save(User User);
+    Long save(SysUser user);
 
     int delete(Long id);
 
-    int update(User User);
+    int update(SysUser user);
 
-    User get(Long id);
+    SysUser get(Long id);
 
-    List<User> list();
+    List<SysUser> list();
 
-    User getByUsername(String username);
+    SysUser getByUsername(String username);
 
     /**
      * 登陆

@@ -1,6 +1,6 @@
 package com.arc.security3.controller;
 
-import com.arc.security3.domain.sys.User;
+import com.arc.security3.domain.sys.SysUser;
 import com.arc.security3.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class UserController {
      * @return
      */
     @PostMapping(value = "")
-    public Object save(@RequestBody User user) {
+    public Object save(@RequestBody SysUser user) {
         log.debug("新建用户，参数 user={}, ", user.toString());
         return userService.save(user);
     }
@@ -67,7 +67,7 @@ public class UserController {
      */
 //    @PutMapping("/")
     @PostMapping("/update")
-    public Object update(@RequestBody User user) {
+    public Object update(@RequestBody SysUser user) {
         log.debug("更新用户,参数user={}, ", user.toString());
         return userService.update(user);
     }

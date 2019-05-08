@@ -1,6 +1,6 @@
 package com.arc.security3.controller.test;
 
-import com.arc.security3.domain.sys.User;
+import com.arc.security3.domain.sys.SysUser;
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.stubbing.StubMapping;
@@ -48,7 +48,7 @@ public class MockClient {
         WireMock.removeAllMappings();
 
         //制作一个接口
-        User user = new User();
+        SysUser user = new SysUser();
         user.setUsername("admin");
         user.setPassword("admin");
         user.setCreateDate(new Date());

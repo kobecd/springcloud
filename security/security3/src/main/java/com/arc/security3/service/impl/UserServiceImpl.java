@@ -1,7 +1,7 @@
 package com.arc.security3.service.impl;
 
 
-import com.arc.security3.domain.sys.User;
+import com.arc.security3.domain.sys.SysUser;
 import com.arc.security3.mapper.UserMapper;
 import com.arc.security3.service.UserService;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Long save(User User) {
+    public Long save(SysUser user) {
         return null;
     }
 
@@ -31,23 +31,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int update(User User) {
+    public int update(SysUser user) {
         return 0;
     }
 
     @Override
-    public User get(Long id) {
+    public SysUser get(Long id) {
         return userMapper.selectById(id);
     }
 
     @Override
-    public List<User> list() {
-        List<User> userList = userMapper.selectList(null);
+    public List<SysUser> list() {
+        List<SysUser> userList = userMapper.selectList(null);
         return userList;
     }
 
     @Override
-    public User getByUsername(String username) {
+    public SysUser getByUsername(String username) {
         //https://www.jianshu.com/p/07be9ccb3306
         //https://blog.csdn.net/yuanlaijike/article/details/80249235
         return userMapper.getByUsername(username);
