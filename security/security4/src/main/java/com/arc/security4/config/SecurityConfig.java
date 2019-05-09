@@ -1,4 +1,4 @@
-package com.arc.security3.config;
+package com.arc.security4.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -17,9 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
-     * 用自己定义的页面*1 来向服务器的一个自定义的url *2 登录
-     * 是否需要身份认证
-     * 是否是HTML引发的请求？返回HTML，还是JSON
+     * 用自己定义的页面登录
      *
      * @param http
      * @throws Exception
