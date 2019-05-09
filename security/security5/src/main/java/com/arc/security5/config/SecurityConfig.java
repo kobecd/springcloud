@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
+ * SecurityConfig
+ *
  * @author 叶超
  * @since: 2019/5/7 22:31
  */
@@ -27,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 哪些请求需要返回JSON
      * -------------------
      * 用自己定义的页面*1 来向服务器的一个自定义的url *2 登录
-     *
+     * <p>
      * 是否是HTML引发的请求？返回HTML，否则还是JSON
      *
      * @param http

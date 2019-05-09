@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 全部安全框架都有 默认配置， 在yml配置中指定用户名，密码即可
+ * 安全框架 配置  SecurityConfig
+ * 目的： 未登陆授权的请求来后台的时候，后端 返回HTML，否则还是JSON
  */
 @SpringBootApplication
 public class Security5Application {
