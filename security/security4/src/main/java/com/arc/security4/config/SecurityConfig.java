@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
-     * 用自己定义的页面登录
+     * 用自己定义的页面登录系统完成认证
      *
      * @param http
      * @throws Exception
