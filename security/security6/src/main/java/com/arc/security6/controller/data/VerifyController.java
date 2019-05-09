@@ -1,14 +1,17 @@
 package com.arc.security6.controller.data;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 叶超
@@ -20,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 public class VerifyController {
 
 
-//    @Resource
-//    private RedisTemplate redisTemplate;
+    @Resource
+    private RedisTemplate<Object, Object> redisTemplate;
 
     private static final String VERIFY_IMAGE_PREFIX = "VERIFY_IMAGE";
 
@@ -41,21 +44,24 @@ public class VerifyController {
         //操作字符串
         String key = VERIFY_IMAGE_PREFIX + request.getAttribute("username");
 
+        TestRedis testRedis = new TestRedis(imageCode.getCode());
 
-        log.debug("key={}，value={}", key, imageCode);
-//        redisTemplate.opsForValue().set(key, imageCode);
 
-//        redisTemplate.opsForValue().set(Object k, Object v, long l, TimeUnit timeUnit)
-//        redisTemplate.opsForValue().set(key + 1, imageCode, 600L, TimeUnit.SECONDS);
-//        ImageCode fromRedis = (ImageCode) redisTemplate.opsForValue().get(key);
-//        log.debug("结果={}", fromRedis);
-//        log.debug("结果={}", (ImageCode) redisTemplate.opsForValue().get(key + 1));
+        log.debug("redisTemplate={}, key={}，value={}", redisTemplate,key, testRedis);
+
+
+        //保存
+        redisTemplate.opsForValue().set(key, testRedis);
+        redisTemplate.opsForValue().set(key + 1, testRedis, 600L, TimeUnit.SECONDS);//        redisTemplate.opsForValue().set(Object k, Object v, long l, TimeUnit timeUnit)
+        // 取值
+        TestRedis testRedis1 = (TestRedis) redisTemplate.opsForValue().get(key);
+        log.debug("结果={}", testRedis1);
+        log.debug("结果={}", (TestRedis) redisTemplate.opsForValue().get(key + 1));
 //        Assert.notNull(fromRedis, "redisTemplate.opsForValue().get(key)");
 
         boolean write = ImageIO.write(imageCode.getImage(), "jpg", response.getOutputStream());
-        log.debug("返回图片结果={}",write);
+        log.debug("返回图片结果={}", write);
     }
-
 
 
     /**
@@ -68,7 +74,6 @@ public class VerifyController {
 
         return true;
     }
-
 
 
 }

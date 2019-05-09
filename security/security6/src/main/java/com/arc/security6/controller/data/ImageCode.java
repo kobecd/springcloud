@@ -59,7 +59,7 @@ public class ImageCode implements Serializable {
         log.debug("随机数结果={}", content);
 
 
-        BufferedImage verifyImage = createVerifyImage("1234");
+        BufferedImage verifyImage = createVerifyImage(content);
         return new ImageCode(verifyImage, content + "", 600L);
     }
 

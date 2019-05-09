@@ -27,11 +27,20 @@
             <input type="text" id="username" name="username" class="form-control" placeholder="Username" required
                    autofocus>
         </p>
+
         <p>
             <label for="password" class="sr-only">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </p>
         <input name="_csrf" type="hidden" value="90ffee0f-a1a5-447b-80d9-0c9135a37522"/>
+
+        <p>
+            <label for="username" class="sr-only">verify</label>
+            <input type="text" id="verifyCode" name="verifyCode" class="form-control" placeholder="verifyCode" required
+                   autofocus>
+            <img src="/verify/code">
+        </p>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 </div>

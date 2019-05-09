@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.arc</groupId>
-    <artifactId>security6</artifactId>
+    <artifactId>security7</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security6 响应不同的返回HTML/JSON</name>
-    <description>security6 响应不同的返回HTML/JSON project for Spring Boot</description>
+    <name>security7响应不同的返回HTML/JSON</name>
+    <description>security7 响应不同的返回HTML/JSON project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -45,12 +45,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <!--redis-->
-        <!--用于共享登录状态-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
     </dependencies>
