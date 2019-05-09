@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: chapter1
+  profiles:
+    active: dev
+
+logback:
+  dir: ./target/log
+
+
+---
+########################################################
+#          不同环境         Environment for Localhost  注意：数据配置在这里
+########################################################
+spring:
+  profiles: dev
+
+server:
+  port: 8761
+eureka:
+  client:
+    allow-redirects: true
+    #是否获取注册信息，集群时候用哦
+    fetch-registry: false
+    #是否注册自己
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://127.0.0.1:${server.port}/eureka/
+
+
+
+---
+########################################################
+spring:
+  profiles: test
