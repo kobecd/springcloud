@@ -43,13 +43,8 @@ public class VerifyController {
         ImageCode imageCode = ImageCode.createImageCode();
         //操作字符串
         String key = VERIFY_IMAGE_PREFIX + request.getAttribute("username");
-
         TestRedis testRedis = new TestRedis(imageCode.getCode());
-
-
         log.debug("redisTemplate={}, key={}，value={}", redisTemplate,key, testRedis);
-
-
         //保存
         redisTemplate.opsForValue().set(key, testRedis);
         redisTemplate.opsForValue().set(key + 1, testRedis, 600L, TimeUnit.SECONDS);//        redisTemplate.opsForValue().set(Object k, Object v, long l, TimeUnit timeUnit)
@@ -58,7 +53,6 @@ public class VerifyController {
         log.debug("结果={}", testRedis1);
         log.debug("结果={}", (TestRedis) redisTemplate.opsForValue().get(key + 1));
 //        Assert.notNull(fromRedis, "redisTemplate.opsForValue().get(key)");
-
         boolean write = ImageIO.write(imageCode.getImage(), "jpg", response.getOutputStream());
         log.debug("返回图片结果={}", write);
     }
