@@ -1,4 +1,4 @@
-package com.arc.security6.controller.data;
+package com.arc.security7.controller.data;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

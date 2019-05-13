@@ -31,6 +31,15 @@
             <label for="password" class="sr-only">Password</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </p>
+
+        <p>
+            <label for="captcha" class="sr-only">captcha</label>
+            <input type="text" id="captcha" name="captcha" class="form-control" placeholder="captcha" required
+                   autofocus>
+            <img src="/v1/verify/captcha">
+        </p>
+
+
         <input name="_csrf" type="hidden" value="90ffee0f-a1a5-447b-80d9-0c9135a37522"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>

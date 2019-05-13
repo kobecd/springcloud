@@ -1,4 +1,4 @@
-package com.arc.security6.config;
+package com.arc.security7.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login/form/v1")//*2
                 .and()
                 .authorizeRequests()
-                .antMatchers("/testLogin").permitAll()
+                .antMatchers("/testLogin","/v1/verify").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

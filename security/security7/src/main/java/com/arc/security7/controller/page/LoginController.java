@@ -1,4 +1,4 @@
-package com.arc.security6.controller.page;
+package com.arc.security7.controller.page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
