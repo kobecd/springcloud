@@ -32,3 +32,9 @@ public class LoginController {
 //        return "login";
 //    }
 }
+
+//测试
+//1后端生成验证码，并记录签发给哪个用户（redis.set(userKeyInCookie,code) ），
+//2从cookie中获取用户标记(cookie.get(key) to grt key)
+//3 check code is right and is valid
+//4response
