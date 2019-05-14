@@ -28,11 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-                .loginPage(StaticFied.loginUrl)//*1
-                .loginProcessingUrl("/login/form/v1")//*2
+                .loginPage("/testLogin")//*1
+                .loginProcessingUrl("/login/form")//*2
                 .and()
                 .authorizeRequests()
-                .antMatchers(StaticFied.loginUrl, StaticFied.loginProcessingUrl, StaticFied.verifyCode, "/redis/set","/redis/get").permitAll()
+                .antMatchers("/testLogin", "/login/form", "/verify/code",  "/redis/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

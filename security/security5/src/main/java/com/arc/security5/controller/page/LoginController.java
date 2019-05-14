@@ -19,7 +19,7 @@ public class LoginController {
 
     @RequestMapping(value = "/arc-login.html", method = {RequestMethod.GET, RequestMethod.POST})
     public String arcLogin() {
-        return "arc-login";
+        return "testLogin";
     }
 
     @RequestMapping(value = "/test.html", method = {RequestMethod.GET, RequestMethod.POST})

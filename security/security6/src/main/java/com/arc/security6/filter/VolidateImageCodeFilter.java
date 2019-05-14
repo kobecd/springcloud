@@ -1,6 +1,6 @@
 package com.arc.security6.filter;
 
-import com.arc.security6.config.StaticFied;
+import com.arc.security6.config.properties.StaticFied;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMethod;

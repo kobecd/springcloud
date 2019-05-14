@@ -64,7 +64,7 @@ public class VerifyCodeUtils {
      * @throws IOException
      */
     public static BufferedImage createVerifyImage(String content) {
-        return createVerifyImage(content, 50, 30);
+        return createVerifyImage(content, 120, 80);
     }
 
 

@@ -1,8 +1,9 @@
 package com.arc.security6.controller.data.test;
 
-import com.arc.security6.config.StaticFied;
+import com.arc.security6.config.properties.StaticFied;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -13,14 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import static com.arc.security6.config.StaticFied.KEY_FOR_COOKIE;
+import static com.arc.security6.config.properties.StaticFied.KEY_FOR_COOKIE;
 
 /**
  * @author 叶超
  * @since: 2019/5/14 21:49
  */
 @Slf4j
-@RestController
+@Controller
 @RequestMapping("/redis")
 public class TestRedisController {
 
@@ -42,35 +43,45 @@ public class TestRedisController {
         log.debug("---------------------------------------------");
 
         String keyForRedisInCookie = null;
+        try {
 
-        if (request.getCookies() != null) {
-            for (Cookie cookie : request.getCookies()) {
-                if (StaticFied.KEY_FOR_COOKIE.equalsIgnoreCase(cookie.getName())) {
-                    keyForRedisInCookie = cookie.getValue();
-                    log.debug("####################################");
-                    log.debug("keyForRedisInCookie结果={}", keyForRedisInCookie);
-                    log.debug("####################################");
-                    break;
+            if (request.getCookies() != null) {
+                for (Cookie cookie : request.getCookies()) {
+                    if (StaticFied.KEY_FOR_COOKIE.equalsIgnoreCase(cookie.getName())) {
+                        keyForRedisInCookie = cookie.getValue();
+                        log.debug("####################################");
+                        log.debug("keyForRedisInCookie结果={}", keyForRedisInCookie);
+                        log.debug("####################################");
+                        break;
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         String key = "abc";
         log.debug("###  redisTemplate.opsForValue().set --key={},value={}", key, verifyCode);
         System.out.println(redisTemplate);
         System.out.println(redisTemplate);
         redisTemplate.opsForValue().set(key, verifyCode, 600L, TimeUnit.SECONDS);
+        try {
 
-        Cookie cookie = new Cookie(KEY_FOR_COOKIE, key);
-        cookie.setMaxAge(43200);// 单位是秒  12h
-        cookie.setPath("/");
-        response.addCookie(cookie);
-        boolean write = ImageIO.write(VerifyCodeUtils.createVerifyImage(verifyCode), "jpg", response.getOutputStream());
-        log.debug("返回图片结果={}", write);
+            Cookie cookie = new Cookie(KEY_FOR_COOKIE, key);
+            cookie.setMaxAge(43200);// 单位是秒  12h
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            boolean write = ImageIO.write(VerifyCodeUtils.createVerifyImage(verifyCode), "jpg", response.getOutputStream());
+            log.debug("返回图片结果={}", write);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
     }
 
 
     @GetMapping(value = "/get/{key}")
-
+    @ResponseBody
     public Object getVerifyImageV0(@PathVariable String key) throws Exception {
         log.debug("---------------------------------------------");
         String verifyCode = (String) redisTemplate.opsForValue().get(key);

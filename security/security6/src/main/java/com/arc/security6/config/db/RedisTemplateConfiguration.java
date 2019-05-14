@@ -1,4 +1,4 @@
-package com.arc.security6.config;
+package com.arc.security6.config.db;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
