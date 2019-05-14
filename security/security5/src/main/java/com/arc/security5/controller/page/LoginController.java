@@ -1,7 +1,6 @@
 package com.arc.security5.controller.page;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
+
     @RequestMapping(value = "/testLogin", method = {RequestMethod.GET, RequestMethod.POST})
     public String testLogin() {
         return "login2";
@@ -21,23 +21,20 @@ public class LoginController {
     public String arcLogin() {
         return "arc-login";
     }
+
     @RequestMapping(value = "/test.html", method = {RequestMethod.GET, RequestMethod.POST})
     public String test() {
         return "sys/test";
     }
 
-    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    public String test(@PathVariable Long id) {
-        return "index";
-    }
 
-    @RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String index() {
         return "index";
     }
 
-//    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
-//    public String login() {
-//        return "login";
-//    }
+    @RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
+    public String index1() {
+        return "index";
+    }
 }
