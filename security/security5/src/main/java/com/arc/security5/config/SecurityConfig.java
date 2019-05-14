@@ -31,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 用自己定义的页面*1 来向服务器的一个自定义的url *2 登录
      * <p>
      * 是否是HTML引发的请求？返回HTML，否则还是JSON
+     * 注意：Login success后 跳转指定页面，缺省情况下是跳转"/"
      *
      * @param http
      * @throws Exception
