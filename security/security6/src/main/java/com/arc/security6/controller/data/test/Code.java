@@ -1,4 +1,4 @@
-package com.arc.security6.controller.data;
+package com.arc.security6.controller.data.test;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,13 +11,14 @@ import java.io.Serializable;
  */
 @Setter
 @Getter
-public class TestRedis implements Serializable {
+public class Code implements Serializable {
+
     private String code;
 
-    public TestRedis(String code) {
+    public Code(String code) {
         this.code = code;
     }
 
-    public TestRedis() {
+    public Code() {
     }
 }

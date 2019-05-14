@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login/form/v1")//*2
                 .and()
                 .authorizeRequests()
-                .antMatchers(StaticFied.loginUrl,StaticFied.verifyCode).permitAll()
+                .antMatchers(StaticFied.loginUrl, StaticFied.verifyCode, "/redis/set","/redis/get").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

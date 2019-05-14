@@ -1,4 +1,4 @@
-package com.arc.security6.controller.data;
+package com.arc.security6.controller.data.test;
 
 
 import org.slf4j.Logger;
@@ -209,9 +209,9 @@ public class VerifyCodeUtils {
     }
 
 
-    private static Color getRandomColor(Random random) {
-        return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-    }
+//    private static Color getRandomColor(Random random) {
+//        return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+//    }
 
 
     public static void main(String[] args) throws IOException {

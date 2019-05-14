@@ -1,6 +1,8 @@
 package com.arc.security6.controller.data;
 
 import com.arc.security6.config.StaticFied;
+import com.arc.security6.controller.data.test.Code;
+import com.arc.security6.controller.data.test.VerifyCodeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
@@ -88,16 +90,16 @@ public class VerifyController {
         //操作字符串
         String key = VERIFY_IMAGE_PREFIX + request.getAttribute("username");
         String code = "1234";
-        TestRedis testRedis = new TestRedis(code);
+        Code testRedis = new Code(code);
         //        this.expireTime = LocalDateTime.now().plusSeconds(expireSeconds);
         log.debug("redisTemplate={}, key={}，value={}", redisTemplate, key, testRedis);
         //保存
         redisTemplate.opsForValue().set(key, testRedis);
         redisTemplate.opsForValue().set(key + 1, testRedis, 600L, TimeUnit.SECONDS);//        redisTemplate.opsForValue().set(Object k, Object v, long l, TimeUnit timeUnit)
         // 取值
-        TestRedis testRedis1 = (TestRedis) redisTemplate.opsForValue().get(key);
-        log.debug("结果={}", testRedis1);
-        log.debug("结果={}", (TestRedis) redisTemplate.opsForValue().get(key + 1));
+        Code code1 = (Code) redisTemplate.opsForValue().get(key);
+        log.debug("结果={}", code1);
+        log.debug("结果={}", (Code) redisTemplate.opsForValue().get(key + 1));
 //        Assert.notNull(fromRedis, "redisTemplate.opsForValue().get(key)");
         boolean write = ImageIO.write(verifyImage, "jpg", response.getOutputStream());
         log.debug("返回图片结果={}", write);
