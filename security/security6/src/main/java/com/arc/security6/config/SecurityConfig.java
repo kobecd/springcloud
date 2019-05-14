@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login/form/v1")//*2
                 .and()
                 .authorizeRequests()
-                .antMatchers(StaticFied.loginUrl, StaticFied.verifyCode, "/redis/set","/redis/get").permitAll()
+                .antMatchers(StaticFied.loginUrl, StaticFied.loginProcessingUrl, StaticFied.verifyCode, "/redis/set","/redis/get").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -46,4 +46,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

@@ -12,6 +12,7 @@ import lombok.Setter;
 public class StaticFied {
 
     public static final String loginUrl = "/testLogin";
+    public static final String loginProcessingUrl = "/login/form/v1";
 
     public static final String verifyCode = "/verify/code";
 
