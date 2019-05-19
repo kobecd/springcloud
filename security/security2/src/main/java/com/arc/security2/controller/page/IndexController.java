@@ -21,7 +21,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    public String test(@PathVariable Long id) {
+    public String test() {
         return "index";
     }
 
