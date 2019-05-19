@@ -1,6 +1,5 @@
 package com.arc.security3.security;
 
-import com.arc.security3.domain.sys.SysUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,36 +11,21 @@ import java.util.Collection;
  */
 public class UserSecurity implements UserDetails {
 
-    private SysUser user;
+
+    private String username;
+
+    private String password;
 
     private Collection<GrantedAuthority> authorities;
 
-
-    public SysUser getUser() {
-        return user;
-    }
-
-    public void setUser(SysUser user) {
-        this.user = user;
-    }
-
-    public void setAuthorities(Collection<GrantedAuthority> authorities) {
-        this.authorities = authorities;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities;
-    }
-
     @Override
     public String getPassword() {
-        return this.user.getPassword();
+        return this.username;
     }
 
     @Override
     public String getUsername() {
-        return this.user.getUsername();
+        return this.password;
     }
 
     //帐户未过期 true=过期/false=未过期
@@ -56,7 +40,6 @@ public class UserSecurity implements UserDetails {
         return false;
     }
 
-
     //是帐户非锁定 是否锁定冻结
     @Override
     public boolean isAccountNonLocked() {
@@ -69,10 +52,9 @@ public class UserSecurity implements UserDetails {
         return false;
     }
 
-
-    public UserSecurity(SysUser user, Collection<GrantedAuthority> authorities) {
-        this.user = user;
-        this.authorities = authorities;
-
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
     }
+
 }

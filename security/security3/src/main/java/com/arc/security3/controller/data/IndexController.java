@@ -1,7 +1,6 @@
 package com.arc.security3.controller.data;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -18,15 +17,11 @@ public class IndexController {
     @GetMapping(value = "/{id}")
     public Object user(@PathVariable Long id) {
         log.debug("参数id={}", id);
-        log.debug("参数id={}", id);
-        log.debug("参数id={}", id);
-        log.debug("参数id={}", id);
-        log.debug("参数id={}", id);
         return id;
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    public String test(@PathVariable Long id) {
+    public String test() {
         return "index";
     }
 

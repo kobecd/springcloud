@@ -1,8 +1,10 @@
 package com.arc.security1.controller.page;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 返回页面的录用控制器
@@ -16,7 +18,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    public String test(@PathVariable Long id) {
+    public String test() {
         return "index";
     }
 
