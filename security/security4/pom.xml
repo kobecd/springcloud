@@ -11,8 +11,8 @@
     <groupId>com.arc</groupId>
     <artifactId>security4</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security4 基于db的</name>
-    <description>security4 基于db的 project for Spring Boot</description>
+    <name>security4 自己定义的页面登录系统完成认证</name>
+    <description>security4 </description>
 
     <properties>
         <java.version>1.8</java.version>

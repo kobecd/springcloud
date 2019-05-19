@@ -11,8 +11,8 @@
     <groupId>com.arc</groupId>
     <artifactId>security2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security2</name>
-    <description>Demo project for Spring Boot</description>
+    <name>security2 自己定义设置认证方式</name>
+    <description>security2 自己定义设置认证方式 project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>

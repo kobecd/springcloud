@@ -11,8 +11,8 @@
     <groupId>com.arc</groupId>
     <artifactId>security3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security3 基于db的</name>
-    <description>security3 基于db的 project for Spring Boot</description>
+    <name>security3 使用密码加密解密的功能来完善安全框架</name>
+    <description>security3 使用密码加密解密的功能来完善安全框架</description>
 
     <properties>
         <java.version>1.8</java.version>
