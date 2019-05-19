@@ -1,8 +1,9 @@
 package com.arc.security5.controller.page;
 
+import com.arc.security5.config.security.SecurityConfig;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
 
 /**
  * @author 叶超
@@ -11,29 +12,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
-
-    @RequestMapping(value = "/testLogin", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/arc_login.html", method = {RequestMethod.GET, RequestMethod.POST})
     public String testLogin() {
-        return "login2";
+        return "arc_login";
     }
 
-    @RequestMapping(value = "/arc-login.html", method = {RequestMethod.GET, RequestMethod.POST})
-    public String arcLogin() {
-        return "testLogin";
-    }
-
-    @RequestMapping(value = "/test.html", method = {RequestMethod.GET, RequestMethod.POST})
-    public String test() {
-        return "sys/test";
-    }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    public String index() {
+    public String test() {
         return "index";
     }
 
     @RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
-    public String index1() {
+    public String index() {
         return "index";
+    }
+
+//    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+//    public String login() {
+//        return "login";
+//    }
+
+    @GetMapping(value = "/info/{id}")
+    @ResponseBody
+    public Object user(@PathVariable Long id) {
+        return id;
     }
 }

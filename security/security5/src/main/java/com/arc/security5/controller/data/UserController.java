@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2018/12/25
  */
 @Slf4j
-@Controller
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -30,7 +29,7 @@ public class UserController {
     @GetMapping(value = "/{id}")
     public Object get(@PathVariable Long id) {
         log.debug("获取单个用户,参数 id={}", id);
-        return "1111111111111111" + id;
+        return "id->" + id;
     }
 
     /**
@@ -41,8 +40,8 @@ public class UserController {
     //@todo page 分页插件
     @GetMapping(value = "")
     public Object list() {
-        log.debug("获取用户列表，无参数！");
-        return "list 获取用户列表";
+        log.debug("获取用户列表。");
+        return "list 获取用户列表 [,,,,,,,,]";
     }
 
 

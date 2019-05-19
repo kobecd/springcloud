@@ -41,10 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .loginPage("/auth/require")//*1
-                .loginProcessingUrl("/login/form/v1")//*2
+                .loginProcessingUrl(arcSecurityProperties.getBrowserProperties().getLoginProcessingUrl())//*2
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/require", "/login/form/v1", arcSecurityProperties.getBrowserProperties().getLoginUrl()).permitAll()
+                .antMatchers( arcSecurityProperties.getBrowserProperties().getLoginUrl(),"/auth/require").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

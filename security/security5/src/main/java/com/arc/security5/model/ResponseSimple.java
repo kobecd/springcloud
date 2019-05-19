@@ -1,4 +1,4 @@
-package com.arc.security5.controller.data;
+package com.arc.security5.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,11 +9,11 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class SimpleResponse {
+public class ResponseSimple {
 
     private Object content;
 
-    public SimpleResponse(String content) {
+    public ResponseSimple(String content) {
         this.content = content;
     }
 }

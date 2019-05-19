@@ -13,5 +13,9 @@ import lombok.Setter;
 @Getter
 public class BrowserProperties {
 
-    private String loginUrl = "/testLogin.html";
+    private String loginUrl = "/arc_login.html";
+
+    public String loginProcessingUrl = "/v1/login/form/process";
+
+
 }

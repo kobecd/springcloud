@@ -1,6 +1,7 @@
 package com.arc.security5.controller.data;
 
 import com.arc.security5.config.properties.ArcSecurityProperties;
+import com.arc.security5.model.ResponseSimple;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,7 @@ public class SecurityBrowserController {
     private RequestCache cacheRequest = new HttpSessionRequestCache();
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
     /**
      * 需身份认证时候，跳转到这里
      */
@@ -39,7 +41,6 @@ public class SecurityBrowserController {
     @ResponseStatus(code= HttpStatus.UNAUTHORIZED)
     public Object get(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = cacheRequest.getRequest(request, response);
-
         //引发跳转的请求
         if (savedRequest != null) {
             String redirectUrl = savedRequest.getRedirectUrl();
@@ -48,6 +49,6 @@ public class SecurityBrowserController {
                 redirectStrategy.sendRedirect(request, response,arcSecurityProperties.getBrowserProperties().getLoginUrl());
             }
         }
-        return  new SimpleResponse("需要登录");
+        return  new ResponseSimple("需要登录");
     }
 }
