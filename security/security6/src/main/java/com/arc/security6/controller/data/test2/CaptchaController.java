@@ -1,4 +1,4 @@
-package com.arc.security7.controller.data.test;
+package com.arc.security6.controller.data.test2;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;

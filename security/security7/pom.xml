@@ -11,8 +11,8 @@
     <groupId>com.arc</groupId>
     <artifactId>security7</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security7响应不同的返回HTML/JSON</name>
-    <description>security7 响应不同的返回HTML/JSON project for Spring Boot</description>
+    <name>security7 </name>
+    <description>security7 project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>

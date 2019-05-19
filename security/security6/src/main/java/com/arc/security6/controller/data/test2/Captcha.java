@@ -1,4 +1,5 @@
-package com.arc.security6.util;
+package com.arc.security6.controller.data.test2;
+
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -9,9 +10,10 @@ import java.util.Random;
 
 /**
  * @author 叶超
- * @since 2019/5/9 12:52
+ * @since 2019/5/13 13:43
  */
-public class ImageUtils {
+public class Captcha {
+
     private static char mapTable[] = {
             '0', '1', '2', '3', '4', '5',
             '6', '7', '8', '9', '0', '1',
