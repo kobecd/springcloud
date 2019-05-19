@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 安全框架 配置  SecurityConfig
+ * 安全框架配置类：  SecurityConfig
  * 这一项目目的：
  * 1、自己定义的页面登录系统完成认证
  */

@@ -1,8 +1,8 @@
 package com.arc.security4.controller.page;
 
+import com.arc.security4.config.SecurityConfig;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author 叶超
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = "/testLogin", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = SecurityConfig.LOGIN, method = {RequestMethod.GET, RequestMethod.POST})
     public String testLogin() {
-        return "login2";
+        return "test_login";
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
@@ -30,4 +30,10 @@ public class LoginController {
 //    public String login() {
 //        return "login";
 //    }
+
+    @GetMapping(value = "/info/{id}")
+    @ResponseBody
+    public Object user(@PathVariable Long id) {
+        return id;
+    }
 }
