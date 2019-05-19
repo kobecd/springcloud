@@ -1,7 +1,6 @@
 package com.arc.security4.controller.page;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,7 +17,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
-    public String test(@PathVariable Long id) {
+    public String test() {
         return "index";
     }
 
